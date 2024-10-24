@@ -261,3 +261,8 @@ section h3 {
 
 
 /* ####################### UNIDAD DIDÁCTICA 2 ####################### */
+
+.img-small {
+    width: 300px;
+    height: auto;
+}
