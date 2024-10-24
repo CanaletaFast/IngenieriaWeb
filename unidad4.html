@@ -1,0 +1,2468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Unidad Didáctica 4: PHP y MySQL</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Prism.js para el resaltado de sintaxis -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-php.min.js"></script>
+    <!-- Estilos adicionales específicos para esta página -->
+    <style>
+        /* Estilos adicionales para la funcionalidad interactiva */
+        .example-container {
+            display: none; /* Ocultar todos los ejemplos inicialmente */
+            margin-bottom: 40px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .example-container.active {
+            display: block; /* Mostrar el ejemplo activo */
+            opacity: 1;
+            height: auto;
+        }
+
+        .navigation-buttons, .navigation-buttons-php, .navigation-buttons-mysql {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .navigation-buttons button, .navigation-buttons-php button, .navigation-buttons-mysql button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .navigation-buttons button:hover, .navigation-buttons-php button:hover, .navigation-buttons-mysql button:hover {
+            background-color: #45a049;
+        }
+
+        /* Estilo para el área de vista previa */
+        .preview {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #fff;
+            margin-top: 10px;
+        }
+
+        /* Estilos para la indicación del contador */
+        .counter {
+            display: inline-block;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        /* Responsividad */
+        @media (max-width: 768px) {
+            .navigation-buttons button, .navigation-buttons-php button, .navigation-buttons-mysql button {
+                padding: 8px 16px;
+                margin: 5px;
+                font-size: 0.9em;
+            }
+        }
+
+        /* Estilos para las explicaciones adicionales */
+        .explanation {
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-left: 4px solid #4CAF50;
+            border-radius: 3px;
+        }
+
+        .explanation h4 {
+            margin-top: 0;
+        }
+
+        .explanation p {
+            margin: 10px 0;
+        }
+
+        .explanation pre {
+            background-color: #e8e8e8;
+            padding: 10px;
+            border-radius: 3px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <div class="container">
+            <h1>Unidad Didáctica 4: PHP y MySQL</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="#php">PHP Básico</a></li>
+                    <li><a href="#mysql">MySQL</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+        <!-- Sección de PHP Básico -->
+        <section id="php">
+            <h2>PHP Básico</h2>
+            <p>En esta sección aprenderemos los fundamentos de PHP, un lenguaje de programación esencial para el desarrollo web del lado del servidor.</p>
+
+            <!-- Contenedor de ejemplos de PHP -->
+            <div id="php-examples">
+                <!-- Ejemplo 1 -->
+                <div class="example-container active" id="php-example-1">
+                    <h3>Ejemplo 1: Introducción a PHP – "Hola Mundo"</h3>
+                    <pre><code class="language-php">&lt;?php
+echo "¡Hola, mundo!";
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código, crea un archivo llamado <code>hola.php</code> con el contenido anterior y ejecútalo en un servidor PHP.</p>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>¡Hola, mundo!</p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo funciona el primer script en PHP.</h4>
+
+                        <p><strong>¿Qué es PHP?</strong></p>
+                        <p>PHP (Hypertext Preprocessor) es un lenguaje de programación de código abierto ampliamente utilizado para el desarrollo web del lado del servidor. Permite generar contenido dinámico, interactuar con bases de datos y manejar formularios, entre otras funcionalidades.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este es un script básico de PHP que imprime el mensaje "¡Hola, mundo!" en el navegador.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+echo "¡Hola, mundo!";
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>&lt;?php ... ?&gt;</code>: Etiquetas de apertura y cierre de PHP que indican dónde comienza y termina el código PHP.</li>
+                            <li><code>echo "¡Hola, mundo!";</code>: Imprime el texto "¡Hola, mundo!" en el navegador.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP, verás el texto "¡Hola, mundo!" en tu navegador.</p>
+                    </div>
+                    <!-- Script para el Ejemplo 1 -->
+                    <script>
+                        // Este ejemplo es sencillo y no requiere scripts adicionales
+                    </script>
+                </div>
+
+                <!-- Ejemplo 2 -->
+                <div class="example-container" id="php-example-2">
+                    <h3>Ejemplo 2: Variables y Tipos de Datos en PHP</h3>
+                    <pre><code class="language-php">&lt;?php
+$nombre = "Ana";
+$edad = 30;
+$esEstudiante = true;
+
+echo "Nombre: " . $nombre . "&lt;br&gt;";
+echo "Edad: " . $edad . "&lt;br&gt;";
+echo "¿Es estudiante? " . ($esEstudiante ? "Sí" : "No") . "&lt;br&gt;";
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código, crea un archivo llamado <code>variables.php</code> con el contenido anterior y ejecútalo en un servidor PHP.</p>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>
+                                Nombre: Ana<br>
+                                Edad: 30<br>
+                                ¿Es estudiante? Sí
+                            </p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo declarar y utilizar variables en PHP.</h4>
+
+                        <p><strong>¿Qué son las variables?</strong></p>
+                        <p>Las variables son contenedores que almacenan información. En PHP, se declaran con el símbolo <code>$</code> seguido del nombre de la variable.</p>
+
+                        <p><strong>Tipos de Datos</strong></p>
+                        <ul>
+                            <li><strong>Cadenas de texto (Strings):</strong> Texto encerrado entre comillas. Ejemplo: <code>"Ana"</code>.</li>
+                            <li><strong>Números (Integers y Floats):</strong> Valores numéricos. Ejemplo: <code>30</code>.</li>
+                            <li><strong>Booleanos (Booleans):</strong> Valores lógicos que pueden ser <code>true</code> o <code>false</code>.</li>
+                        </ul>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script declara tres variables con diferentes tipos de datos y luego imprime sus valores en el navegador.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+$nombre = "Ana";
+$edad = 30;
+$esEstudiante = true;
+
+echo "Nombre: " . $nombre . "&lt;br&gt;";
+echo "Edad: " . $edad . "&lt;br&gt;";
+echo "¿Es estudiante? " . ($esEstudiante ? "Sí" : "No") . "&lt;br&gt;";
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>$nombre = "Ana";</code>: Declara una variable <code>$nombre</code> con el valor "Ana".</li>
+                            <li><code>$edad = 30;</code>: Declara una variable <code>$edad</code> con el valor 30.</li>
+                            <li><code>$esEstudiante = true;</code>: Declara una variable <code>$esEstudiante</code> con el valor <code>true</code>.</li>
+                            <li><code>echo</code>: Función que imprime texto en el navegador.</li>
+                            <li><code>&lt;br&gt;</code>: Etiqueta HTML para un salto de línea.</li>
+                            <li><code>($esEstudiante ? "Sí" : "No")</code>: Operador ternario que evalúa si <code>$esEstudiante</code> es <code>true</code> o <code>false</code>.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP, verás lo siguiente en tu navegador:</p>
+                        <p>
+                            Nombre: Ana<br>
+                            Edad: 30<br>
+                            ¿Es estudiante? Sí
+                        </p>
+                    </div>
+                    <!-- Script para el Ejemplo 2 -->
+                    <script>
+                        // Este ejemplo es sencillo y no requiere scripts adicionales
+                    </script>
+                </div>
+
+                <!-- Ejemplo 3 -->
+                <div class="example-container" id="php-example-3">
+                    <h3>Ejemplo 3: Estructuras de Control en PHP</h3>
+                    <pre><code class="language-php">&lt;?php
+$numero = 10;
+
+if ($numero > 0) {
+    echo "$numero es positivo.&lt;br&gt;";
+} elseif ($numero < 0) {
+    echo "$numero es negativo.&lt;br&gt;";
+} else {
+    echo "$numero es cero.&lt;br&gt;";
+}
+
+// Bucle for
+for ($i = 1; $i <= 5; $i++) {
+    echo "Número: $i&lt;br&gt;";
+}
+
+// Bucle while
+$j = 1;
+while ($j <= 3) {
+    echo "Contador: $j&lt;br&gt;";
+    $j++;
+}
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código, crea un archivo llamado <code>control.php</code> con el contenido anterior y ejecútalo en un servidor PHP.</p>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>
+                                10 es positivo.<br>
+                                Número: 1<br>
+                                Número: 2<br>
+                                Número: 3<br>
+                                Número: 4<br>
+                                Número: 5<br>
+                                Contador: 1<br>
+                                Contador: 2<br>
+                                Contador: 3<br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo funcionan las estructuras de control en PHP.</h4>
+
+                        <p><strong>¿Qué son las estructuras de control?</strong></p>
+                        <p>Las estructuras de control permiten dirigir el flujo de ejecución del programa. Las más comunes son las condicionales (if, elseif, else) y los bucles (for, while, foreach).</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script demuestra el uso de condicionales y bucles en PHP:</p>
+
+                        <p><strong>Condicionales:</strong></p>
+                        <p>Evalúa si una variable cumple ciertas condiciones y ejecuta bloques de código en consecuencia.</p>
+
+                        <p><strong>Bucle for:</strong></p>
+                        <p>Repite un bloque de código un número específico de veces.</p>
+
+                        <p><strong>Bucle while:</strong></p>
+                        <p>Repite un bloque de código mientras una condición sea verdadera.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+$numero = 10;
+
+if ($numero > 0) {
+    echo "$numero es positivo.&lt;br&gt;";
+} elseif ($numero < 0) {
+    echo "$numero es negativo.&lt;br&gt;";
+} else {
+    echo "$numero es cero.&lt;br&gt;";
+}
+
+// Bucle for
+for ($i = 1; $i <= 5; $i++) {
+    echo "Número: $i&lt;br&gt;";
+}
+
+// Bucle while
+$j = 1;
+while ($j <= 3) {
+    echo "Contador: $j&lt;br&gt;";
+    $j++;
+}
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>if ($numero > 0) { ... }</code>: Verifica si <code>$numero</code> es mayor que 0.</li>
+                            <li><code>elseif ($numero < 0) { ... }</code>: Verifica si <code>$numero</code> es menor que 0.</li>
+                            <li><code>else { ... }</code>: Ejecuta este bloque si ninguna de las condiciones anteriores es verdadera.</li>
+                            <li><code>for ($i = 1; $i <= 5; $i++) { ... }</code>: Inicia un bucle que se repite 5 veces.</li>
+                            <li><code>while ($j <= 3) { ... }</code>: Inicia un bucle que se repite mientras <code>$j</code> sea menor o igual a 3.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP, verás lo siguiente en tu navegador:</p>
+                        <p>
+                            10 es positivo.<br>
+                            Número: 1<br>
+                            Número: 2<br>
+                            Número: 3<br>
+                            Número: 4<br>
+                            Número: 5<br>
+                            Contador: 1<br>
+                            Contador: 2<br>
+                            Contador: 3<br>
+                        </p>
+                    </div>
+                    <!-- Script para el Ejemplo 3 -->
+                    <script>
+                        // Este ejemplo es sencillo y no requiere scripts adicionales
+                    </script>
+                </div>
+
+                <!-- Ejemplo 4 -->
+                <div class="example-container" id="php-example-4">
+                    <h3>Ejemplo 4: Funciones en PHP</h3>
+                    <pre><code class="language-php">&lt;?php
+function saludar($nombre) {
+    return "¡Hola, $nombre!";
+}
+
+$mensaje = saludar("Carlos");
+echo $mensaje . "&lt;br&gt;";
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código, crea un archivo llamado <code>funciones.php</code> con el contenido anterior y ejecútalo en un servidor PHP.</p>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>¡Hola, Carlos!</p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo crear y utilizar funciones en PHP.</h4>
+
+                        <p><strong>¿Qué es una función?</strong></p>
+                        <p>Una función es un bloque de código reutilizable que realiza una tarea específica. Puedes pasarle datos (parámetros) y puede devolver un resultado.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script define una función llamada <code>saludar</code> que toma un nombre como parámetro y devuelve un saludo personalizado. Luego, la función se invoca y su resultado se imprime en el navegador.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+function saludar($nombre) {
+    return "¡Hola, $nombre!";
+}
+
+$mensaje = saludar("Carlos");
+echo $mensaje . "&lt;br&gt;";
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>function saludar($nombre) { ... }</code>: Declara una función llamada <code>saludar</code> que acepta un parámetro <code>$nombre</code>.</li>
+                            <li><code>return "¡Hola, $nombre!";</code>: Retorna una cadena de texto que incluye el nombre proporcionado.</li>
+                            <li><code>$mensaje = saludar("Carlos");</code>: Invoca la función <code>saludar</code> con el argumento "Carlos" y almacena el resultado en la variable <code>$mensaje</code>.</li>
+                            <li><code>echo $mensaje . "&lt;br&gt;";</code>: Imprime el mensaje en el navegador seguido de un salto de línea.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP, verás el siguiente mensaje en tu navegador:</p>
+                        <p>¡Hola, Carlos!</p>
+                    </div>
+                    <!-- Script para el Ejemplo 4 -->
+                    <script>
+                        // Este ejemplo es sencillo y no requiere scripts adicionales
+                    </script>
+                </div>
+
+                <!-- Ejemplo 5 -->
+                <div class="example-container" id="php-example-5">
+                    <h3>Ejemplo 5: Formularios y Métodos GET/POST</h3>
+                    <pre><code class="language-markup">&lt;!DOCTYPE html&gt;
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Contacto</title>
+</head>
+<body>
+    <form action="procesar_formulario.php" method="post">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>&lt;br&gt;&lt;br&gt;
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>&lt;br&gt;&lt;br&gt;
+        
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Crea un archivo llamado <code>formulario.php</code> con el contenido del código anterior.</li>
+                                <li>Crea otro archivo llamado <code>procesar_formulario.php</code> con el siguiente contenido:</li>
+                            </ol>
+                            <pre><code class="language-php">&lt;?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nombre = htmlspecialchars($_POST['nombre']);
+    $email = htmlspecialchars($_POST['email']);
+
+    echo "Nombre: $nombre&lt;br&gt;";
+    echo "Email: $email";
+} else {
+    echo "No se recibieron datos.";
+}
+?&gt;
+                            </code></pre>
+                            <ol start="3">
+                                <li>Asegúrate de ejecutar estos archivos en un servidor PHP.</li>
+                                <li>Abre <code>formulario.php</code> en tu navegador, completa el formulario y haz clic en "Enviar" para ver los resultados.</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo manejar formularios en PHP usando los métodos GET y POST.</h4>
+
+                        <p><strong>¿Qué son los métodos GET y POST?</strong></p>
+                        <p>Son dos métodos HTTP que se utilizan para enviar datos desde un formulario HTML al servidor. <code>GET</code> envía los datos a través de la URL, mientras que <code>POST</code> los envía en el cuerpo de la solicitud, lo que es más seguro para datos sensibles.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este ejemplo consiste en dos archivos:</p>
+
+                        <ol>
+                            <li><strong>formulario.php:</strong> Contiene el formulario HTML donde el usuario puede ingresar su nombre y email.</li>
+                            <li><strong>procesar_formulario.php:</strong> Procesa los datos enviados desde el formulario y los muestra en el navegador.</li>
+                        </ol>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;form action="procesar_formulario.php" method="post"&gt;
+    <label for="nombre">Nombre:</label>
+    &lt;input type="text" id="nombre" name="nombre" required&gt;&lt;br&gt;&lt;br&gt;
+    
+    <label for="email">Email:</label>
+    &lt;input type="email" id="email" name="email" required&gt;&lt;br&gt;&lt;br&gt;
+    
+    &lt;input type="submit" value="Enviar"&gt;
+&lt;/form&gt;
+                        </pre>
+
+                        <ul>
+                            <li><code>action="procesar_formulario.php"</code>: Especifica el archivo que procesará los datos del formulario.</li>
+                            <li><code>method="post"</code>: Indica que se utilizará el método POST para enviar los datos.</li>
+                            <li><code>name="nombre"</code> y <code>name="email"</code>: Nombres de las variables que se enviarán al servidor.</li>
+                            <li><code>required</code>: Atributo que hace que el campo sea obligatorio.</li>
+                        </ul>
+
+                        <p><strong>Seguridad:</strong> Utilizamos la función <code>htmlspecialchars()</code> para evitar ataques de Cross-Site Scripting (XSS) al escapar caracteres especiales.</p>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al completar el formulario y enviarlo, verás los datos ingresados impresos en la página <code>procesar_formulario.php</code>.</p>
+                    </div>
+                    <!-- Script para el Ejemplo 5 -->
+                    <script>
+                        // Este ejemplo utiliza archivos separados para el formulario y el procesamiento
+                    </script>
+                </div>
+
+                <!-- Ejemplo 6 -->
+                <div class="example-container" id="php-example-6">
+                    <h3>Ejemplo 6: Manejo de Arrays en PHP</h3>
+                    <pre><code class="language-php">&lt;?php
+$frutas = array("Manzana", "Banana", "Cereza", "Durazno");
+
+// Acceder a elementos del array
+echo "Primera fruta: " . $frutas[0] . "&lt;br&gt;";
+
+// Bucle foreach para recorrer el array
+echo "Lista de frutas:&lt;br&gt;";
+foreach ($frutas as $fruta) {
+    echo $fruta . "&lt;br&gt;";
+}
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código, crea un archivo llamado <code>arrays.php</code> con el contenido anterior y ejecútalo en un servidor PHP.</p>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>
+                                Primera fruta: Manzana<br>
+                                Lista de frutas:<br>
+                                Manzana<br>
+                                Banana<br>
+                                Cereza<br>
+                                Durazno<br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo manejar arrays en PHP.</h4>
+
+                        <p><strong>¿Qué es un array?</strong></p>
+                        <p>Un array es una estructura de datos que almacena una colección de elementos. Cada elemento puede accederse mediante un índice o una clave.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script declara un array de frutas y luego accede a elementos específicos y recorre el array usando un bucle <code>foreach</code>.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+$frutas = array("Manzana", "Banana", "Cereza", "Durazno");
+
+// Acceder a elementos del array
+echo "Primera fruta: " . $frutas[0] . "&lt;br&gt;";
+
+// Bucle foreach para recorrer el array
+echo "Lista de frutas:&lt;br&gt;";
+foreach ($frutas as $fruta) {
+    echo $fruta . "&lt;br&gt;";
+}
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>$frutas = array("Manzana", "Banana", "Cereza", "Durazno");</code>: Declara un array llamado <code>$frutas</code> con cuatro elementos.</li>
+                            <li><code>$frutas[0]</code>: Accede al primer elemento del array (índice 0).</li>
+                            <li><code>foreach ($frutas as $fruta) { ... }</code>: Recorre cada elemento del array, asignando el valor a la variable <code>$fruta</code> en cada iteración.</li>
+                            <li><code>echo $fruta . "&lt;br&gt;";</code>: Imprime cada fruta seguida de un salto de línea.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP, verás lo siguiente en tu navegador:</p>
+                        <p>
+                            Primera fruta: Manzana<br>
+                            Lista de frutas:<br>
+                            Manzana<br>
+                            Banana<br>
+                            Cereza<br>
+                            Durazno<br>
+                        </p>
+                    </div>
+                    <!-- Script para el Ejemplo 6 -->
+                    <script>
+                        // Este ejemplo es sencillo y no requiere scripts adicionales
+                    </script>
+                </div>
+
+                <!-- Ejemplo 7 -->
+                <div class="example-container" id="php-example-7">
+                    <h3>Ejemplo 7: Conexión a MySQL con PHP (mysqli)</h3>
+                    <pre><code class="language-php">&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mi_basedatos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+echo "¡Conectado exitosamente a la base de datos!&lt;br&gt;";
+
+// Cerrar conexión
+$conn->close();
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Asegúrate de tener una base de datos llamada <code>mi_basedatos</code> en tu servidor MySQL.</li>
+                                <li>Crea un archivo llamado <code>conexion.php</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo en tu servidor PHP.</li>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>¡Conectado exitosamente a la base de datos!</p>
+                            <p><strong>Nota:</strong> Asegúrate de que las credenciales de MySQL (nombre de usuario y contraseña) sean correctas.</p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo conectar PHP con una base de datos MySQL utilizando la extensión <code>mysqli</code>.</h4>
+
+                        <p><strong>¿Qué es MySQL?</strong></p>
+                        <p>MySQL es un sistema de gestión de bases de datos relacional de código abierto ampliamente utilizado para aplicaciones web.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script establece una conexión a una base de datos MySQL y verifica si la conexión fue exitosa.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mi_basedatos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+echo "¡Conectado exitosamente a la base de datos!&lt;br&gt;";
+
+// Cerrar conexión
+$conn->close();
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>new mysqli($servername, $username, $password, $dbname);</code>: Crea una nueva conexión a MySQL utilizando la extensión <code>mysqli</code>.</li>
+                            <li><code>if ($conn->connect_error) { ... }</code>: Verifica si hubo un error al conectar.</li>
+                            <li><code>die("Conexión fallida: " . $conn->connect_error);</code>: Termina la ejecución del script y muestra el error.</li>
+                            <li><code>echo "¡Conectado exitosamente a la base de datos!&lt;br&gt;";</code>: Muestra un mensaje de éxito en el navegador.</li>
+                            <li><code>$conn->close();</code>: Cierra la conexión a la base de datos.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP con la base de datos configurada correctamente, verás el mensaje "¡Conectado exitosamente a la base de datos!" en tu navegador.</p>
+                    </div>
+                    <!-- Script para el Ejemplo 7 -->
+                    <script>
+                        // Este ejemplo requiere una base de datos MySQL configurada
+                    </script>
+                </div>
+
+                <!-- Ejemplo 8 -->
+                <div class="example-container" id="php-example-8">
+                    <h3>Ejemplo 8: CRUD – Crear, Leer, Actualizar, Eliminar Datos</h3>
+                    <pre><code class="language-php">&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mi_basedatos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Crear tabla
+$sqlCrearTabla = "CREATE TABLE IF NOT EXISTS Usuarios (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(30) NOT NULL,
+    email VARCHAR(50),
+    reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)";
+
+if ($conn->query($sqlCrearTabla) === TRUE) {
+    echo "Tabla Usuarios creada o ya existe.&lt;br&gt;";
+} else {
+    echo "Error creando la tabla: " . $conn->error . "&lt;br&gt;";
+}
+
+// Insertar datos
+$sqlInsertar = "INSERT INTO Usuarios (nombre, email) VALUES ('Laura', 'laura@example.com')";
+
+if ($conn->query($sqlInsertar) === TRUE) {
+    echo "Nuevo registro creado exitosamente.&lt;br&gt;";
+} else {
+    echo "Error: " . $sqlInsertar . "&lt;br&gt;" . $conn->error . "&lt;br&gt;";
+}
+
+// Leer datos
+$sqlLeer = "SELECT id, nombre, email FROM Usuarios";
+$resultado = $conn->query($sqlLeer);
+
+if ($resultado->num_rows > 0) {
+    echo "Usuarios:&lt;br&gt;";
+    while($fila = $resultado->fetch_assoc()) {
+        echo "ID: " . $fila["id"]. " - Nombre: " . $fila["nombre"]. " - Email: " . $fila["email"]. "&lt;br&gt;";
+    }
+} else {
+    echo "0 resultados.&lt;br&gt;";
+}
+
+// Actualizar datos
+$sqlActualizar = "UPDATE Usuarios SET email='laura.nuevo@example.com' WHERE nombre='Laura'";
+
+if ($conn->query($sqlActualizar) === TRUE) {
+    echo "Registro actualizado exitosamente.&lt;br&gt;";
+} else {
+    echo "Error actualizando registro: " . $conn->error . "&lt;br&gt;";
+}
+
+// Eliminar datos
+$sqlEliminar = "DELETE FROM Usuarios WHERE nombre='Laura'";
+
+if ($conn->query($sqlEliminar) === TRUE) {
+    echo "Registro eliminado exitosamente.&lt;br&gt;";
+} else {
+    echo "Error eliminando registro: " . $conn->error . "&lt;br&gt;";
+}
+
+// Cerrar conexión
+$conn->close();
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Asegúrate de tener una base de datos llamada <code>mi_basedatos</code> en tu servidor MySQL.</li>
+                                <li>Crea un archivo llamado <code>crud.php</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo en tu servidor PHP.</li>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>
+                                Tabla Usuarios creada o ya existe.<br>
+                                Nuevo registro creado exitosamente.<br>
+                                Usuarios:<br>
+                                ID: 1 - Nombre: Laura - Email: laura@example.com<br>
+                                Registro actualizado exitosamente.<br>
+                                Registro eliminado exitosamente.<br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en PHP utilizando MySQL.</h4>
+
+                        <p><strong>¿Qué es CRUD?</strong></p>
+                        <p>CRUD son las siglas de Crear, Leer, Actualizar y Eliminar. Son las cuatro operaciones básicas para gestionar datos en una base de datos.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script realiza las siguientes operaciones:</p>
+
+                        <ol>
+                            <li><strong>Crear una tabla:</strong> Crea una tabla llamada <code>Usuarios</code> si no existe.</li>
+                            <li><strong>Insertar datos:</strong> Inserta un nuevo registro en la tabla.</li>
+                            <li><strong>Leer datos:</strong> Recupera y muestra los registros de la tabla.</li>
+                            <li><strong>Actualizar datos:</strong> Actualiza el email de un usuario específico.</li>
+                            <li><strong>Eliminar datos:</strong> Elimina un registro de la tabla.</li>
+                        </ol>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mi_basedatos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Crear tabla
+$sqlCrearTabla = "CREATE TABLE IF NOT EXISTS Usuarios (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(30) NOT NULL,
+    email VARCHAR(50),
+    reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)";
+
+if ($conn->query($sqlCrearTabla) === TRUE) {
+    echo "Tabla Usuarios creada o ya existe.&lt;br&gt;";
+} else {
+    echo "Error creando la tabla: " . $conn->error . "&lt;br&gt;";
+}
+
+// Insertar datos
+$sqlInsertar = "INSERT INTO Usuarios (nombre, email) VALUES ('Laura', 'laura@example.com')";
+
+if ($conn->query($sqlInsertar) === TRUE) {
+    echo "Nuevo registro creado exitosamente.&lt;br&gt;";
+} else {
+    echo "Error: " . $sqlInsertar . "&lt;br&gt;" . $conn->error . "&lt;br&gt;";
+}
+
+// Leer datos
+$sqlLeer = "SELECT id, nombre, email FROM Usuarios";
+$resultado = $conn->query($sqlLeer);
+
+if ($resultado->num_rows > 0) {
+    echo "Usuarios:&lt;br&gt;";
+    while($fila = $resultado->fetch_assoc()) {
+        echo "ID: " . $fila["id"]. " - Nombre: " . $fila["nombre"]. " - Email: " . $fila["email"]. "&lt;br&gt;";
+    }
+} else {
+    echo "0 resultados.&lt;br&gt;";
+}
+
+// Actualizar datos
+$sqlActualizar = "UPDATE Usuarios SET email='laura.nuevo@example.com' WHERE nombre='Laura'";
+
+if ($conn->query($sqlActualizar) === TRUE) {
+    echo "Registro actualizado exitosamente.&lt;br&gt;";
+} else {
+    echo "Error actualizando registro: " . $conn->error . "&lt;br&gt;";
+}
+
+// Eliminar datos
+$sqlEliminar = "DELETE FROM Usuarios WHERE nombre='Laura'";
+
+if ($conn->query($sqlEliminar) === TRUE) {
+    echo "Registro eliminado exitosamente.&lt;br&gt;";
+} else {
+    echo "Error eliminando registro: " . $conn->error . "&lt;br&gt;";
+}
+
+// Cerrar conexión
+$conn->close();
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>CREATE TABLE IF NOT EXISTS</code>: Crea una tabla solo si no existe previamente.</li>
+                            <li><code>INSERT INTO</code>: Inserta un nuevo registro en la tabla.</li>
+                            <li><code>SELECT</code>: Recupera datos de la tabla.</li>
+                            <li><code>UPDATE</code>: Actualiza datos existentes en la tabla.</li>
+                            <li><code>DELETE FROM</code>: Elimina datos de la tabla.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP con la base de datos configurada correctamente, verás los mensajes indicando el éxito de cada operación, y la información actualizada en la tabla <code>Usuarios</code>.</p>
+                    </div>
+                    <!-- Script para el Ejemplo 8 -->
+                    <script>
+                        // Este ejemplo realiza operaciones CRUD en una base de datos MySQL
+                    </script>
+                </div>
+
+                <!-- Ejemplo 9 -->
+                <div class="example-container" id="php-example-9">
+                    <h3>Ejemplo 9: Manejo de Sesiones y Cookies en PHP</h3>
+                    <pre><code class="language-php">&lt;?php
+// Iniciar sesión
+session_start();
+
+// Establecer una variable de sesión
+$_SESSION["usuario"] = "Juan";
+
+// Establecer una cookie que expira en 30 días
+setcookie("preferencia", "dark_mode", time() + (86400 * 30), "/");
+
+// Verificar si la sesión y la cookie están establecidas
+if(isset($_SESSION["usuario"])) {
+    echo "Usuario en sesión: " . $_SESSION["usuario"] . "&lt;br&gt;";
+} else {
+    echo "No hay usuario en sesión.&lt;br&gt;";
+}
+
+if(isset($_COOKIE["preferencia"])) {
+    echo "Preferencia de usuario: " . $_COOKIE["preferencia"] . "&lt;br&gt;";
+} else {
+    echo "No hay preferencias establecidas.&lt;br&gt;";
+}
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Crea un archivo llamado <code>sesiones_cookies.php</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo en tu servidor PHP.</li>
+                                <li>Verifica que se muestran los valores de la sesión y la cookie en tu navegador.</li>
+                                <li>Recarga la página para asegurarte de que las sesiones y las cookies persisten.</li>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>
+                                Usuario en sesión: Juan<br>
+                                Preferencia de usuario: dark_mode<br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo manejar sesiones y cookies en PHP.</h4>
+
+                        <p><strong>¿Qué son las sesiones?</strong></p>
+                        <p>Las sesiones permiten almacenar información en el servidor para ser utilizada en múltiples páginas durante la navegación del usuario.</p>
+
+                        <p><strong>¿Qué son las cookies?</strong></p>
+                        <p>Las cookies son pequeños archivos almacenados en el navegador del usuario que permiten guardar información sobre el mismo.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script realiza las siguientes acciones:</p>
+
+                        <ol>
+                            <li>Inicia una sesión.</li>
+                            <li>Establece una variable de sesión llamada <code>usuario</code>.</li>
+                            <li>Establece una cookie llamada <code>preferencia</code> que expira en 30 días.</li>
+                            <li>Verifica y muestra los valores de la sesión y la cookie.</li>
+                        </ol>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+// Iniciar sesión
+session_start();
+
+// Establecer una variable de sesión
+$_SESSION["usuario"] = "Juan";
+
+// Establecer una cookie que expira en 30 días
+setcookie("preferencia", "dark_mode", time() + (86400 * 30), "/");
+
+// Verificar si la sesión y la cookie están establecidas
+if(isset($_SESSION["usuario"])) {
+    echo "Usuario en sesión: " . $_SESSION["usuario"] . "&lt;br&gt;";
+} else {
+    echo "No hay usuario en sesión.&lt;br&gt;";
+}
+
+if(isset($_COOKIE["preferencia"])) {
+    echo "Preferencia de usuario: " . $_COOKIE["preferencia"] . "&lt;br&gt;";
+} else {
+    echo "No hay preferencias establecidas.&lt;br&gt;";
+}
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>session_start();</code>: Inicia una sesión o reanuda una existente.</li>
+                            <li><code>$_SESSION["usuario"] = "Juan";</code>: Establece una variable de sesión.</li>
+                            <li><code>setcookie("preferencia", "dark_mode", time() + (86400 * 30), "/");</code>: Establece una cookie con nombre <code>preferencia</code>, valor <code>dark_mode</code>, que expira en 30 días.</li>
+                            <li><code>isset($_SESSION["usuario"])</code>: Verifica si la variable de sesión está establecida.</li>
+                            <li><code>isset($_COOKIE["preferencia"])</code>: Verifica si la cookie está establecida.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP, verás los valores de la sesión y la cookie impresos en tu navegador:</p>
+                        <p>
+                            Usuario en sesión: Juan<br>
+                            Preferencia de usuario: dark_mode<br>
+                        </p>
+                        <p>Si recargas la página, los valores seguirán estando presentes mientras la sesión y la cookie no expiren o sean eliminadas.</p>
+                    </div>
+                    <!-- Script para el Ejemplo 9 -->
+                    <script>
+                        // Este ejemplo maneja sesiones y cookies en PHP
+                    </script>
+                </div>
+
+                <!-- Ejemplo 10 -->
+                <div class="example-container" id="php-example-10">
+                    <h3>Ejemplo 10: Seguridad en PHP – Prevención de Inyecciones SQL</h3>
+                    <pre><code class="language-php">&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mi_basedatos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Datos de usuario (simulados)
+$usuario = "admin";
+$passwordIngresada = "' OR '1'='1";
+
+// Preparar y enlazar
+$stmt = $conn->prepare("SELECT * FROM Usuarios WHERE nombre = ? AND password = ?");
+$stmt->bind_param("ss", $usuario, $passwordIngresada);
+
+// Ejecutar la consulta
+$stmt->execute();
+$resultado = $stmt->get_result();
+
+if ($resultado->num_rows > 0) {
+    echo "Acceso concedido.&lt;br&gt;";
+} else {
+    echo "Acceso denegado.&lt;br&gt;";
+}
+
+// Cerrar conexiones
+$stmt->close();
+$conn->close();
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Asegúrate de tener una tabla <code>Usuarios</code> con campos <code>nombre</code> y <code>password</code>.</li>
+                                <li>Inserta un usuario con nombre <code>admin</code> y una contraseña segura.</li>
+                                <li>Crea un archivo llamado <code>seguridad.php</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo en tu servidor PHP.</li>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>Acceso denegado.</p>
+                            <p><strong>Explicación:</strong> Este ejemplo demuestra cómo una inyección SQL puede intentar acceder a la base de datos manipulando las consultas. Sin embargo, al utilizar consultas preparadas con <code>mysqli</code>, prevenimos este tipo de ataques.</p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo prevenir inyecciones SQL en PHP.</h4>
+
+                        <p><strong>¿Qué es una inyección SQL?</strong></p>
+                        <p>La inyección SQL es una técnica de ataque donde un atacante inserta código SQL malicioso en una consulta para manipular la base de datos.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script intenta acceder a la base de datos usando datos de usuario que podrían ser manipulados para realizar una inyección SQL. Sin embargo, utiliza consultas preparadas para prevenir este tipo de ataques.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mi_basedatos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Datos de usuario (simulados)
+$usuario = "admin";
+$passwordIngresada = "' OR '1'='1";
+
+// Preparar y enlazar
+$stmt = $conn->prepare("SELECT * FROM Usuarios WHERE nombre = ? AND password = ?");
+$stmt->bind_param("ss", $usuario, $passwordIngresada);
+
+// Ejecutar la consulta
+$stmt->execute();
+$resultado = $stmt->get_result();
+
+if ($resultado->num_rows > 0) {
+    echo "Acceso concedido.&lt;br&gt;";
+} else {
+    echo "Acceso denegado.&lt;br&gt;";
+}
+
+// Cerrar conexiones
+$stmt->close();
+$conn->close();
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>prepare("SELECT * FROM Usuarios WHERE nombre = ? AND password = ?");</code>: Prepara una consulta SQL con parámetros.</li>
+                            <li><code>bind_param("ss", $usuario, $passwordIngresada);</code>: Enlaza los parámetros a la consulta, especificando sus tipos (dos cadenas).</li>
+                            <li><code>execute();</code>: Ejecuta la consulta preparada.</li>
+                            <li><code>$stmt->get_result();</code>: Obtiene el resultado de la consulta.</li>
+                            <li><code>if ($resultado->num_rows > 0) { ... }</code>: Verifica si la consulta devolvió resultados.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script con datos correctos, verás "Acceso concedido." Si los datos son incorrectos o manipulados, verás "Acceso denegado.", demostrando la efectividad de las consultas preparadas para prevenir inyecciones SQL.</p>
+                    </div>
+                    <!-- Script para el Ejemplo 10 -->
+                    <script>
+                        // Este ejemplo demuestra la prevención de inyecciones SQL usando consultas preparadas
+                    </script>
+                </div>
+            </div>
+
+            <!-- Botones de navegación para PHP -->
+            <div class="navigation-buttons-php">
+                <button id="prev-btn-php" disabled>Anterior</button>
+                <span class="counter" id="counter-php">Ejemplo 1 de 10</span>
+                <button id="next-btn-php">Siguiente</button>
+            </div>
+        </section>
+
+        <!-- Sección de MySQL -->
+        <section id="mysql">
+            <h2>MySQL</h2>
+            <p>En esta sección, exploraremos cómo interactuar con bases de datos MySQL utilizando PHP para crear aplicaciones web dinámicas.</p>
+
+            <!-- Contenedor de ejemplos de MySQL -->
+            <div id="mysql-examples">
+                <!-- Ejemplo 1 -->
+                <div class="example-container active" id="mysql-example-1">
+                    <h3>Ejemplo 1: Crear una Base de Datos y una Tabla en MySQL</h3>
+                    <pre><code class="language-php">&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Crear base de datos
+$sqlCrearDB = "CREATE DATABASE IF NOT EXISTS mi_basedatos";
+if ($conn->query($sqlCrearDB) === TRUE) {
+    echo "Base de datos creada o ya existe.&lt;br&gt;";
+} else {
+    echo "Error creando la base de datos: " . $conn->error . "&lt;br&gt;";
+}
+
+// Seleccionar base de datos
+$conn->select_db("mi_basedatos");
+
+// Crear tabla
+$sqlCrearTabla = "CREATE TABLE IF NOT EXISTS Productos (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(30) NOT NULL,
+    precio DECIMAL(10,2),
+    reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)";
+
+if ($conn->query($sqlCrearTabla) === TRUE) {
+    echo "Tabla Productos creada o ya existe.&lt;br&gt;";
+} else {
+    echo "Error creando la tabla: " . $conn->error . "&lt;br&gt;";
+}
+
+// Cerrar conexión
+$conn->close();
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Asegúrate de tener una base de datos llamada <code>mi_basedatos</code> en tu servidor MySQL.</li>
+                                <li>Crea un archivo llamado <code>crear_db_tabla.php</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo en tu servidor PHP.</li>
+                                <li>Verifica que se hayan creado la base de datos <code>mi_basedatos</code> y la tabla <code>Productos</code> en tu servidor MySQL.</li>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>
+                                Base de datos creada o ya existe.<br>
+                                Tabla Productos creada o ya existe.<br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo crear una base de datos y una tabla en MySQL utilizando PHP.</h4>
+
+                        <p><strong>¿Qué es una base de datos?</strong></p>
+                        <p>Una base de datos es una colección organizada de datos que se pueden acceder, gestionar y actualizar fácilmente.</p>
+
+                        <p><strong>¿Qué es una tabla?</strong></p>
+                        <p>Una tabla es una estructura dentro de una base de datos que organiza los datos en filas y columnas.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script realiza las siguientes acciones:</p>
+
+                        <ol>
+                            <li>Conecta al servidor MySQL.</li>
+                            <li>Crea una base de datos llamada <code>mi_basedatos</code> si no existe.</li>
+                            <li>Selecciona la base de datos <code>mi_basedatos</code>.</li>
+                            <li>Crea una tabla llamada <code>Productos</code> con campos <code>id</code>, <code>nombre</code>, <code>precio</code> y <code>reg_date</code>.</li>
+                        </ol>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Crear base de datos
+$sqlCrearDB = "CREATE DATABASE IF NOT EXISTS mi_basedatos";
+if ($conn->query($sqlCrearDB) === TRUE) {
+    echo "Base de datos creada o ya existe.&lt;br&gt;";
+} else {
+    echo "Error creando la base de datos: " . $conn->error . "&lt;br&gt;";
+}
+
+// Seleccionar base de datos
+$conn->select_db("mi_basedatos");
+
+// Crear tabla
+$sqlCrearTabla = "CREATE TABLE IF NOT EXISTS Productos (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(30) NOT NULL,
+    precio DECIMAL(10,2),
+    reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)";
+
+if ($conn->query($sqlCrearTabla) === TRUE) {
+    echo "Tabla Productos creada o ya existe.&lt;br&gt;";
+} else {
+    echo "Error creando la tabla: " . $conn->error . "&lt;br&gt;";
+}
+
+// Cerrar conexión
+$conn->close();
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>new mysqli($servername, $username, $password);</code>: Crea una nueva conexión a MySQL.</li>
+                            <li><code>$conn->query($sqlCrearDB)</code>: Ejecuta una consulta SQL para crear la base de datos.</li>
+                            <li><code>$conn->select_db("mi_basedatos");</code>: Selecciona la base de datos recién creada.</li>
+                            <li><code>CREATE TABLE IF NOT EXISTS</code>: Crea una tabla solo si no existe previamente.</li>
+                            <li><code>id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY</code>: Define una columna <code>id</code> que es una clave primaria y se incrementa automáticamente.</li>
+                            <li><code>nombre VARCHAR(30) NOT NULL</code>: Define una columna <code>nombre</code> con un máximo de 30 caracteres que no puede ser nula.</li>
+                            <li><code>precio DECIMAL(10,2)</code>: Define una columna <code>precio</code> con precisión decimal.</li>
+                            <li><code>reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP</code>: Define una columna <code>reg_date</code> que almacena la fecha y hora de registro y se actualiza automáticamente.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP con MySQL, verás mensajes indicando la creación exitosa de la base de datos y la tabla, si no existían previamente.</p>
+                    </div>
+                    <!-- Script para el Ejemplo 8 -->
+                    <script>
+                        // Este ejemplo crea una base de datos y una tabla en MySQL
+                    </script>
+                </div>
+
+                <!-- Ejemplo 2 -->
+                <div class="example-container" id="mysql-example-2">
+                    <h3>Ejemplo 2: Insertar Datos en una Tabla MySQL</h3>
+                    <pre><code class="language-php">&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mi_basedatos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Insertar datos
+$sqlInsertar = "INSERT INTO Productos (nombre, precio) VALUES ('Laptop', 999.99)";
+
+if ($conn->query($sqlInsertar) === TRUE) {
+    echo "Nuevo producto insertado exitosamente.&lt;br&gt;";
+} else {
+    echo "Error insertando producto: " . $conn->error . "&lt;br&gt;";
+}
+
+// Cerrar conexión
+$conn->close();
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Asegúrate de tener una tabla <code>Productos</code> en la base de datos <code>mi_basedatos</code>.</li>
+                                <li>Crea un archivo llamado <code>insertar_producto.php</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo en tu servidor PHP.</li>
+                                <li>Verifica que el nuevo producto "Laptop" haya sido insertado en la tabla <code>Productos</code>.</li>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>Nuevo producto insertado exitosamente.</p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo insertar datos en una tabla MySQL utilizando PHP.</h4>
+
+                        <p><strong>¿Qué hace este script?</strong></p>
+                        <p>Este script se conecta a una base de datos MySQL y inserta un nuevo registro en la tabla <code>Productos</code>.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mi_basedatos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Insertar datos
+$sqlInsertar = "INSERT INTO Productos (nombre, precio) VALUES ('Laptop', 999.99)";
+
+if ($conn->query($sqlInsertar) === TRUE) {
+    echo "Nuevo producto insertado exitosamente.&lt;br&gt;";
+} else {
+    echo "Error insertando producto: " . $conn->error . "&lt;br&gt;";
+}
+
+// Cerrar conexión
+$conn->close();
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>INSERT INTO Productos (nombre, precio) VALUES ('Laptop', 999.99)</code>: Inserta un nuevo registro en la tabla <code>Productos</code> con nombre "Laptop" y precio 999.99.</li>
+                            <li><code>$conn->query($sqlInsertar)</code>: Ejecuta la consulta de inserción.</li>
+                            <li><code>echo "Nuevo producto insertado exitosamente.&lt;br&gt;";</code>: Muestra un mensaje de éxito si la inserción fue exitosa.</li>
+                            <li><code>echo "Error insertando producto: " . $conn->error . "&lt;br&gt;";</code>: Muestra un mensaje de error si la inserción falla.</li>
+                            <li><code>$conn->close();</code>: Cierra la conexión a la base de datos.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP con la base de datos configurada correctamente, verás el mensaje "Nuevo producto insertado exitosamente." y el nuevo producto "Laptop" se añadirá a la tabla <code>Productos</code>.</p>
+                    </div>
+                    <!-- Script para el Ejemplo 2 -->
+                    <script>
+                        // Este ejemplo inserta datos en una tabla MySQL
+                    </script>
+                </div>
+
+                <!-- Ejemplo 3 -->
+                <div class="example-container" id="mysql-example-3">
+                    <h3>Ejemplo 3: Leer Datos de una Tabla MySQL</h3>
+                    <pre><code class="language-php">&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mi_basedatos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Leer datos
+$sqlLeer = "SELECT id, nombre, precio FROM Productos";
+$resultado = $conn->query($sqlLeer);
+
+if ($resultado->num_rows > 0) {
+    echo "Productos:&lt;br&gt;";
+    while($fila = $resultado->fetch_assoc()) {
+        echo "ID: " . $fila["id"]. " - Nombre: " . $fila["nombre"]. " - Precio: $" . $fila["precio"]. "&lt;br&gt;";
+    }
+} else {
+    echo "0 resultados.&lt;br&gt;";
+}
+
+// Cerrar conexión
+$conn->close();
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Asegúrate de tener una tabla <code>Productos</code> con datos en la base de datos <code>mi_basedatos</code>.</li>
+                                <li>Crea un archivo llamado <code>leer_productos.php</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo en tu servidor PHP.</li>
+                                <li>Verifica que los productos se muestren correctamente en la página.</li>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>
+                                Productos:<br>
+                                ID: 1 - Nombre: Laptop - Precio: $999.99<br>
+                                <!-- Más productos según los datos insertados -->
+                            </p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo leer datos de una tabla MySQL utilizando PHP.</h4>
+
+                        <p><strong>¿Qué hace este script?</strong></p>
+                        <p>Este script se conecta a una base de datos MySQL y recupera todos los registros de la tabla <code>Productos</code>, mostrando sus detalles en el navegador.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mi_basedatos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Leer datos
+$sqlLeer = "SELECT id, nombre, precio FROM Productos";
+$resultado = $conn->query($sqlLeer);
+
+if ($resultado->num_rows > 0) {
+    echo "Productos:&lt;br&gt;";
+    while($fila = $resultado->fetch_assoc()) {
+        echo "ID: " . $fila["id"]. " - Nombre: " . $fila["nombre"]. " - Precio: $" . $fila["precio"]. "&lt;br&gt;";
+    }
+} else {
+    echo "0 resultados.&lt;br&gt;";
+}
+
+// Cerrar conexión
+$conn->close();
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>SELECT id, nombre, precio FROM Productos</code>: Consulta SQL para seleccionar los campos <code>id</code>, <code>nombre</code> y <code>precio</code> de todos los registros en la tabla <code>Productos</code>.</li>
+                            <li><code>$conn->query($sqlLeer)</code>: Ejecuta la consulta SQL.</li>
+                            <li><code>$resultado->num_rows > 0</code>: Verifica si hay resultados.</li>
+                            <li><code>$resultado->fetch_assoc()</code>: Obtiene cada fila de resultados como un array asociativo.</li>
+                            <li><code>echo "ID: " . $fila["id"]. " - Nombre: " . $fila["nombre"]. " - Precio: $" . $fila["precio"]. "&lt;br&gt;";</code>: Imprime los detalles de cada producto.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP con datos en la tabla <code>Productos</code>, verás una lista de productos con sus IDs, nombres y precios.</p>
+                    </div>
+                    <!-- Script para el Ejemplo 3 -->
+                    <script>
+                        // Este ejemplo lee datos de una tabla MySQL
+                    </script>
+                </div>
+
+                <!-- Ejemplo 4 -->
+                <div class="example-container" id="mysql-example-4">
+                    <h3>Ejemplo 4: Actualizar Datos en una Tabla MySQL</h3>
+                    <pre><code class="language-php">&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mi_basedatos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Actualizar datos
+$sqlActualizar = "UPDATE Productos SET precio = 899.99 WHERE nombre = 'Laptop'";
+
+if ($conn->query($sqlActualizar) === TRUE) {
+    echo "Precio del producto actualizado exitosamente.&lt;br&gt;";
+} else {
+    echo "Error actualizando precio: " . $conn->error . "&lt;br&gt;";
+}
+
+// Cerrar conexión
+$conn->close();
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Asegúrate de tener un producto llamado <code>Laptop</code> en la tabla <code>Productos</code>.</li>
+                                <li>Crea un archivo llamado <code>actualizar_precio.php</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo en tu servidor PHP.</li>
+                                <li>Verifica que el precio del producto "Laptop" haya sido actualizado a $899.99 en la tabla <code>Productos</code>.</li>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>Precio del producto actualizado exitosamente.</p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo actualizar datos en una tabla MySQL utilizando PHP.</h4>
+
+                        <p><strong>¿Qué hace este script?</strong></p>
+                        <p>Este script se conecta a una base de datos MySQL y actualiza el precio de un producto específico en la tabla <code>Productos</code>.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mi_basedatos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Actualizar datos
+$sqlActualizar = "UPDATE Productos SET precio = 899.99 WHERE nombre = 'Laptop'";
+
+if ($conn->query($sqlActualizar) === TRUE) {
+    echo "Precio del producto actualizado exitosamente.&lt;br&gt;";
+} else {
+    echo "Error actualizando precio: " . $conn->error . "&lt;br&gt;";
+}
+
+// Cerrar conexión
+$conn->close();
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>UPDATE Productos SET precio = 899.99 WHERE nombre = 'Laptop'</code>: Consulta SQL para actualizar el precio del producto "Laptop".</li>
+                            <li><code>$conn->query($sqlActualizar)</code>: Ejecuta la consulta SQL de actualización.</li>
+                            <li><code>echo "Precio del producto actualizado exitosamente.&lt;br&gt;";</code>: Muestra un mensaje de éxito si la actualización fue exitosa.</li>
+                            <li><code>echo "Error actualizando precio: " . $conn->error . "&lt;br&gt;";</code>: Muestra un mensaje de error si la actualización falla.</li>
+                            <li><code>$conn->close();</code>: Cierra la conexión a la base de datos.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP con la base de datos configurada correctamente, verás el mensaje "Precio del producto actualizado exitosamente." y el precio del producto "Laptop" se actualizará a $899.99 en la tabla <code>Productos</code>.</p>
+                    </div>
+                    <!-- Script para el Ejemplo 4 -->
+                    <script>
+                        // Este ejemplo actualiza datos en una tabla MySQL
+                    </script>
+                </div>
+
+                <!-- Ejemplo 5 -->
+                <div class="example-container" id="mysql-example-5">
+                    <h3>Ejemplo 5: Eliminar Datos de una Tabla MySQL</h3>
+                    <pre><code class="language-php">&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mi_basedatos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Eliminar datos
+$sqlEliminar = "DELETE FROM Productos WHERE nombre = 'Laptop'";
+
+if ($conn->query($sqlEliminar) === TRUE) {
+    echo "Producto eliminado exitosamente.&lt;br&gt;";
+} else {
+    echo "Error eliminando producto: " . $conn->error . "&lt;br&gt;";
+}
+
+// Cerrar conexión
+$conn->close();
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Asegúrate de tener un producto llamado <code>Laptop</code> en la tabla <code>Productos</code>.</li>
+                                <li>Crea un archivo llamado <code>eliminar_producto.php</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo en tu servidor PHP.</li>
+                                <li>Verifica que el producto "Laptop" haya sido eliminado de la tabla <code>Productos</code>.</li>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>Producto eliminado exitosamente.</p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo eliminar datos de una tabla MySQL utilizando PHP.</h4>
+
+                        <p><strong>¿Qué hace este script?</strong></p>
+                        <p>Este script se conecta a una base de datos MySQL y elimina un registro específico de la tabla <code>Productos</code>.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mi_basedatos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Eliminar datos
+$sqlEliminar = "DELETE FROM Productos WHERE nombre = 'Laptop'";
+
+if ($conn->query($sqlEliminar) === TRUE) {
+    echo "Producto eliminado exitosamente.&lt;br&gt;";
+} else {
+    echo "Error eliminando producto: " . $conn->error . "&lt;br&gt;";
+}
+
+// Cerrar conexión
+$conn->close();
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>DELETE FROM Productos WHERE nombre = 'Laptop'</code>: Consulta SQL para eliminar el producto "Laptop".</li>
+                            <li><code>$conn->query($sqlEliminar)</code>: Ejecuta la consulta SQL de eliminación.</li>
+                            <li><code>echo "Producto eliminado exitosamente.&lt;br&gt;";</code>: Muestra un mensaje de éxito si la eliminación fue exitosa.</li>
+                            <li><code>echo "Error eliminando producto: " . $conn->error . "&lt;br&gt;";</code>: Muestra un mensaje de error si la eliminación falla.</li>
+                            <li><code>$conn->close();</code>: Cierra la conexión a la base de datos.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP con la base de datos configurada correctamente, verás el mensaje "Producto eliminado exitosamente." y el producto "Laptop" se eliminará de la tabla <code>Productos</code>.</p>
+                    </div>
+                    <!-- Script para el Ejemplo 5 -->
+                    <script>
+                        // Este ejemplo elimina datos de una tabla MySQL
+                    </script>
+                </div>
+
+                <!-- Ejemplo 6 -->
+                <div class="example-container" id="mysql-example-6">
+                    <h3>Ejemplo 6: Uso de Consultas Preparadas en MySQL con PHP</h3>
+                    <pre><code class="language-php">&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mi_basedatos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Datos de usuario (simulados)
+$nombre = "Pedro";
+$email = "pedro@example.com";
+
+// Preparar y enlazar
+$stmt = $conn->prepare("INSERT INTO Usuarios (nombre, email) VALUES (?, ?)");
+$stmt->bind_param("ss", $nombre, $email);
+
+// Ejecutar la consulta
+if ($stmt->execute() === TRUE) {
+    echo "Nuevo usuario insertado exitosamente.&lt;br&gt;";
+} else {
+    echo "Error insertando usuario: " . $stmt->error . "&lt;br&gt;";
+}
+
+// Cerrar conexiones
+$stmt->close();
+$conn->close();
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Asegúrate de tener una tabla <code>Usuarios</code> con campos <code>nombre</code> y <code>email</code> en la base de datos <code>mi_basedatos</code>.</li>
+                                <li>Crea un archivo llamado <code>insertar_usuario_preparado.php</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo en tu servidor PHP.</li>
+                                <li>Verifica que el nuevo usuario "Pedro" haya sido insertado en la tabla <code>Usuarios</code>.</li>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>Nuevo usuario insertado exitosamente.</p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo usar consultas preparadas en MySQL con PHP.</h4>
+
+                        <p><strong>¿Qué son las consultas preparadas?</strong></p>
+                        <p>Las consultas preparadas son una característica que permite a las aplicaciones preparar una consulta SQL una sola vez y ejecutarla múltiples veces con diferentes parámetros. Esto mejora la seguridad al prevenir inyecciones SQL y optimiza el rendimiento.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script utiliza consultas preparadas para insertar un nuevo usuario en la tabla <code>Usuarios</code>.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mi_basedatos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Datos de usuario (simulados)
+$nombre = "Pedro";
+$email = "pedro@example.com";
+
+// Preparar y enlazar
+$stmt = $conn->prepare("INSERT INTO Usuarios (nombre, email) VALUES (?, ?)");
+$stmt->bind_param("ss", $nombre, $email);
+
+// Ejecutar la consulta
+if ($stmt->execute() === TRUE) {
+    echo "Nuevo usuario insertado exitosamente.&lt;br&gt;";
+} else {
+    echo "Error insertando usuario: " . $stmt->error . "&lt;br&gt;";
+}
+
+// Cerrar conexiones
+$stmt->close();
+$conn->close();
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>$stmt = $conn->prepare("INSERT INTO Usuarios (nombre, email) VALUES (?, ?)");</code>: Prepara una consulta SQL con parámetros placeholders <code>?</code>.</li>
+                            <li><code>$stmt->bind_param("ss", $nombre, $email);</code>: Enlaza las variables <code>$nombre</code> y <code>$email</code> a los placeholders de la consulta. El primer argumento "ss" indica que ambos parámetros son cadenas de texto.</li>
+                            <li><code>$stmt->execute();</code>: Ejecuta la consulta preparada con los parámetros enlazados.</li>
+                            <li><code>echo "Nuevo usuario insertado exitosamente.&lt;br&gt;";</code>: Muestra un mensaje de éxito si la inserción fue exitosa.</li>
+                            <li><code>echo "Error insertando usuario: " . $stmt->error . "&lt;br&gt;";</code>: Muestra un mensaje de error si la inserción falla.</li>
+                            <li><code>$stmt->close();</code>: Cierra la declaración preparada.</li>
+                            <li><code>$conn->close();</code>: Cierra la conexión a la base de datos.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP con la base de datos configurada correctamente, verás el mensaje "Nuevo usuario insertado exitosamente." y el nuevo usuario "Pedro" se añadirá a la tabla <code>Usuarios</code>.</p>
+                    </div>
+                    <!-- Script para el Ejemplo 6 -->
+                    <script>
+                        // Este ejemplo utiliza consultas preparadas para insertar datos en una tabla MySQL
+                    </script>
+                </div>
+
+                <!-- Ejemplo 7 -->
+                <div class="example-container" id="mysql-example-7">
+                    <h3>Ejemplo 7: Uso de Transacciones en MySQL con PHP</h3>
+                    <pre><code class="language-php">&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mi_basedatos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Iniciar transacción
+$conn->begin_transaction();
+
+try {
+    // Primera operación
+    $sql1 = "INSERT INTO Usuarios (nombre, email) VALUES ('Luis', 'luis@example.com')";
+    if (!$conn->query($sql1)) {
+        throw new Exception($conn->error);
+    }
+
+    // Segunda operación
+    $sql2 = "UPDATE Productos SET precio = precio - 50 WHERE nombre = 'Laptop'";
+    if (!$conn->query($sql2)) {
+        throw new Exception($conn->error);
+    }
+
+    // Confirmar transacción
+    $conn->commit();
+    echo "Transacción completada exitosamente.&lt;br&gt;";
+} catch (Exception $e) {
+    // Revertir transacción en caso de error
+    $conn->rollback();
+    echo "Error en la transacción: " . $e->getMessage() . "&lt;br&gt;";
+}
+
+// Cerrar conexión
+$conn->close();
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Asegúrate de tener una tabla <code>Usuarios</code> y una tabla <code>Productos</code> con un producto llamado <code>Laptop</code> en la base de datos <code>mi_basedatos</code>.</li>
+                                <li>Crea un archivo llamado <code>transaccion.php</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo en tu servidor PHP.</li>
+                                <li>Verifica que el nuevo usuario "Luis" haya sido insertado y que el precio del producto "Laptop" haya sido reducido en $50.</li>
+                                <li>En caso de error, verifica que la transacción se haya revertido correctamente.</li>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>Transacción completada exitosamente.</p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo usar transacciones en MySQL con PHP.</h4>
+
+                        <p><strong>¿Qué es una transacción?</strong></p>
+                        <p>Una transacción es un conjunto de operaciones SQL que se ejecutan como una sola unidad. Si una de las operaciones falla, todas las operaciones se revierten, manteniendo la integridad de los datos.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script realiza dos operaciones dentro de una transacción:</p>
+
+                        <ol>
+                            <li>Inserta un nuevo usuario en la tabla <code>Usuarios</code>.</li>
+                            <li>Actualiza el precio de un producto en la tabla <code>Productos</code>.</li>
+                        </ol>
+                        <p>Si alguna de las operaciones falla, la transacción se revierte.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mi_basedatos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Iniciar transacción
+$conn->begin_transaction();
+
+try {
+    // Primera operación
+    $sql1 = "INSERT INTO Usuarios (nombre, email) VALUES ('Luis', 'luis@example.com')";
+    if (!$conn->query($sql1)) {
+        throw new Exception($conn->error);
+    }
+
+    // Segunda operación
+    $sql2 = "UPDATE Productos SET precio = precio - 50 WHERE nombre = 'Laptop'";
+    if (!$conn->query($sql2)) {
+        throw new Exception($conn->error);
+    }
+
+    // Confirmar transacción
+    $conn->commit();
+    echo "Transacción completada exitosamente.&lt;br&gt;";
+} catch (Exception $e) {
+    // Revertir transacción en caso de error
+    $conn->rollback();
+    echo "Error en la transacción: " . $e->getMessage() . "&lt;br&gt;";
+}
+
+// Cerrar conexión
+$conn->close();
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>$conn->begin_transaction();</code>: Inicia una nueva transacción.</li>
+                            <li><code>$conn->commit();</code>: Confirma todas las operaciones realizadas en la transacción.</li>
+                            <li><code>$conn->rollback();</code>: Revierte todas las operaciones realizadas en la transacción en caso de error.</li>
+                            <li><code>try { ... } catch (Exception $e) { ... }</code>: Maneja errores que puedan ocurrir durante la transacción.</li>
+                            <li><code>throw new Exception($conn->error);</code>: Lanza una excepción si una consulta falla.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP con la base de datos configurada correctamente, verás el mensaje "Transacción completada exitosamente." si ambas operaciones fueron exitosas. En caso de error, verás un mensaje de error indicando qué salió mal y la transacción se habrá revertido.</p>
+                    </div>
+                    <!-- Script para el Ejemplo 7 -->
+                    <script>
+                        // Este ejemplo utiliza transacciones para asegurar operaciones múltiples en MySQL
+                    </script>
+                </div>
+
+                <!-- Ejemplo 8 -->
+                <div class="example-container" id="mysql-example-8">
+                    <h3>Ejemplo 8: Uso de JOIN en Consultas MySQL con PHP</h3>
+                    <pre><code class="language-php">&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mi_basedatos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Suponiendo que hay una tabla Categorias con id y nombre
+// Crear tabla Categorias si no existe
+$sqlCrearCategorias = "CREATE TABLE IF NOT EXISTS Categorias (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(30) NOT NULL
+)";
+$conn->query($sqlCrearCategorias);
+
+// Insertar categorías
+$sqlInsertarCategoria = "INSERT INTO Categorias (nombre) VALUES ('Electrónica'), ('Ropa'), ('Hogar')";
+$conn->query($sqlInsertarCategoria);
+
+// Crear tabla Productos con clave foránea
+$sqlCrearProductos = "CREATE TABLE IF NOT EXISTS Productos (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(30) NOT NULL,
+    precio DECIMAL(10,2),
+    categoria_id INT(6) UNSIGNED,
+    reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (categoria_id) REFERENCES Categorias(id)
+)";
+$conn->query($sqlCrearProductos);
+
+// Insertar productos con categorías
+$sqlInsertarProducto = "INSERT INTO Productos (nombre, precio, categoria_id) VALUES 
+    ('Smartphone', 599.99, 1),
+    ('Camiseta', 19.99, 2),
+    ('Silla', 49.99, 3)";
+$conn->query($sqlInsertarProducto);
+
+// Consulta con JOIN
+$sqlJoin = "SELECT Productos.nombre AS Producto, Productos.precio, Categorias.nombre AS Categoria
+            FROM Productos
+            JOIN Categorias ON Productos.categoria_id = Categorias.id";
+
+$resultado = $conn->query($sqlJoin);
+
+if ($resultado->num_rows > 0) {
+    echo "Productos con Categorías:&lt;br&gt;";
+    while($fila = $resultado->fetch_assoc()) {
+        echo "Producto: " . $fila["Producto"]. " - Precio: $" . $fila["precio"]. " - Categoría: " . $fila["Categoria"]. "&lt;br&gt;";
+    }
+} else {
+    echo "0 resultados.&lt;br&gt;";
+}
+
+// Cerrar conexión
+$conn->close();
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Asegúrate de tener las tablas <code>Productos</code> y <code>Categorias</code> en la base de datos <code>mi_basedatos</code>.</li>
+                                <li>Crea un archivo llamado <code>consultas_join.php</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo en tu servidor PHP.</li>
+                                <li>Verifica que los productos se muestren junto con sus categorías correspondientes.</li>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>
+                                Productos con Categorías:<br>
+                                Producto: Smartphone - Precio: $599.99 - Categoría: Electrónica<br>
+                                Producto: Camiseta - Precio: $19.99 - Categoría: Ropa<br>
+                                Producto: Silla - Precio: $49.99 - Categoría: Hogar<br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo usar JOIN en consultas MySQL con PHP.</h4>
+
+                        <p><strong>¿Qué es un JOIN?</strong></p>
+                        <p>Un JOIN es una operación SQL que combina filas de dos o más tablas basándose en una relación entre ellas.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script realiza las siguientes acciones:</p>
+
+                        <ol>
+                            <li>Crea la tabla <code>Categorias</code> si no existe.</li>
+                            <li>Inserta categorías en la tabla <code>Categorias</code>.</li>
+                            <li>Crea la tabla <code>Productos</code> con una clave foránea <code>categoria_id</code> que referencia a <code>Categorias(id)</code>.</li>
+                            <li>Inserta productos en la tabla <code>Productos</code> con sus respectivas categorías.</li>
+                            <li>Realiza una consulta SQL con JOIN para obtener los productos junto con sus categorías.</li>
+                        </ol>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mi_basedatos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Suponiendo que hay una tabla Categorias con id y nombre
+// Crear tabla Categorias si no existe
+$sqlCrearCategorias = "CREATE TABLE IF NOT EXISTS Categorias (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(30) NOT NULL
+)";
+$conn->query($sqlCrearCategorias);
+
+// Insertar categorías
+$sqlInsertarCategoria = "INSERT INTO Categorias (nombre) VALUES ('Electrónica'), ('Ropa'), ('Hogar')";
+$conn->query($sqlInsertarCategoria);
+
+// Crear tabla Productos con clave foránea
+$sqlCrearProductos = "CREATE TABLE IF NOT EXISTS Productos (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(30) NOT NULL,
+    precio DECIMAL(10,2),
+    categoria_id INT(6) UNSIGNED,
+    reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (categoria_id) REFERENCES Categorias(id)
+)";
+$conn->query($sqlCrearProductos);
+
+// Insertar productos con categorías
+$sqlInsertarProducto = "INSERT INTO Productos (nombre, precio, categoria_id) VALUES 
+    ('Smartphone', 599.99, 1),
+    ('Camiseta', 19.99, 2),
+    ('Silla', 49.99, 3)";
+$conn->query($sqlInsertarProducto);
+
+// Consulta con JOIN
+$sqlJoin = "SELECT Productos.nombre AS Producto, Productos.precio, Categorias.nombre AS Categoria
+            FROM Productos
+            JOIN Categorias ON Productos.categoria_id = Categorias.id";
+
+$resultado = $conn->query($sqlJoin);
+
+if ($resultado->num_rows > 0) {
+    echo "Productos con Categorías:&lt;br&gt;";
+    while($fila = $resultado->fetch_assoc()) {
+        echo "Producto: " . $fila["Producto"]. " - Precio: $" . $fila["precio"]. " - Categoría: " . $fila["Categoria"]. "&lt;br&gt;";
+    }
+} else {
+    echo "0 resultados.&lt;br&gt;";
+}
+
+// Cerrar conexión
+$conn->close();
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>JOIN Categorias ON Productos.categoria_id = Categorias.id</code>: Une las tablas <code>Productos</code> y <code>Categorias</code> donde <code>categoria_id</code> coincide con <code>Categorias.id</code>.</li>
+                            <li><code>SELECT Productos.nombre AS Producto, Productos.precio, Categorias.nombre AS Categoria</code>: Selecciona los campos deseados y les asigna alias para una mejor presentación.</li>
+                            <li><code>$conn->query($sqlJoin)</code>: Ejecuta la consulta SQL con JOIN.</li>
+                            <li><code>$fila["Producto"]</code>, <code>$fila["precio"]</code>, <code>$fila["Categoria"]</code>: Accede a los datos retornados por la consulta.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP con las tablas configuradas correctamente, verás una lista de productos junto con sus categorías correspondientes:</p>
+                        <p>
+                            Productos con Categorías:<br>
+                            Producto: Smartphone - Precio: $599.99 - Categoría: Electrónica<br>
+                            Producto: Camiseta - Precio: $19.99 - Categoría: Ropa<br>
+                            Producto: Silla - Precio: $49.99 - Categoría: Hogar<br>
+                        </p>
+                    </div>
+                    <!-- Script para el Ejemplo 8 -->
+                    <script>
+                        // Este ejemplo utiliza JOIN para combinar datos de dos tablas en MySQL
+                    </script>
+                </div>
+
+                <!-- Ejemplo 9 -->
+                <div class="example-container" id="mysql-example-9">
+                    <h3>Ejemplo 9: Uso de Funciones Agregadas en MySQL con PHP</h3>
+                    <pre><code class="language-php">&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mi_basedatos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Uso de funciones agregadas
+$sqlAgregadas = "SELECT 
+    COUNT(*) AS TotalProductos, 
+    AVG(precio) AS PrecioPromedio, 
+    MAX(precio) AS PrecioMaximo, 
+    MIN(precio) AS PrecioMinimo 
+FROM Productos";
+
+$resultado = $conn->query($sqlAgregadas);
+
+if ($resultado->num_rows > 0) {
+    while($fila = $resultado->fetch_assoc()) {
+        echo "Total de Productos: " . $fila["TotalProductos"] . "&lt;br&gt;";
+        echo "Precio Promedio: $" . number_format($fila["PrecioPromedio"], 2) . "&lt;br&gt;";
+        echo "Precio Máximo: $" . number_format($fila["PrecioMaximo"], 2) . "&lt;br&gt;";
+        echo "Precio Mínimo: $" . number_format($fila["PrecioMinimo"], 2) . "&lt;br&gt;";
+    }
+} else {
+    echo "0 resultados.&lt;br&gt;";
+}
+
+// Cerrar conexión
+$conn->close();
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Asegúrate de tener productos en la tabla <code>Productos</code> en la base de datos <code>mi_basedatos</code>.</li>
+                                <li>Crea un archivo llamado <code>funciones_agregadas.php</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo en tu servidor PHP.</li>
+                                <li>Verifica que se muestren el total de productos, el precio promedio, el precio máximo y el precio mínimo.</li>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>
+                                Total de Productos: 3<br>
+                                Precio Promedio: $206.66<br>
+                                Precio Máximo: $599.99<br>
+                                Precio Mínimo: $19.99<br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo usar funciones agregadas en MySQL con PHP.</h4>
+
+                        <p><strong>¿Qué son las funciones agregadas?</strong></p>
+                        <p>Las funciones agregadas realizan cálculos sobre un conjunto de valores y devuelven un único valor. Las más comunes son <code>COUNT</code>, <code>AVG</code>, <code>MAX</code>, y <code>MIN</code>.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script utiliza funciones agregadas para obtener estadísticas sobre los productos en la tabla <code>Productos</code>.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mi_basedatos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Uso de funciones agregadas
+$sqlAgregadas = "SELECT 
+    COUNT(*) AS TotalProductos, 
+    AVG(precio) AS PrecioPromedio, 
+    MAX(precio) AS PrecioMaximo, 
+    MIN(precio) AS PrecioMinimo 
+FROM Productos";
+
+$resultado = $conn->query($sqlAgregadas);
+
+if ($resultado->num_rows > 0) {
+    while($fila = $resultado->fetch_assoc()) {
+        echo "Total de Productos: " . $fila["TotalProductos"] . "&lt;br&gt;";
+        echo "Precio Promedio: $" . number_format($fila["PrecioPromedio"], 2) . "&lt;br&gt;";
+        echo "Precio Máximo: $" . number_format($fila["PrecioMaximo"], 2) . "&lt;br&gt;";
+        echo "Precio Mínimo: $" . number_format($fila["PrecioMinimo"], 2) . "&lt;br&gt;";
+    }
+} else {
+    echo "0 resultados.&lt;br&gt;";
+}
+
+// Cerrar conexión
+$conn->close();
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>COUNT(*) AS TotalProductos</code>: Cuenta el número total de productos.</li>
+                            <li><code>AVG(precio) AS PrecioPromedio</code>: Calcula el precio promedio de los productos.</li>
+                            <li><code>MAX(precio) AS PrecioMaximo</code>: Encuentra el precio máximo de los productos.</li>
+                            <li><code>MIN(precio) AS PrecioMinimo</code>: Encuentra el precio mínimo de los productos.</li>
+                            <li><code>number_format($fila["PrecioPromedio"], 2)</code>: Formatea el precio promedio con dos decimales.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP con datos en la tabla <code>Productos</code>, verás estadísticas sobre los productos:</p>
+                        <p>
+                            Total de Productos: 3<br>
+                            Precio Promedio: $206.66<br>
+                            Precio Máximo: $599.99<br>
+                            Precio Mínimo: $19.99<br>
+                        </p>
+                    </div>
+                    <!-- Script para el Ejemplo 9 -->
+                    <script>
+                        // Este ejemplo utiliza funciones agregadas para obtener estadísticas de una tabla MySQL
+                    </script>
+                </div>
+
+                <!-- Ejemplo 10 -->
+                <div class="example-container" id="mysql-example-10">
+                    <h3>Ejemplo 10: Optimización de Consultas y Uso de Índices en MySQL con PHP</h3>
+                    <pre><code class="language-php">&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mi_basedatos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Crear índice en la columna nombre para acelerar las búsquedas
+$sqlCrearIndice = "CREATE INDEX idx_nombre ON Productos(nombre)";
+
+if ($conn->query($sqlCrearIndice) === TRUE) {
+    echo "Índice creado exitosamente.&lt;br&gt;";
+} else {
+    echo "Error creando índice: " . $conn->error . "&lt;br&gt;";
+}
+
+// Consultar productos con búsqueda optimizada
+$nombreBusqueda = "Smartphone";
+$stmt = $conn->prepare("SELECT id, nombre, precio FROM Productos WHERE nombre = ?");
+$stmt->bind_param("s", $nombreBusqueda);
+$stmt->execute();
+$resultado = $stmt->get_result();
+
+if ($resultado->num_rows > 0) {
+    echo "Resultados de la búsqueda:&lt;br&gt;";
+    while($fila = $resultado->fetch_assoc()) {
+        echo "ID: " . $fila["id"]. " - Nombre: " . $fila["nombre"]. " - Precio: $" . $fila["precio"]. "&lt;br&gt;";
+    }
+} else {
+    echo "No se encontraron productos con el nombre especificado.&lt;br&gt;";
+}
+
+// Cerrar conexiones
+$stmt->close();
+$conn->close();
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Asegúrate de tener productos en la tabla <code>Productos</code> con diferentes nombres.</li>
+                                <li>Crea un archivo llamado <code>optimizar_consultas.php</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo en tu servidor PHP.</li>
+                                <li>Verifica que el índice haya sido creado y que la búsqueda de productos por nombre sea eficiente.</li>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>
+                                Índice creado exitosamente.<br>
+                                Resultados de la búsqueda:<br>
+                                ID: 1 - Nombre: Smartphone - Precio: $599.99<br>
+                                <!-- Más resultados según los datos insertados -->
+                            </p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo optimizar consultas y usar índices en MySQL con PHP.</h4>
+
+                        <p><strong>¿Qué son los índices?</strong></p>
+                        <p>Los índices son estructuras que mejoran la velocidad de las operaciones de búsqueda en una tabla. Actúan como índices en un libro, permitiendo encontrar rápidamente la información deseada.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script realiza las siguientes acciones:</p>
+
+                        <ol>
+                            <li>Crea un índice en la columna <code>nombre</code> de la tabla <code>Productos</code> para acelerar las búsquedas.</li>
+                            <li>Realiza una consulta para buscar productos por nombre utilizando una consulta preparada.</li>
+                        </ol>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mi_basedatos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Crear índice en la columna nombre para acelerar las búsquedas
+$sqlCrearIndice = "CREATE INDEX idx_nombre ON Productos(nombre)";
+
+if ($conn->query($sqlCrearIndice) === TRUE) {
+    echo "Índice creado exitosamente.&lt;br&gt;";
+} else {
+    echo "Error creando índice: " . $conn->error . "&lt;br&gt;";
+}
+
+// Consultar productos con búsqueda optimizada
+$nombreBusqueda = "Smartphone";
+$stmt = $conn->prepare("SELECT id, nombre, precio FROM Productos WHERE nombre = ?");
+$stmt->bind_param("s", $nombreBusqueda);
+$stmt->execute();
+$resultado = $stmt->get_result();
+
+if ($resultado->num_rows > 0) {
+    echo "Resultados de la búsqueda:&lt;br&gt;";
+    while($fila = $resultado->fetch_assoc()) {
+        echo "ID: " . $fila["id"]. " - Nombre: " . $fila["nombre"]. " - Precio: $" . $fila["precio"]. "&lt;br&gt;";
+    }
+} else {
+    echo "No se encontraron productos con el nombre especificado.&lt;br&gt;";
+}
+
+// Cerrar conexiones
+$stmt->close();
+$conn->close();
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>CREATE INDEX idx_nombre ON Productos(nombre)</code>: Crea un índice llamado <code>idx_nombre</code> en la columna <code>nombre</code> de la tabla <code>Productos</code>.</li>
+                            <li><code>$stmt = $conn->prepare("SELECT id, nombre, precio FROM Productos WHERE nombre = ?");</code>: Prepara una consulta SQL con un parámetro para la búsqueda.</li>
+                            <li><code>$stmt->bind_param("s", $nombreBusqueda);</code>: Enlaza la variable <code>$nombreBusqueda</code> al parámetro de la consulta.</li>
+                            <li><code>$stmt->execute();</code>: Ejecuta la consulta preparada.</li>
+                            <li><code>$resultado->fetch_assoc()</code>: Obtiene cada fila de resultados como un array asociativo.</li>
+                            <li><code>echo "ID: " . $fila["id"]. " - Nombre: " . $fila["nombre"]. " - Precio: $" . $fila["precio"]. "&lt;br&gt;";</code>: Imprime los detalles de cada producto encontrado.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP con la base de datos configurada correctamente, verás el mensaje "Índice creado exitosamente." y los resultados de la búsqueda de productos por nombre:</p>
+                        <p>
+                            Productos con Categorías:<br>
+                            Producto: Smartphone - Precio: $599.99 - Categoría: Electrónica<br>
+                            <!-- Más productos según los datos insertados -->
+                        </p>
+                    </div>
+                    <!-- Script para el Ejemplo 10 -->
+                    <script>
+                        // Este ejemplo optimiza consultas usando índices en MySQL
+                    </script>
+                </div>
+            </div>
+
+            <!-- Botones de navegación para MySQL -->
+            <div class="navigation-buttons-mysql">
+                <button id="prev-btn-mysql" disabled>Anterior</button>
+                <span class="counter" id="counter-mysql">Ejemplo 1 de 10</span>
+                <button id="next-btn-mysql">Siguiente</button>
+            </div>
+        </section>
+
+        <!-- Puedes agregar más secciones como MySQL siguiendo el mismo formato -->
+
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2024 Ingeniería Web. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Script para la funcionalidad interactiva -->
+    <script>
+        // Función para manejar la navegación de los ejemplos
+        function setupNavigation(sectionId, prefix) {
+            const examples = document.querySelectorAll(`#${sectionId}-examples .example-container`);
+            const prevBtn = document.getElementById(`prev-btn-${prefix}`);
+            const nextBtn = document.getElementById(`next-btn-${prefix}`);
+            const counter = document.getElementById(`counter-${prefix}`);
+
+            let current = 0;
+
+            // Mostrar el primer ejemplo
+            if (examples.length > 0) {
+                examples[0].classList.add('active');
+                if (counter) {
+                    counter.textContent = `Ejemplo ${current + 1} de ${examples.length}`;
+                }
+            }
+
+            // Función para actualizar los botones y el contador
+            function updateButtons() {
+                prevBtn.disabled = current === 0;
+                nextBtn.disabled = current === examples.length - 1;
+                if (counter) {
+                    counter.textContent = `Ejemplo ${current + 1} de ${examples.length}`;
+                }
+            }
+
+            // Evento para el botón "Anterior"
+            prevBtn.addEventListener('click', () => {
+                if (current > 0) {
+                    examples[current].classList.remove('active');
+                    current--;
+                    examples[current].classList.add('active');
+                    updateButtons();
+                }
+            });
+
+            // Evento para el botón "Siguiente"
+            nextBtn.addEventListener('click', () => {
+                if (current < examples.length - 1) {
+                    examples[current].classList.remove('active');
+                    current++;
+                    examples[current].classList.add('active');
+                    updateButtons();
+                }
+            });
+
+            // Inicializar los botones
+            updateButtons();
+        }
+
+        // Configurar la navegación para PHP
+        setupNavigation('php', 'php');
+
+        // Configurar la navegación para MySQL
+        setupNavigation('mysql', 'mysql');
+    </script>
+</body>
+</html>

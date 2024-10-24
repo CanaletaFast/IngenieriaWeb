@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<!-- Declaración del tipo de documento HTML5 -->
+<html lang="es">
+<head>
+    <!-- Metadatos del documento -->
+
+    <!-- Especifica la codificación de caracteres utilizada en el documento -->
+    <meta charset="UTF-8">
+    
+    <!-- Configuración de la vista para dispositivos móviles, asegurando que la página sea responsiva -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Enlace a la hoja de estilos CSS externa para aplicar estilos a la página -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Título de la página que aparece en la pestaña del navegador -->
+    <title>Ingeniería Web</title>
+</head>
+<body>
+    <!-- Encabezado principal de la página que generalmente contiene el logo, título y navegación -->
+    <header>
+        <!-- Contenedor para centrar y limitar el ancho del contenido dentro del encabezado -->
+        <div class="container">
+            <!-- Título principal de la página -->
+            <h1>Ingeniería Web</h1>
+            
+            <!-- Breve descripción o subtítulo del curso -->
+            <p>Bienvenidos al curso de Ingeniería Web</p>
+            
+            <!-- Elemento de navegación que contiene enlaces a diferentes secciones de la página -->
+            <nav>
+                <!-- Lista no ordenada que agrupa los enlaces de navegación -->
+                <ul class="nav-links">
+                    <!-- Elemento de lista que contiene un enlace a la sección de unidades didácticas -->
+                    <li><a href="#unidades">Unidades Didácticas</a></li>
+                    
+                    <!-- Elemento de lista que contiene un enlace a la sección de contacto -->
+                    <li><a href="#contacto">Contacto</a></li>
+                    
+                    <!-- Elemento de lista que contiene un enlace a la sección "Acerca de" -->
+                    <li><a href="#about">Acerca de</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido principal de la página que engloba las secciones principales -->
+    <main>
+        <!-- Sección que detalla las unidades didácticas del curso -->
+        <section id="unidades">
+            <!-- Título de la sección -->
+            <h2>Unidades Didácticas</h2>
+            
+            <!-- Lista ordenada que enumera las unidades didácticas -->
+            <ol>
+                <!-- Unidad Didáctica 1 -->
+                <li>
+                    <!-- Título de la unidad -->
+                    <h3>Unidad Didáctica 1: Introducción y Contexto</h3>
+                    <!-- Descripción de la unidad -->
+                    <p>En esta unidad se presentan los objetivos del curso y se define el proyecto que desarrollarán los estudiantes.</p>
+                    <!-- Contenido de la unidad -->
+                    <ul>
+                        <li>Reflexión sobre ideas para el proyecto web.</li>
+                        <li>Definición de la idea del proyecto a desarrollar.</li>
+                    </ul>
+                </li>
+
+                <!-- Unidad Didáctica 2 -->
+                <li>
+                    <!-- Título de la unidad -->
+                    <h3>Unidad Didáctica 2: Entornos de Desarrollo, HTML y CSS
+                        <!-- Enlace al curso extendido -->
+                        <a href="unidad2.html" class="mas">[+]</a>
+                    </h3>
+                    <!-- Descripción de la unidad -->
+                    <p>En esta unidad se instala y configura el entorno de desarrollo y se aprenden los fundamentos de HTML y CSS.</p>
+                    <!-- Contenido de la unidad -->
+                    <ul>
+                        <li>Instalación de herramientas: Visual Studio Code, XAMPP, Git y GitHub.</li>
+                        <li>Creación de la estructura básica del proyecto con HTML y CSS.</li>
+                    </ul>
+                    <!-- Ejemplo de código HTML -->
+                    <h4>Ejemplo de código HTML:</h4>
+                    <!-- Bloque de código con sintaxis de HTML -->
+                    <pre><code class="language-html">&lt;!-- Estructura básica de un documento HTML5 --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Título de la página&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hola Mundo&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                    </code></pre>
+                    <!-- Ejemplo de código CSS -->
+                    <h4>Ejemplo de código CSS:</h4>
+                    <!-- Bloque de código con sintaxis de CSS -->
+                    <pre><code class="language-css">/* Estilos para el cuerpo de la página */
+body {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* Estilos para el título */
+h1 {
+    font-size: 2em;
+    color: #4CAF50;
+}
+                    </code></pre>
+                </li>
+
+                <!-- Unidad Didáctica 3 -->
+                <li>
+                    <!-- Título de la unidad -->
+                    <h3>Unidad Didáctica 3: JavaScript y el DOM
+                        <!-- Enlace al curso extendido -->
+                        <a href="unidad3.html" class="mas">[+]</a>
+                    </h3>
+                    <!-- Descripción de la unidad -->
+                    <p>En esta unidad se introducen los conceptos básicos de JavaScript y cómo manipular el DOM.</p>
+                    <!-- Contenido de la unidad -->
+                    <ul>
+                        <li>Introducción a la sintaxis de JavaScript.</li>
+                        <li>Manipulación del DOM y eventos.</li>
+                        <li>Validaciones y eventos en JavaScript.</li>
+                    </ul>
+                    <!-- Ejemplo de código JavaScript -->
+                    <h4>Ejemplo de código JavaScript:</h4>
+                    <!-- Bloque de código con sintaxis de JavaScript -->
+                    <pre><code class="language-javascript">// Seleccionar un elemento del DOM
+const boton = document.getElementById('miBoton');
+
+// Añadir un evento al botón
+boton.addEventListener('click', function() {
+    alert('¡Has hecho clic en el botón!');
+});
+                    </code></pre>
+                </li>
+
+                <!-- Unidad Didáctica 4 -->
+                <li>
+                    <!-- Título de la unidad -->
+                    <h3>Unidad Didáctica 4: Back-End con PHP y MySQL
+                        <!-- Enlace al curso extendido -->
+                        <a href="unidad4.html" class="mas">[+]</a>
+                    </h3>
+                    <!-- Descripción de la unidad -->
+                    <p>En esta unidad se aprende a desarrollar el lado del servidor con PHP y a utilizar bases de datos MySQL.</p>
+                    <!-- Contenido de la unidad -->
+                    <ul>
+                        <li>Fundamentos de PHP.</li>
+                        <li>Configuración y uso de bases de datos MySQL.</li>
+                        <li>Procesamiento de formularios y seguridad en PHP.</li>
+                    </ul>
+                    <!-- Ejemplo de código PHP -->
+                    <h4>Ejemplo de código PHP:</h4>
+                    <!-- Bloque de código con sintaxis de PHP -->
+                    <pre><code class="language-php">&lt;?php
+// Conexión a la base de datos MySQL
+$servername = "localhost";
+$username = "usuario";
+$password = "contraseña";
+$dbname = "mi_base_de_datos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn-&gt;connect_error) {
+    die("Conexión fallida: " . $conn-&gt;connect_error);
+}
+
+// Consulta SQL para insertar datos
+$sql = "INSERT INTO usuarios (nombre, email) VALUES ('Juan', 'juan@example.com')";
+
+if ($conn-&gt;query($sql) === TRUE) {
+    echo "Nuevo registro creado exitosamente";
+} else {
+    echo "Error: " . $sql . "&lt;br&gt;" . $conn-&gt;error;
+}
+
+$conn-&gt;close();
+?&gt;
+                    </code></pre>
+                </li>
+
+                <!-- Unidad Didáctica 5 -->
+                <li>
+                    <!-- Título de la unidad -->
+                    <h3>Unidad Didáctica 5: Profundización en PHP y Introducción a Node.js
+                        <!-- Enlace al curso extendido -->
+                        <a href="unidad5.html" class="mas">[+]</a>
+                    </h3>
+                    <!-- Descripción de la unidad -->
+                    <p>En esta unidad se profundiza en PHP con programación orientada a objetos y se introduce Node.js.</p>
+                    <!-- Contenido de la unidad -->
+                    <ul>
+                        <li>Programación Orientada a Objetos en PHP.</li>
+                        <li>Introducción a Node.js y su aplicación en el proyecto.</li>
+                    </ul>
+                    <!-- Ejemplo de código PHP con POO -->
+                    <h4>Ejemplo de código PHP con Programación Orientada a Objetos:</h4>
+                    <!-- Bloque de código con sintaxis de PHP -->
+                    <pre><code class="language-php">&lt;?php
+// Definición de la clase Usuario
+class Usuario {
+    private $nombre;
+    private $email;
+
+    // Constructor de la clase
+    public function __construct($nombre, $email) {
+        $this-&gt;nombre = $nombre;
+        $this-&gt;email = $email;
+    }
+
+    // Método para guardar el usuario
+    public function guardar() {
+        // Código para guardar el usuario en la base de datos
+    }
+
+    // Método para obtener el nombre del usuario
+    public function obtenerNombre() {
+        return $this-&gt;nombre;
+    }
+}
+
+// Crear una instancia de la clase Usuario
+$usuario = new Usuario('Ana', 'ana@example.com');
+
+// Imprimir el nombre del usuario
+echo $usuario-&gt;obtenerNombre();
+?&gt;
+                    </code></pre>
+                    <!-- Ejemplo de código Node.js -->
+                    <h4>Ejemplo de código Node.js:</h4>
+                    <!-- Bloque de código con sintaxis de Node.js -->
+                    <pre><code class="language-javascript">// Importar el módulo http
+const http = require('http');
+
+// Crear el servidor
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Hola desde Node.js\n');
+});
+
+// Definir el puerto y host
+const port = 3000;
+const host = 'localhost';
+
+// Iniciar el servidor
+server.listen(port, host, () => {
+    console.log(`Servidor corriendo en http://${host}:${port}/`);
+});
+                    </code></pre>
+                </li>
+
+                <!-- Unidad Didáctica 6 -->
+                <li>
+                    <!-- Título de la unidad -->
+                    <h3>Unidad Didáctica 6: Diseño Responsivo, Intercambio de Datos y AJAX
+                        <!-- Enlace al curso extendido -->
+                        <a href="unidad6.html" class="mas">[+]</a>
+                    </h3>
+                    <!-- Descripción de la unidad -->
+                    <p>En esta unidad se mejoran las técnicas de diseño responsivo y se trabaja con AJAX para comunicación asíncrona.</p>
+                    <!-- Contenido de la unidad -->
+                    <ul>
+                        <li>Diseño responsivo avanzado.</li>
+                        <li>Formatos de intercambio de datos: XML, JSON y YAML.</li>
+                        <li>Uso de Fetch API para comunicación asíncrona.</li>
+                    </ul>
+                    <!-- Ejemplo de código AJAX con Fetch API -->
+                    <h4>Ejemplo de código JavaScript utilizando Fetch API:</h4>
+                    <!-- Bloque de código con sintaxis de JavaScript -->
+                    <pre><code class="language-javascript">// Realizar una solicitud GET a una API
+fetch('https://api.example.com/datos')
+    .then(response => response.json())
+    .then(data => {
+        // Procesar los datos recibidos
+        console.log(data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+                    </code></pre>
+                </li>
+            </ol>
+        </section>
+
+        <!-- Sección que contiene el formulario de contacto -->
+        <section id="contacto">
+            <!-- Título de la sección -->
+            <h2>Contacto</h2>
+            
+            <!-- Formulario para que los usuarios envíen sus datos -->
+            <!-- El atributo 'action' define la URL a la que se enviarán los datos del formulario -->
+            <!-- El atributo 'method' define el método HTTP que se utilizará para enviar los datos -->
+            <form id="contactForm" action="process.php" method="post">
+                <!-- Grupo de formulario para el campo de nombre -->
+                <div class="form-group">
+                    <!-- Etiqueta para el campo de nombre, vinculada al input mediante el atributo 'for' -->
+                    <label for="name">Nombre:</label>
+                    
+                    <!-- Campo de entrada de texto para el nombre del usuario -->
+                    <!-- El atributo 'required' hace que este campo sea obligatorio -->
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <!-- Grupo de formulario para el campo de correo electrónico -->
+                <div class="form-group">
+                    <!-- Etiqueta para el campo de correo electrónico, vinculada al input mediante el atributo 'for' -->
+                    <label for="email">Correo Electrónico:</label>
+                    
+                    <!-- Campo de entrada de correo electrónico que valida el formato del email -->
+                    <!-- El atributo 'required' hace que este campo sea obligatorio -->
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <!-- Grupo de formulario para el botón de envío -->
+                <div class="form-group">
+                    <!-- Botón de envío del formulario -->
+                    <input type="submit" value="Enviar">
+                </div>
+            </form>
+
+            <!-- Mensaje de éxito o error -->
+            <div id="formMessage"></div>
+        </section>
+
+        <!-- Sección que proporciona información adicional sobre el curso -->
+        <section id="about">
+            <!-- Título de la sección -->
+            <h2>Acerca de</h2>
+            
+            <!-- Párrafo que describe el propósito y contenido del curso -->
+            <p>Este curso está diseñado para introducir a los estudiantes en los fundamentos del desarrollo web, abarcando desde la estructura básica con HTML hasta estilos avanzados con CSS, funcionalidades interactivas con JavaScript y desarrollo del lado del servidor con PHP y MySQL.</p>
+        </section>
+    </main>
+
+    <!-- Pie de página que generalmente contiene información de derechos de autor y enlaces secundarios -->
+    <footer>
+        <!-- Párrafo con el aviso de derechos de autor -->
+        <p>&copy; 2024 Ingeniería Web. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Enlace al archivo JavaScript externo -->
+    <script src="script.js"></script>
+</body>
+</html>

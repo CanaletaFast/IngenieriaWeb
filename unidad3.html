@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Unidad Didáctica 3: JavaScript y DOM</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Prism.js para el resaltado de sintaxis -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <!-- Estilos adicionales específicos para esta página -->
+    <style>
+        /* Estilos adicionales para la funcionalidad interactiva */
+        .example-container {
+            display: none; /* Ocultar todos los ejemplos inicialmente */
+            margin-bottom: 40px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .example-container.active {
+            display: block; /* Mostrar el ejemplo activo */
+            opacity: 1;
+            height: auto;
+        }
+
+        .navigation-buttons, .navigation-buttons-js {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .navigation-buttons button, .navigation-buttons-js button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .navigation-buttons button:hover, .navigation-buttons-js button:hover {
+            background-color: #45a049;
+        }
+
+        /* Estilo para el área de vista previa */
+        .preview {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #fff;
+            margin-top: 10px;
+        }
+
+        /* Estilos para la indicación del contador */
+        .counter {
+            display: inline-block;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        /* Responsividad */
+        @media (max-width: 768px) {
+            .navigation-buttons button, .navigation-buttons-js button {
+                padding: 8px 16px;
+                margin: 5px;
+                font-size: 0.9em;
+            }
+        }
+
+        /* Estilos para las explicaciones adicionales */
+        .explanation {
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-left: 4px solid #4CAF50;
+            border-radius: 3px;
+        }
+
+        .explanation h4 {
+            margin-top: 0;
+        }
+
+        .explanation p {
+            margin: 10px 0;
+        }
+
+        .explanation pre {
+            background-color: #e8e8e8;
+            padding: 10px;
+            border-radius: 3px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <div class="container">
+            <h1>Unidad Didáctica 3: JavaScript y DOM</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="#javascript">JavaScript Básico</a></li>
+                    <li><a href="#dom">Manipulación del DOM</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+        <!-- Sección de JavaScript Básico -->
+        <section id="javascript">
+            <h2>JavaScript Básico</h2>
+            <p>En esta sección aprenderemos los fundamentos de JavaScript, un lenguaje de programación esencial para la interactividad en la web.</p>
+
+            <!-- Contenedor de ejemplos de JavaScript -->
+            <div id="javascript-examples">
+                <!-- Ejemplo 1 -->
+                <div class="example-container active" id="js-example-1">
+                    <h3>Ejemplo 1: Alertas</h3>
+                    <pre><code class="language-js">alert('¡Hola, mundo!');
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <button onclick="mostrarAlerta()">Mostrar Alerta</button>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo funcionan las alertas en JavaScript.</h4>
+
+                        <p><strong>¿Qué es una alerta?</strong></p>
+                        <p>Una alerta es una ventana emergente que muestra un mensaje al usuario. Es útil para notificaciones simples, advertencias o información importante.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este código muestra una alerta con el mensaje "¡Hola, mundo!" cuando se ejecuta.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>alert('¡Hola, mundo!');</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>alert()</code>: Función incorporada de JavaScript que muestra una ventana emergente con un mensaje.</li>
+                            <li><code>'¡Hola, mundo!'</code>: El mensaje que se muestra en la alerta.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al hacer clic en el botón "Mostrar Alerta", se mostrará una ventana emergente con el mensaje "¡Hola, mundo!".</p>
+                    </div>
+                    <!-- Script para el Ejemplo 1 -->
+                    <script>
+                        function mostrarAlerta() {
+                            alert('¡Hola, mundo!');
+                        }
+                    </script>
+                </div>
+
+                <!-- Ejemplo 2 -->
+                <div class="example-container" id="js-example-2">
+                    <h3>Ejemplo 2: Variables y Tipos de Datos</h3>
+                    <pre><code class="language-js">let nombre = 'Ana';
+const edad = 30;
+var esEstudiante = true;
+
+console.log(nombre);
+console.log(edad);
+console.log(esEstudiante);
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <button onclick="mostrarVariables()">Mostrar Variables en la Consola</button>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo declarar variables y manejar diferentes tipos de datos en JavaScript.</h4>
+
+                        <p><strong>¿Qué son las variables?</strong></p>
+                        <p>Las variables son contenedores que almacenan datos. En JavaScript, se pueden declarar usando <code>let</code>, <code>const</code> o <code>var</code>.</p>
+
+                        <p><strong>Tipos de Datos</strong></p>
+                        <ul>
+                            <li><strong>Cadenas de texto (Strings):</strong> Texto encerrado entre comillas. Ejemplo: <code>'Ana'</code>.</li>
+                            <li><strong>Números (Numbers):</strong> Valores numéricos. Ejemplo: <code>30</code>.</li>
+                            <li><strong>Booleanos (Booleans):</strong> Valores lógicos que pueden ser <code>true</code> o <code>false</code>.</li>
+                        </ul>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este código declara tres variables con diferentes tipos de datos y luego imprime sus valores en la consola.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>let nombre = 'Ana';
+const edad = 30;
+var esEstudiante = true;
+
+console.log(nombre);
+console.log(edad);
+console.log(esEstudiante);</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>let nombre = 'Ana';</code>: Declara una variable llamada <code>nombre</code> con el valor 'Ana'.</li>
+                            <li><code>const edad = 30;</code>: Declara una constante llamada <code>edad</code> con el valor 30. Las constantes no pueden ser reasignadas.</li>
+                            <li><code>var esEstudiante = true;</code>: Declara una variable llamada <code>esEstudiante</code> con el valor <code>true</code>.</li>
+                            <li><code>console.log()</code>: Función que imprime mensajes en la consola del navegador.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al hacer clic en el botón "Mostrar Variables en la Consola", los valores de las variables se imprimirán en la consola del navegador.</p>
+
+                        <p><strong>Cómo Ver la Consola:</strong></p>
+                        <ol>
+                            <li>Haz clic derecho en la página y selecciona "Inspeccionar" o "Inspect".</li>
+                            <li>Navega a la pestaña "Consola" o "Console".</li>
+                            <li>Verás los valores de las variables impresos allí.</li>
+                        </ol>
+                    </div>
+                    <!-- Script para el Ejemplo 2 -->
+                    <script>
+                        // Variables declaradas globalmente para que sean accesibles en la función
+                        let nombre = 'Ana';
+                        const edad = 30;
+                        var esEstudiante = true;
+
+                        function mostrarVariables() {
+                            console.log(nombre);
+                            console.log(edad);
+                            console.log(esEstudiante);
+                        }
+                    </script>
+                </div>
+
+                <!-- Ejemplo 3 -->
+                <div class="example-container" id="js-example-3">
+                    <h3>Ejemplo 3: Funciones</h3>
+                    <pre><code class="language-js">function saludar(nombre) {
+    return `¡Hola, ${nombre}!`;
+}
+
+let mensaje = saludar('Carlos');
+console.log(mensaje);
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <button onclick="mostrarSaludo()">Saludar</button>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo crear y utilizar funciones en JavaScript.</h4>
+
+                        <p><strong>¿Qué es una función?</strong></p>
+                        <p>Una función es un bloque de código reutilizable que realiza una tarea específica. Puedes pasarle datos (parámetros) y puede devolver un resultado.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este código define una función llamada <code>saludar</code> que toma un nombre como parámetro y devuelve un saludo personalizado. Luego, la función se invoca y su resultado se imprime en la consola.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>function saludar(nombre) {
+    return `¡Hola, ${nombre}!`;
+}
+
+let mensaje = saludar('Carlos');
+console.log(mensaje);</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>function saludar(nombre) { ... }</code>: Declara una función llamada <code>saludar</code> que acepta un parámetro <code>nombre</code>.</li>
+                            <li><code>return `¡Hola, ${nombre}!`;</code>: Retorna una cadena de texto que incluye el nombre proporcionado.</li>
+                            <li><code>let mensaje = saludar('Carlos');</code>: Invoca la función <code>saludar</code> con el argumento 'Carlos' y almacena el resultado en la variable <code>mensaje</code>.</li>
+                            <li><code>console.log(mensaje);</code>: Imprime el mensaje en la consola.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al hacer clic en el botón "Saludar", se mostrará una alerta con el mensaje "¡Hola, Carlos!" y también se imprimirá en la consola.</p>
+                    </div>
+                    <!-- Script para el Ejemplo 3 -->
+                    <script>
+                        function saludar(nombre) {
+                            return `¡Hola, ${nombre}!`;
+                        }
+
+                        function mostrarSaludo() {
+                            let saludo = saludar('Carlos');
+                            alert(saludo);
+                            console.log(saludo);
+                        }
+                    </script>
+                </div>
+
+                <!-- Ejemplo 4 -->
+                <div class="example-container" id="js-example-4">
+                    <h3>Ejemplo 4: Eventos</h3>
+                    <pre><code class="language-js">function manejarClick() {
+    alert('¡Botón clickeado!');
+}
+
+document.getElementById('miBoton').addEventListener('click', manejarClick);
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <button id="miBoton">Haz Clic Aquí</button>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo manejar eventos en JavaScript.</h4>
+
+                        <p><strong>¿Qué son los eventos?</strong></p>
+                        <p>Los eventos son acciones que ocurren en el navegador, como clics, movimientos del ratón, presiones de teclas, etc. JavaScript puede escuchar y responder a estos eventos para crear interactividad.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este código define una función llamada <code>manejarClick</code> que muestra una alerta cuando se hace clic en el botón con el ID "miBoton". Luego, se agrega un listener para el evento "click" que ejecuta esta función.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>function manejarClick() {
+    alert('¡Botón clickeado!');
+}
+
+document.getElementById('miBoton').addEventListener('click', manejarClick);</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>function manejarClick() { ... }</code>: Define una función llamada <code>manejarClick</code> que muestra una alerta.</li>
+                            <li><code>document.getElementById('miBoton')</code>: Selecciona el botón con el ID "miBoton".</li>
+                            <li><code>.addEventListener('click', manejarClick)</code>: Añade un listener para el evento "click" que ejecuta la función <code>manejarClick</code> cuando se dispara el evento.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al hacer clic en el botón "Haz Clic Aquí", se mostrará una alerta con el mensaje "¡Botón clickeado!".</p>
+                    </div>
+                    <!-- Script para el Ejemplo 4 -->
+                    <script>
+                        function manejarClick() {
+                            alert('¡Botón clickeado!');
+                        }
+
+                        document.getElementById('miBoton').addEventListener('click', manejarClick);
+                    </script>
+                </div>
+
+                <!-- Ejemplo 5 -->
+                <div class="example-container" id="js-example-5">
+                    <h3>Ejemplo 5: Manipulación del DOM</h3>
+                    <pre><code class="language-js">function cambiarTexto() {
+    document.getElementById('texto').innerHTML = '¡El texto ha sido cambiado!';
+}
+
+document.getElementById('cambiarTexto').addEventListener('click', cambiarTexto);
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p id="texto">Este es el texto original.</p>
+                            <button id="cambiarTexto">Cambiar Texto</button>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo manipular el DOM con JavaScript.</h4>
+
+                        <p><strong>¿Qué es el DOM?</strong></p>
+                        <p>El DOM (Document Object Model) es una representación estructural de la página web que permite a JavaScript interactuar y modificar los elementos HTML y CSS de manera dinámica.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este código define una función llamada <code>cambiarTexto</code> que cambia el contenido de un párrafo cuando se hace clic en un botón. Luego, se agrega un listener para el evento "click" en el botón que ejecuta esta función.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>function cambiarTexto() {
+    document.getElementById('texto').innerHTML = '¡El texto ha sido cambiado!';
+}
+
+document.getElementById('cambiarTexto').addEventListener('click', cambiarTexto);</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>function cambiarTexto() { ... }</code>: Define una función que cambia el contenido de un párrafo.</li>
+                            <li><code>document.getElementById('texto')</code>: Selecciona el párrafo con el ID "texto".</li>
+                            <li><code>.innerHTML = '¡El texto ha sido cambiado!';</code>: Cambia el contenido HTML del párrafo.</li>
+                            <li><code>document.getElementById('cambiarTexto')</code>: Selecciona el botón con el ID "cambiarTexto".</li>
+                            <li><code>.addEventListener('click', cambiarTexto)</code>: Añade un listener para el evento "click" que ejecuta la función <code>cambiarTexto</code> cuando se dispara el evento.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al hacer clic en el botón "Cambiar Texto", el contenido del párrafo cambiará de "Este es el texto original." a "¡El texto ha sido cambiado!".</p>
+                    </div>
+                    <!-- Script para el Ejemplo 5 -->
+                    <script>
+                        function cambiarTexto() {
+                            document.getElementById('texto').innerHTML = '¡El texto ha sido cambiado!';
+                        }
+
+                        document.getElementById('cambiarTexto').addEventListener('click', cambiarTexto);
+                    </script>
+                </div>
+
+                <!-- Ejemplo 6 -->
+                <div class="example-container" id="js-example-6">
+                    <h3>Ejemplo 6: Cambiar Estilos con JavaScript</h3>
+                    <pre><code class="language-js">function cambiarEstilo() {
+    let caja = document.getElementById('caja');
+    caja.style.backgroundColor = 'lightgreen';
+    caja.style.width = '200px';
+    caja.style.height = '200px';
+}
+
+document.getElementById('cambiarEstilo').addEventListener('click', cambiarEstilo);
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <div id="caja" style="background-color: lightblue; width: 100px; height: 100px;"></div>
+                            <button id="cambiarEstilo">Cambiar Estilo</button>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo cambiar los estilos de un elemento utilizando JavaScript.</h4>
+
+                        <p><strong>¿Por qué cambiar estilos con JavaScript?</strong></p>
+                        <p>Cambiar estilos con JavaScript permite crear interacciones dinámicas y responsivas que reaccionan a las acciones del usuario.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este código define una función llamada <code>cambiarEstilo</code> que cambia el color de fondo, el ancho y la altura de una caja cuando se hace clic en un botón. Luego, se agrega un listener para el evento "click" en el botón que ejecuta esta función.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>function cambiarEstilo() {
+    let caja = document.getElementById('caja');
+    caja.style.backgroundColor = 'lightgreen';
+    caja.style.width = '200px';
+    caja.style.height = '200px';
+}
+
+document.getElementById('cambiarEstilo').addEventListener('click', cambiarEstilo);</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>function cambiarEstilo() { ... }</code>: Define una función que cambia los estilos de una caja.</li>
+                            <li><code>let caja = document.getElementById('caja');</code>: Selecciona el div con el ID "caja".</li>
+                            <li><code>caja.style.backgroundColor = 'lightgreen';</code>: Cambia el color de fondo de la caja a verde claro.</li>
+                            <li><code>caja.style.width = '200px';</code>: Cambia el ancho de la caja a 200 píxeles.</li>
+                            <li><code>caja.style.height = '200px';</code>: Cambia la altura de la caja a 200 píxeles.</li>
+                            <li><code>document.getElementById('cambiarEstilo').addEventListener('click', cambiarEstilo)</code>: Añade un listener para el evento "click" que ejecuta la función <code>cambiarEstilo</code> cuando se dispara el evento.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al hacer clic en el botón "Cambiar Estilo", la caja cambiará su color de fondo a verde claro y aumentará su tamaño a 200x200 píxeles.</p>
+                    </div>
+                    <!-- Script para el Ejemplo 6 -->
+                    <script>
+                        function cambiarEstilo() {
+                            let caja = document.getElementById('caja');
+                            caja.style.backgroundColor = 'lightgreen';
+                            caja.style.width = '200px';
+                            caja.style.height = '200px';
+                        }
+
+                        document.getElementById('cambiarEstilo').addEventListener('click', cambiarEstilo);
+                    </script>
+                </div>
+
+                <!-- Ejemplo 7 -->
+                <div class="example-container" id="js-example-7">
+                    <h3>Ejemplo 7: Arrays y Bucles</h3>
+                    <pre><code class="language-js">function mostrarFrutas() {
+    let frutas = ['Manzana', 'Banana', 'Cereza'];
+    for (let i = 0; i < frutas.length; i++) {
+        console.log(`Fruta ${i + 1}: ${frutas[i]}`);
+    }
+}
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <button onclick="mostrarFrutas()">Mostrar Frutas en la Consola</button>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo manejar arrays y bucles en JavaScript.</h4>
+
+                        <p><strong>¿Qué es un array?</strong></p>
+                        <p>Un array es una estructura de datos que almacena una colección de elementos. Cada elemento puede accederse mediante un índice.</p>
+
+                        <p><strong>¿Qué es un bucle?</strong></p>
+                        <p>Un bucle es una estructura que permite repetir una sección de código varias veces. En este ejemplo, utilizamos un bucle <code>for</code>.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este código define una función llamada <code>mostrarFrutas</code> que crea un array de frutas y luego utiliza un bucle para imprimir cada fruta en la consola con su número correspondiente.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>function mostrarFrutas() {
+    let frutas = ['Manzana', 'Banana', 'Cereza'];
+    for (let i = 0; i < frutas.length; i++) {
+        console.log(`Fruta ${i + 1}: ${frutas[i]}`);
+    }
+}</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>let frutas = ['Manzana', 'Banana', 'Cereza'];</code>: Declara un array llamado <code>frutas</code> con tres elementos.</li>
+                            <li><code>for (let i = 0; i < frutas.length; i++) { ... }</code>: Inicia un bucle que itera desde 0 hasta la longitud del array <code>frutas</code>.</li>
+                            <li><code>console.log(`Fruta ${i + 1}: ${frutas[i]}`);</code>: Imprime el número de la fruta y su nombre en la consola.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al hacer clic en el botón "Mostrar Frutas en la Consola", se imprimirán las siguientes líneas en la consola:</p>
+                        <pre>
+Fruta 1: Manzana
+Fruta 2: Banana
+Fruta 3: Cereza
+                        </pre>
+                    </div>
+                    <!-- Script para el Ejemplo 7 -->
+                    <script>
+                        function mostrarFrutas() {
+                            let frutas = ['Manzana', 'Banana', 'Cereza'];
+                            for (let i = 0; i < frutas.length; i++) {
+                                console.log(`Fruta ${i + 1}: ${frutas[i]}`);
+                            }
+                        }
+                    </script>
+                </div>
+
+                <!-- Ejemplo 8 -->
+                <div class="example-container" id="js-example-8">
+                    <h3>Ejemplo 8: Objetos</h3>
+                    <pre><code class="language-js">function mostrarPersona() {
+    let persona = {
+        nombre: 'Laura',
+        edad: 28,
+        profesion: 'Ingeniera'
+    };
+
+    console.log(`Nombre: ${persona.nombre}`);
+    console.log(`Edad: ${persona.edad}`);
+    console.log(`Profesión: ${persona.profesion}`);
+}
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <button onclick="mostrarPersona()">Mostrar Información de la Persona en la Consola</button>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo trabajar con objetos en JavaScript.</h4>
+
+                        <p><strong>¿Qué es un objeto?</strong></p>
+                        <p>Un objeto es una colección de propiedades, donde cada propiedad tiene un nombre y un valor. Es una estructura clave para organizar datos complejos.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este código define una función llamada <code>mostrarPersona</code> que crea un objeto <code>persona</code> con propiedades como <code>nombre</code>, <code>edad</code> y <code>profesion</code>, y luego imprime sus valores en la consola.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>function mostrarPersona() {
+    let persona = {
+        nombre: 'Laura',
+        edad: 28,
+        profesion: 'Ingeniera'
+    };
+
+    console.log(`Nombre: ${persona.nombre}`);
+    console.log(`Edad: ${persona.edad}`);
+    console.log(`Profesión: ${persona.profesion}`);
+}</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>let persona = { ... };</code>: Declara un objeto llamado <code>persona</code> con varias propiedades.</li>
+                            <li><code>persona.nombre</code>: Accede a la propiedad <code>nombre</code> del objeto <code>persona</code>.</li>
+                            <li><code>console.log()</code>: Imprime los valores de las propiedades en la consola.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al hacer clic en el botón "Mostrar Información de la Persona en la Consola", se imprimirán las siguientes líneas en la consola:</p>
+                        <pre>
+Nombre: Laura
+Edad: 28
+Profesión: Ingeniera
+                        </pre>
+                    </div>
+                    <!-- Script para el Ejemplo 8 -->
+                    <script>
+                        function mostrarPersona() {
+                            let persona = {
+                                nombre: 'Laura',
+                                edad: 28,
+                                profesion: 'Ingeniera'
+                            };
+
+                            console.log(`Nombre: ${persona.nombre}`);
+                            console.log(`Edad: ${persona.edad}`);
+                            console.log(`Profesión: ${persona.profesion}`);
+                        }
+                    </script>
+                </div>
+
+                <!-- Ejemplo 9 -->
+                <div class="example-container" id="js-example-9">
+                    <h3>Ejemplo 9: Manipulación de Elementos del DOM</h3>
+                    <pre><code class="language-js">function agregarElemento() {
+    let lista = document.getElementById('miLista');
+    let nuevoElemento = document.createElement('li');
+    nuevoElemento.textContent = 'Nuevo Elemento';
+    lista.appendChild(nuevoElemento);
+}
+
+document.getElementById('agregarElemento').addEventListener('click', agregarElemento);
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <ul id="miLista">
+                                <li>Elemento Existente 1</li>
+                                <li>Elemento Existente 2</li>
+                            </ul>
+                            <button id="agregarElemento">Agregar Elemento</button>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo crear y agregar elementos al DOM usando JavaScript.</h4>
+
+                        <p><strong>¿Qué es la manipulación del DOM?</strong></p>
+                        <p>La manipulación del DOM permite a JavaScript crear, modificar y eliminar elementos en una página web de manera dinámica, mejorando la interactividad y la experiencia del usuario.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este código define una función llamada <code>agregarElemento</code> que crea un nuevo elemento de lista <code>&lt;li&gt;</code> con el texto "Nuevo Elemento" y lo agrega a una lista existente cada vez que se hace clic en un botón.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>function agregarElemento() {
+    let lista = document.getElementById('miLista');
+    let nuevoElemento = document.createElement('li');
+    nuevoElemento.textContent = 'Nuevo Elemento';
+    lista.appendChild(nuevoElemento);
+}
+
+document.getElementById('agregarElemento').addEventListener('click', agregarElemento);</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>function agregarElemento() { ... }</code>: Define una función que crea y agrega un nuevo elemento a la lista.</li>
+                            <li><code>let lista = document.getElementById('miLista');</code>: Selecciona la lista con el ID "miLista".</li>
+                            <li><code>let nuevoElemento = document.createElement('li');</code>: Crea un nuevo elemento <code>&lt;li&gt;</code>.</li>
+                            <li><code>nuevoElemento.textContent = 'Nuevo Elemento';</code>: Establece el texto del nuevo elemento de lista.</li>
+                            <li><code>lista.appendChild(nuevoElemento);</code>: Añade el nuevo elemento de lista al final de la lista existente.</li>
+                            <li><code>document.getElementById('agregarElemento').addEventListener('click', agregarElemento);</code>: Añade un listener para el evento "click" que ejecuta la función <code>agregarElemento</code> cuando se dispara el evento.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al hacer clic en el botón "Agregar Elemento", se añadirá un nuevo elemento de lista con el texto "Nuevo Elemento" a la lista existente.</p>
+                    </div>
+                    <!-- Script para el Ejemplo 9 -->
+                    <script>
+                        function agregarElemento() {
+                            let lista = document.getElementById('miLista');
+                            let nuevoElemento = document.createElement('li');
+                            nuevoElemento.textContent = 'Nuevo Elemento';
+                            lista.appendChild(nuevoElemento);
+                        }
+
+                        document.getElementById('agregarElemento').addEventListener('click', agregarElemento);
+                    </script>
+                </div>
+
+                <!-- Ejemplo 10 -->
+                <div class="example-container" id="js-example-10">
+                    <h3>Ejemplo 10: Fetch API para Obtener Datos</h3>
+                    <pre><code class="language-js">function obtenerDatos() {
+    fetch('https://jsonplaceholder.typicode.com/posts/1')
+        .then(response => response.json())
+        .then(data => {
+            console.log('Datos recibidos:', data);
+            document.getElementById('datos').innerHTML = JSON.stringify(data, null, 2);
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+document.getElementById('obtenerDatos').addEventListener('click', obtenerDatos);
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <button id="obtenerDatos">Obtener Datos</button>
+                            <pre id="datos" style="background-color: #f0f0f0; padding: 10px; border-radius: 4px;"></pre>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo utilizar la Fetch API para obtener datos de una API externa.</h4>
+
+                        <p><strong>¿Qué es la Fetch API?</strong></p>
+                        <p>La Fetch API es una interfaz moderna que permite hacer solicitudes HTTP desde JavaScript para obtener recursos de manera asíncrona.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este código define una función llamada <code>obtenerDatos</code> que realiza una solicitud GET a una API externa, procesa la respuesta y muestra los datos en la consola y en la página web.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>function obtenerDatos() {
+    fetch('https://jsonplaceholder.typicode.com/posts/1')
+        .then(response => response.json())
+        .then(data => {
+            console.log('Datos recibidos:', data);
+            document.getElementById('datos').innerHTML = JSON.stringify(data, null, 2);
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+document.getElementById('obtenerDatos').addEventListener('click', obtenerDatos);</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>function obtenerDatos() { ... }</code>: Define una función que realiza una solicitud a una API y maneja la respuesta.</li>
+                            <li><code>fetch('https://jsonplaceholder.typicode.com/posts/1')</code>: Realiza una solicitud GET a la URL proporcionada.</li>
+                            <li><code>.then(response => response.json())</code>: Procesa la respuesta y la convierte en un objeto JSON.</li>
+                            <li><code>.then(data => { ... })</code>: Maneja los datos recibidos, imprimiéndolos en la consola y mostrando su contenido en el elemento con el ID "datos".</li>
+                            <li><code>.catch(error => console.error('Error:', error))</code>: Captura y maneja cualquier error que ocurra durante la solicitud.</li>
+                            <li><code>document.getElementById('obtenerDatos').addEventListener('click', obtenerDatos);</code>: Añade un listener para el evento "click" que ejecuta la función <code>obtenerDatos</code> cuando se dispara el evento.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al hacer clic en el botón "Obtener Datos", se realizará una solicitud a la API. Los datos recibidos se imprimirán en la consola y se mostrarán en el área designada en la página web.</p>
+
+                        <p><strong>Nota:</strong> En este ejemplo, he utilizado la API pública <a href="https://jsonplaceholder.typicode.com/" target="_blank">JSONPlaceholder</a> para demostrar cómo obtener datos. Puedes reemplazar la URL con la de tu propia API si lo deseas.</p>
+                    </div>
+                    <!-- Script para el Ejemplo 10 -->
+                    <script>
+                        function obtenerDatos() {
+                            fetch('https://jsonplaceholder.typicode.com/posts/1')
+                                .then(response => response.json())
+                                .then(data => {
+                                    console.log('Datos recibidos:', data);
+                                    document.getElementById('datos').innerHTML = JSON.stringify(data, null, 2);
+                                })
+                                .catch(error => console.error('Error:', error));
+                        }
+
+                        document.getElementById('obtenerDatos').addEventListener('click', obtenerDatos);
+                    </script>
+                </div>
+            </div>
+
+            <!-- Botones de navegación para JavaScript -->
+            <div class="navigation-buttons-js">
+                <button id="prev-btn-js" disabled>Anterior</button>
+                <span class="counter" id="counter-js">Ejemplo 1 de 10</span>
+                <button id="next-btn-js">Siguiente</button>
+            </div>
+        </section>
+
+        <!-- Sección de Manipulación del DOM -->
+        <section id="dom">
+            <h2>Manipulación del DOM</h2>
+            <p>En esta sección, exploraremos cómo interactuar y modificar el DOM utilizando JavaScript para crear páginas web dinámicas e interactivas.</p>
+
+            <!-- Contenedor de ejemplos de DOM -->
+            <div id="dom-examples">
+                <!-- Ejemplo 1 -->
+                <div class="example-container active" id="dom-example-1">
+                    <h3>Ejemplo 1: Crear y Agregar Elementos al DOM</h3>
+                    <pre><code class="language-js">function crearDiv() {
+    let nuevoDiv = document.createElement('div');
+    nuevoDiv.textContent = 'Este es un nuevo div creado con JavaScript.';
+    nuevoDiv.style.backgroundColor = '#ffeb3b';
+    nuevoDiv.style.padding = '10px';
+    nuevoDiv.style.marginTop = '10px';
+
+    document.body.appendChild(nuevoDiv);
+}
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <button onclick="crearDiv()">Crear Div</button>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo crear y agregar elementos al DOM usando JavaScript.</h4>
+
+                        <p><strong>¿Por qué crear elementos con JavaScript?</strong></p>
+                        <p>Crear y agregar elementos al DOM permite dinamizar el contenido de una página web, añadir nuevos elementos basados en acciones del usuario, o cargar contenido de manera asíncrona.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este código define una función llamada <code>crearDiv</code> que crea un nuevo elemento <code>&lt;div&gt;</code>, le asigna contenido y estilos, y lo agrega al final del cuerpo del documento.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>function crearDiv() {
+    let nuevoDiv = document.createElement('div');
+    nuevoDiv.textContent = 'Este es un nuevo div creado con JavaScript.';
+    nuevoDiv.style.backgroundColor = '#ffeb3b';
+    nuevoDiv.style.padding = '10px';
+    nuevoDiv.style.marginTop = '10px';
+
+    document.body.appendChild(nuevoDiv);
+}</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>function crearDiv() { ... }</code>: Define una función que crea y agrega un nuevo div al DOM.</li>
+                            <li><code>document.createElement('div')</code>: Crea un nuevo elemento <code>&lt;div&gt;</code>.</li>
+                            <li><code>nuevoDiv.textContent = '...'</code>: Establece el contenido de texto dentro del nuevo div.</li>
+                            <li><code>nuevoDiv.style...</code>: Aplica estilos en línea al nuevo div.</li>
+                            <li><code>document.body.appendChild(nuevoDiv);</code>: Agrega el nuevo div al final del cuerpo del documento.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al hacer clic en el botón "Crear Div", se añadirá un nuevo div con el texto "Este es un nuevo div creado con JavaScript." y un fondo amarillo (#ffeb3b) al final de la página.</p>
+                    </div>
+                    <!-- Script para el Ejemplo 1 de DOM -->
+                    <script>
+                        function crearDiv() {
+                            let nuevoDiv = document.createElement('div');
+                            nuevoDiv.textContent = 'Este es un nuevo div creado con JavaScript.';
+                            nuevoDiv.style.backgroundColor = '#ffeb3b';
+                            nuevoDiv.style.padding = '10px';
+                            nuevoDiv.style.marginTop = '10px';
+
+                            document.body.appendChild(nuevoDiv);
+                        }
+                    </script>
+                </div>
+
+                <!-- Puedes agregar más ejemplos siguiendo el mismo formato -->
+            </div>
+
+            <!-- Botones de navegación para DOM (si hay más ejemplos) -->
+            <div class="navigation-buttons-js">
+                <button id="prev-btn-dom" disabled>Anterior</button>
+                <span class="counter" id="counter-dom">Ejemplo 1 de 1</span>
+                <button id="next-btn-dom" disabled>Siguiente</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2024 Ingeniería Web. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Script para la funcionalidad interactiva -->
+    <script>
+        // Función para manejar la navegación de los ejemplos
+        function setupNavigation(sectionId, prefix) {
+            const examples = document.querySelectorAll(`#${sectionId}-examples .example-container`);
+            const prevBtn = document.getElementById(`prev-btn-${prefix}`);
+            const nextBtn = document.getElementById(`next-btn-${prefix}`);
+            const counter = document.getElementById(`counter-${prefix}`);
+
+            let current = 0;
+
+            // Mostrar el primer ejemplo
+            if (examples.length > 0) {
+                examples[0].classList.add('active');
+                if (counter) {
+                    counter.textContent = `Ejemplo ${current + 1} de ${examples.length}`;
+                }
+            }
+
+            // Función para actualizar los botones y el contador
+            function updateButtons() {
+                prevBtn.disabled = current === 0;
+                nextBtn.disabled = current === examples.length - 1;
+                if (counter) {
+                    counter.textContent = `Ejemplo ${current + 1} de ${examples.length}`;
+                }
+            }
+
+            // Evento para el botón "Anterior"
+            prevBtn.addEventListener('click', () => {
+                if (current > 0) {
+                    examples[current].classList.remove('active');
+                    current--;
+                    examples[current].classList.add('active');
+                    updateButtons();
+                }
+            });
+
+            // Evento para el botón "Siguiente"
+            nextBtn.addEventListener('click', () => {
+                if (current < examples.length - 1) {
+                    examples[current].classList.remove('active');
+                    current++;
+                    examples[current].classList.add('active');
+                    updateButtons();
+                }
+            });
+
+            // Inicializar los botones
+            updateButtons();
+        }
+
+        // Configurar la navegación para JavaScript
+        setupNavigation('javascript', 'js');
+
+        // Configurar la navegación para DOM
+        setupNavigation('dom', 'dom');
+    </script>
+</body>
+</html>

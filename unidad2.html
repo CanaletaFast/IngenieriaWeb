@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Unidad Didáctica 2: HTML y CSS</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Estilos adicionales específicos para esta página -->
+    <style>
+        /* Estilos adicionales para la funcionalidad interactiva */
+        .example-container {
+            display: none; /* Ocultar todos los ejemplos inicialmente */
+            margin-bottom: 40px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .example-container.active {
+            display: block; /* Mostrar el ejemplo activo */
+            opacity: 1;
+            height: auto;
+        }
+
+        .navigation-buttons, .navigation-buttons-css {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .navigation-buttons button, .navigation-buttons-css button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .navigation-buttons button:hover, .navigation-buttons-css button:hover {
+            background-color: #45a049;
+        }
+
+        /* Estilo para el área de vista previa */
+        .preview {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #fff;
+            margin-top: 10px;
+        }
+
+        /* Estilos para la indicación del contador */
+        .counter {
+            display: inline-block;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        /* Responsividad */
+        @media (max-width: 768px) {
+            .navigation-buttons button, .navigation-buttons-css button {
+                padding: 8px 16px;
+                margin: 5px;
+                font-size: 0.9em;
+            }
+        }
+
+        /* Estilos para las explicaciones adicionales */
+        .explanation {
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-left: 4px solid #4CAF50;
+            border-radius: 3px;
+        }
+
+        .explanation h4 {
+            margin-top: 0;
+        }
+
+        .explanation p {
+            margin: 10px 0;
+        }
+
+        .explanation pre {
+            background-color: #e8e8e8;
+            padding: 10px;
+            border-radius: 3px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <div class="container">
+            <h1>Unidad Didáctica 2: HTML y CSS</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="#html">HTML Básico</a></li>
+                    <li><a href="#css">CSS Básico</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+        <!-- Sección de HTML Básico -->
+        <section id="html">
+            <h2>HTML Básico</h2>
+            <p>En esta sección aprenderemos los elementos fundamentales de HTML.</p>
+
+            <!-- Contenedor de ejemplos de HTML -->
+            <div id="html-examples">
+                <!-- Ejemplo 1 -->
+                <div class="example-container active" id="html-example-1">
+                    <h3>Ejemplo 1: Estructura básica de un documento HTML</h3>
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Mi Primera Página&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Contenido va aquí --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Mi Primera Página&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Contenido va aquí --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </pre>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a desglosar este ejemplo para entender la estructura básica de un documento HTML.</h4>
+
+                        <p><strong>¿Qué es HTML?</strong></p>
+                        <p>HTML (HyperText Markup Language) es el lenguaje estándar para crear y estructurar páginas web. Utiliza etiquetas para definir elementos como párrafos, encabezados, enlaces, imágenes, etc.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este es un ejemplo de la estructura mínima necesaria para crear una página web con HTML.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Mi Primera Página&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Contenido va aquí --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>&lt;!DOCTYPE html&gt;</code>: Declara que el documento es un documento HTML5.</li>
+                            <li><code>&lt;html lang="es"&gt;</code>: Define el inicio del documento HTML y establece el idioma principal como español.</li>
+                            <li><code>&lt;head&gt;</code>: Contiene metadatos sobre el documento, como el juego de caracteres y el título.</li>
+                            <li><code>&lt;meta charset="UTF-8"&gt;</code>: Especifica la codificación de caracteres utilizada, en este caso, UTF-8.</li>
+                            <li><code>&lt;title&gt;Mi Primera Página&lt;/title&gt;</code>: Define el título de la página que se muestra en la pestaña del navegador.</li>
+                            <li><code>&lt;body&gt;</code>: Contiene el contenido visible de la página web, como texto, imágenes, enlaces, etc.</li>
+                            <li><code>&lt;!-- Contenido va aquí --&gt;</code>: Un comentario que indica dónde se debe agregar el contenido principal.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Este código por sí solo no muestra contenido visible en la página, ya que está vacío dentro del <code>&lt;body&gt;</code>. Sin embargo, proporciona la estructura básica necesaria para empezar a construir una página web.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 2 -->
+                <div class="example-container" id="html-example-2">
+                    <h3>Ejemplo 2: Títulos y párrafos</h3>
+                    <pre><code class="language-html">&lt;h1&gt;Título Principal&lt;/h1&gt;
+&lt;p&gt;Este es un párrafo de texto.&lt;/p&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <h1>Título Principal</h1>
+                            <p>Este es un párrafo de texto.</p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo funcionan los títulos y párrafos en HTML.</h4>
+
+                        <p><strong>¿Qué son los títulos y párrafos?</strong></p>
+                        <p>Los títulos se utilizan para definir la jerarquía y estructura del contenido, mientras que los párrafos contienen el texto principal.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este ejemplo muestra cómo crear un título principal y un párrafo de texto en HTML.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;h1&gt;Título Principal&lt;/h1&gt;
+&lt;p&gt;Este es un párrafo de texto.&lt;/p&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>&lt;h1&gt;</code>: Define un encabezado de nivel 1, el más importante en la jerarquía de títulos.</li>
+                            <li><code>&lt;p&gt;</code>: Define un párrafo de texto.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al renderizar este código en un navegador, verás un título grande y destacado seguido de un párrafo de texto.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 3 -->
+                <div class="example-container" id="html-example-3">
+                    <h3>Ejemplo 3: Listas Ordenadas y No Ordenadas</h3>
+                    <pre><code class="language-html">&lt;h2&gt;Lista No Ordenada&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;Elemento 1&lt;/li&gt;
+    &lt;li&gt;Elemento 2&lt;/li&gt;
+    &lt;li&gt;Elemento 3&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Lista Ordenada&lt;/h2&gt;
+&lt;ol&gt;
+    &lt;li&gt;Primer paso&lt;/li&gt;
+    &lt;li&gt;Segundo paso&lt;/li&gt;
+    &lt;li&gt;Tercer paso&lt;/li&gt;
+&lt;/ol&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <h2>Lista No Ordenada</h2>
+                            <ul>
+                                <li>Elemento 1</li>
+                                <li>Elemento 2</li>
+                                <li>Elemento 3</li>
+                            </ul>
+
+                            <h2>Lista Ordenada</h2>
+                            <ol>
+                                <li>Primer paso</li>
+                                <li>Segundo paso</li>
+                                <li>Tercer paso</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo crear listas ordenadas y no ordenadas en HTML.</h4>
+
+                        <p><strong>¿Qué son las listas en HTML?</strong></p>
+                        <p>Las listas permiten organizar elementos de manera estructurada. Hay dos tipos principales:</p>
+                        <ul>
+                            <li><strong>Listas No Ordenadas (&lt;ul&gt;):</strong> Utilizan viñetas para listar elementos sin un orden específico.</li>
+                            <li><strong>Listas Ordenadas (&lt;ol&gt;):</strong> Utilizan números para listar elementos en un orden específico.</li>
+                        </ul>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este ejemplo muestra cómo crear tanto una lista no ordenada como una lista ordenada con tres elementos cada una.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;h2&gt;Lista No Ordenada&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;Elemento 1&lt;/li&gt;
+    &lt;li&gt;Elemento 2&lt;/li&gt;
+    &lt;li&gt;Elemento 3&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Lista Ordenada&lt;/h2&gt;
+&lt;ol&gt;
+    &lt;li&gt;Primer paso&lt;/li&gt;
+    &lt;li&gt;Segundo paso&lt;/li&gt;
+    &lt;li&gt;Tercer paso&lt;/li&gt;
+&lt;/ol&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>&lt;ul&gt;</code>: Define una lista no ordenada.</li>
+                            <li><code>&lt;ol&gt;</code>: Define una lista ordenada.</li>
+                            <li><code>&lt;li&gt;</code>: Define un elemento de lista.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <ul>
+                            <li><strong>Lista No Ordenada:</strong> Muestra tres elementos con viñetas.</li>
+                            <li><strong>Lista Ordenada:</strong> Muestra tres elementos numerados.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 4 -->
+                <div class="example-container" id="html-example-4">
+                    <h3>Ejemplo 4: Enlaces y Imágenes</h3>
+                    <pre><code class="language-html">&lt;a href="https://www.ejemplo.com"&gt;Visita Ejemplo.com&lt;/a&gt;
+&lt;img src="imagen.jpg" alt="Descripción de la imagen"&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <a href="https://www.ejemplo.com">Visita Ejemplo.com</a>
+                            <br>
+                            <img src="imagen.jpg" alt="Descripción de la imagen" width="200">
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo crear enlaces e insertar imágenes en HTML.</h4>
+
+                        <p><strong>¿Qué son los enlaces y las imágenes?</strong></p>
+                        <p>Los enlaces permiten a los usuarios navegar a otras páginas o sitios web, mientras que las imágenes enriquecen el contenido visual de la página.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este ejemplo muestra cómo crear un enlace que redirige a una página externa y cómo insertar una imagen en tu página web.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;a href="https://www.ejemplo.com"&gt;Visita Ejemplo.com&lt;/a&gt;
+&lt;img src="imagen.jpg" alt="Descripción de la imagen"&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>&lt;a href="https://www.ejemplo.com"&gt;Visita Ejemplo.com&lt;/a&gt;</code>: Crea un enlace que lleva al usuario a <a href="https://www.ejemplo.com">ejemplo.com</a>. El texto "Visita Ejemplo.com" es lo que verá y podrá hacer clic el usuario.</li>
+                            <li><code>&lt;img src="imagen.jpg" alt="Descripción de la imagen"&gt;</code>: Inserta una imagen en la página. 
+                                <ul>
+                                    <li><code>src="imagen.jpg"</code>: Especifica la ruta de la imagen que se va a mostrar. Asegúrate de que la imagen esté en la ubicación correcta o ajusta la ruta según corresponda.</li>
+                                    <li><code>alt="Descripción de la imagen"</code>: Proporciona una descripción alternativa para la imagen, útil para accesibilidad y SEO.</li>
+                                    <li><code>width="200"</code>: Define el ancho de la imagen en píxeles.</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <ul>
+                            <li><strong>Enlace:</strong> Un texto clicable que lleva a los usuarios a <a href="https://www.ejemplo.com">ejemplo.com</a>.</li>
+                            <li><strong>Imagen:</strong> Una imagen mostrada con un ancho de 200 píxeles. Asegúrate de tener una imagen llamada "imagen.jpg" en la ubicación especificada o ajusta la ruta del atributo <code>src</code>.</li>
+                        </ul>
+
+                        <p><strong>Consejo:</strong> Siempre utiliza el atributo <code>alt</code> en las imágenes para mejorar la accesibilidad y proporcionar contexto cuando la imagen no se puede cargar.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 5 -->
+                <div class="example-container" id="html-example-5">
+                    <h3>Ejemplo 5: Tablas</h3>
+                    <pre><code class="language-html">&lt;table border="1"&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Nombre&lt;/th&gt;
+        &lt;th&gt;Edad&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Juan&lt;/td&gt;
+        &lt;td&gt;25&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Ana&lt;/td&gt;
+        &lt;td&gt;30&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <table border="1">
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Edad</th>
+                                </tr>
+                                <tr>
+                                    <td>Juan</td>
+                                    <td>25</td>
+                                </tr>
+                                <tr>
+                                    <td>Ana</td>
+                                    <td>30</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo crear tablas en HTML.</h4>
+
+                        <p><strong>¿Qué es una tabla en HTML?</strong></p>
+                        <p>Las tablas permiten organizar datos en filas y columnas, facilitando la presentación de información tabular.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este ejemplo muestra cómo crear una tabla con dos columnas: "Nombre" y "Edad", y tres filas de datos.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;table border="1"&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Nombre&lt;/th&gt;
+        &lt;th&gt;Edad&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Juan&lt;/td&gt;
+        &lt;td&gt;25&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Ana&lt;/td&gt;
+        &lt;td&gt;30&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>&lt;table border="1"&gt;</code>: Crea una tabla y establece un borde de 1 píxel alrededor de las celdas.</li>
+                            <li><code>&lt;tr&gt;</code>: Define una fila en la tabla.</li>
+                            <li><code>&lt;th&gt;</code>: Define una celda de encabezado en una tabla. Por defecto, el texto está en negrita y centrado.</li>
+                            <li><code>&lt;td&gt;</code>: Define una celda de datos en una tabla.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>La tabla mostrará dos columnas: "Nombre" y "Edad", con tres filas de datos para Juan y Ana.</p>
+
+                        <p><strong>Consejo:</strong> Evita utilizar el atributo <code>border</code> para estilizar las tablas. En su lugar, utiliza CSS para una mayor flexibilidad y mejores prácticas de diseño.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 6 -->
+                <div class="example-container" id="html-example-6">
+                    <h3>Ejemplo 6: Formularios</h3>
+                    <pre><code class="language-html">&lt;form action="/submit" method="post"&gt;
+    &lt;label for="nombre"&gt;Nombre:&lt;/label&gt;
+    &lt;input type="text" id="nombre" name="nombre"&gt;&lt;br&gt;&lt;br&gt;
+
+    &lt;label for="email"&gt;Correo Electrónico:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email"&gt;&lt;br&gt;&lt;br&gt;
+
+    &lt;input type="submit" value="Enviar"&gt;
+&lt;/form&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <form action="/submit" method="post">
+                                <label for="nombre">Nombre:</label>
+                                <input type="text" id="nombre" name="nombre"><br><br>
+
+                                <label for="email">Correo Electrónico:</label>
+                                <input type="email" id="email" name="email"><br><br>
+
+                                <input type="submit" value="Enviar">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo crear formularios en HTML.</h4>
+
+                        <p><strong>¿Qué es un formulario en HTML?</strong></p>
+                        <p>Los formularios permiten a los usuarios ingresar datos que se pueden enviar a un servidor para su procesamiento. Son esenciales para funcionalidades como registros, inicios de sesión, búsquedas, y más.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este ejemplo muestra un formulario básico con campos para el nombre y el correo electrónico, y un botón de envío.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;form action="/submit" method="post"&gt;
+    &lt;label for="nombre"&gt;Nombre:&lt;/label&gt;
+    &lt;input type="text" id="nombre" name="nombre"&gt;&lt;br&gt;&lt;br&gt;
+
+    &lt;label for="email"&gt;Correo Electrónico:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email"&gt;&lt;br&gt;&lt;br&gt;
+
+    &lt;input type="submit" value="Enviar"&gt;
+&lt;/form&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>&lt;form action="/submit" method="post"&gt;</code>: Define un formulario que enviará los datos a la URL "/submit" utilizando el método POST.</li>
+                            <li><code>&lt;label for="nombre"&gt;Nombre:&lt;/label&gt;</code>: Etiqueta para el campo de entrada de nombre. El atributo <code>for</code> está vinculado al <code>id</code> del campo de entrada correspondiente.</li>
+                            <li><code>&lt;input type="text" id="nombre" name="nombre"&gt;</code>: Campo de entrada de texto para el nombre del usuario.</li>
+                            <li><code>&lt;br&gt;&lt;br&gt;</code>: Saltos de línea para espaciar los elementos. (Nota: Es mejor utilizar CSS para el espaciado en lugar de saltos de línea).</li>
+                            <li><code>&lt;input type="email" id="email" name="email"&gt;</code>: Campo de entrada para el correo electrónico, con validación básica de formato de email.</li>
+                            <li><code>&lt;input type="submit" value="Enviar"&gt;</code>: Botón para enviar el formulario.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>El formulario mostrará dos campos de entrada: uno para el nombre y otro para el correo electrónico, seguido de un botón "Enviar". Al hacer clic en "Enviar", los datos se enviarán al servidor especificado en el atributo <code>action</code>.</p>
+
+                        <p><strong>Consejos:</strong></p>
+                        <ul>
+                            <li><strong>Usa CSS para el estilo:</strong> Evita usar etiquetas <code>&lt;br&gt;</code> para el espaciado. En su lugar, utiliza CSS para controlar el diseño y el espacio entre los elementos.</li>
+                            <li><strong>Validación:</strong> Implementa validación tanto en el lado del cliente (con JavaScript) como en el lado del servidor para asegurar que los datos ingresados son correctos y seguros.</li>
+                            <li><strong>Accesibilidad:</strong> Utiliza etiquetas <code>&lt;label&gt;</code> adecuadamente para mejorar la accesibilidad y la experiencia del usuario.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 7 -->
+                <div class="example-container" id="html-example-7">
+                    <h3>Ejemplo 7: Divisiones y Spans</h3>
+                    <pre><code class="language-html">&lt;div class="contenedor"&gt;
+    &lt;h2&gt;Título dentro de un div&lt;/h2&gt;
+    &lt;p&gt;Este es un párrafo dentro de un div.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;span style="color: blue;"&gt;Texto dentro de un span&lt;/span&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <div class="contenedor">
+                                <h2>Título dentro de un div</h2>
+                                <p>Este es un párrafo dentro de un div.</p>
+                            </div>
+
+                            <span style="color: blue;">Texto dentro de un span</span>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo funcionan las etiquetas <code>&lt;div&gt;</code> y <code>&lt;span&gt;</code> en HTML.</h4>
+
+                        <p><strong>¿Qué son <code>&lt;div&gt;</code> y <code>&lt;span&gt;</code>?</strong></p>
+                        <p><code>&lt;div&gt;</code> y <code>&lt;span&gt;</code> son etiquetas contenedoras utilizadas para agrupar y estilizar otros elementos en HTML.</p>
+                        <ul>
+                            <li><strong><code>&lt;div&gt;</code>:</strong> Un contenedor de bloque que se utiliza para agrupar elementos y aplicarles estilos o para estructurar la página.</li>
+                            <li><strong><code>&lt;span&gt;</code>:</strong> Un contenedor en línea utilizado para agrupar partes de texto u otros elementos en línea para aplicar estilos específicos.</li>
+                        </ul>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este ejemplo muestra cómo utilizar <code>&lt;div&gt;</code> para agrupar elementos de bloque y <code>&lt;span&gt;</code> para agrupar elementos en línea.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;div class="contenedor"&gt;
+    &lt;h2&gt;Título dentro de un div&lt;/h2&gt;
+    &lt;p&gt;Este es un párrafo dentro de un div.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;span style="color: blue;"&gt;Texto dentro de un span&lt;/span&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>&lt;div class="contenedor"&gt;</code>: Crea un contenedor de bloque con la clase "contenedor". Esto permite aplicar estilos específicos a todos los elementos dentro de este <code>&lt;div&gt;</code>.</li>
+                            <li><code>&lt;h2&gt;Título dentro de un div&lt;/h2&gt;</code>: Un título de nivel 2 dentro del <code>&lt;div&gt;</code>.</li>
+                            <li><code>&lt;p&gt;Este es un párrafo dentro de un div.&lt;/p&gt;</code>: Un párrafo de texto dentro del <code>&lt;div&gt;</code>.</li>
+                            <li><code>&lt;span style="color: blue;"&gt;Texto dentro de un span&lt;/span&gt;</code>: Un texto en línea con estilo aplicado directamente que cambia su color a azul.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <ul>
+                            <li><strong><code>&lt;div&gt;</code>:</strong> Agrupa el título y el párrafo, permitiendo aplicar estilos o estructuras específicas al conjunto.</li>
+                            <li><strong><code>&lt;span&gt;</code>:</strong> Muestra un texto en línea con el color azul aplicado, sin afectar a otros elementos en la misma línea.</li>
+                        </ul>
+
+                        <p><strong>Consejos:</strong></p>
+                        <ul>
+                            <li><strong>Uso adecuado:</strong> Utiliza <code>&lt;div&gt;</code> para agrupar elementos de bloque y <code>&lt;span&gt;</code> para elementos en línea.</li>
+                            <li><strong>Estilos CSS:</strong> Es recomendable aplicar estilos mediante clases o IDs en lugar de estilos en línea para mantener el HTML limpio y facilitar el mantenimiento.</li>
+                            <li><strong>Semántica:</strong> Aunque <code>&lt;div&gt;</code> y <code>&lt;span&gt;</code> son útiles para estructurar y estilizar, considera utilizar etiquetas semánticas como <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, etc., para mejorar la accesibilidad y la SEO.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 8 -->
+                <div class="example-container" id="html-example-8">
+                    <h3>Ejemplo 8: Comentarios</h3>
+                    <pre><code class="language-html">&lt;!-- Este es un comentario en HTML --&gt;
+&lt;p&gt;Este párrafo está visible.&lt;/p&gt;
+&lt;!-- 
+    Este es un párrafo comentado y no será visible.
+    &lt;p&gt;No se mostrará en la página.&lt;/p&gt;
+--&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Este párrafo está visible.</p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo funcionan los comentarios en HTML.</h4>
+
+                        <p><strong>¿Qué son los comentarios en HTML?</strong></p>
+                        <p>Los comentarios son notas que puedes agregar en tu código HTML para explicar o recordar cosas. No se muestran en el navegador y no afectan la visualización de la página.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este ejemplo muestra cómo agregar comentarios en HTML y cómo afectan la visualización de la página.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;!-- Este es un comentario en HTML --&gt;
+&lt;p&gt;Este párrafo está visible.&lt;/p&gt;
+&lt;!-- 
+    Este es un párrafo comentado y no será visible.
+    &lt;p&gt;No se mostrará en la página.&lt;/p&gt;
+--&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>&lt;!-- Este es un comentario en HTML --&gt;</code>: Un comentario sencillo que explica algo en el código.</li>
+                            <li><code>&lt;p&gt;Este párrafo está visible.&lt;/p&gt;</code>: Un párrafo que se muestra en la página.</li>
+                            <li><code>&lt;!-- 
+    Este es un párrafo comentado y no será visible.
+    &lt;p&gt;No se mostrará en la página.&lt;/p&gt;
+--&gt;</code>: Un comentario multilínea que incluye una etiqueta de párrafo que no se mostrará.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Solo el párrafo "Este párrafo está visible." se mostrará en la página. El párrafo dentro del comentario no será visible.</p>
+
+                        <p><strong>Consejos:</strong></p>
+                        <ul>
+                            <li><strong>Usa comentarios para:</strong> Explicar secciones del código, recordar tareas pendientes, o deshabilitar temporalmente partes del código sin eliminarlas.</li>
+                            <li><strong>No abuses de los comentarios:</strong> Evita llenar tu HTML de comentarios innecesarios, ya que puede dificultar la lectura del código.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 9 -->
+                <div class="example-container" id="html-example-9">
+                    <h3>Ejemplo 9: Meta Tags</h3>
+                    <pre><code class="language-html">&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Página con Meta Tags&lt;/title&gt;
+&lt;/head&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <!-- El resultado de meta tags no es visible directamente, pero la página se verá responsiva -->
+                            <p>Revisa el título de la pestaña y la responsividad de la página.</p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo funcionan las Meta Tags en HTML.</h4>
+
+                        <p><strong>¿Qué son las Meta Tags?</strong></p>
+                        <p>Las Meta Tags proporcionan información sobre el documento HTML que no se muestra directamente en la página. Son esenciales para la optimización de motores de búsqueda (SEO), la compatibilidad con navegadores y la adaptabilidad a diferentes dispositivos.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este ejemplo muestra cómo definir las Meta Tags para la codificación de caracteres y la configuración de la viewport para diseño responsivo.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;title&gt;Página con Meta Tags&lt;/title&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>&lt;meta charset="UTF-8"&gt;</code>: Especifica la codificación de caracteres utilizada en el documento, asegurando que se muestren correctamente los caracteres especiales.</li>
+                            <li><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code>: Controla cómo se escala y se muestra la página en dispositivos móviles. Hace que la página sea responsiva.</li>
+                            <li><code>&lt;title&gt;Página con Meta Tags&lt;/title&gt;</code>: Define el título de la página que se muestra en la pestaña del navegador.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Las Meta Tags no son visibles directamente en la página, pero afectan aspectos clave:</p>
+                        <ul>
+                            <li><strong>Título:</strong> Aparece en la pestaña del navegador.</li>
+                            <li><strong>Responsividad:</strong> La página se adaptará al tamaño de pantalla del dispositivo, asegurando una buena experiencia en móviles y tabletas.</li>
+                        </ul>
+
+                        <p><strong>Consejos:</strong></p>
+                        <ul>
+                            <li><strong>Usa Meta Tags correctamente:</strong> Asegúrate de que las Meta Tags estén bien definidas para mejorar la compatibilidad y la optimización de tu página.</li>
+                            <li><strong>SEO:</strong> Utiliza Meta Tags adicionales como <code>&lt;meta name="description"&gt;</code> para proporcionar descripciones que ayuden a los motores de búsqueda a entender el contenido de tu página.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 10 -->
+                <div class="example-container" id="html-example-10">
+                    <h3>Ejemplo 10: Uso de Semantic Elements</h3>
+                    <pre><code class="language-html">&lt;header&gt;
+    &lt;h1&gt;Encabezado de la Página&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#inicio"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#servicios"&gt;Servicios&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#contacto"&gt;Contacto&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;main&gt;
+    &lt;section&gt;
+        &lt;h2&gt;Contenido Principal&lt;/h2&gt;
+        &lt;p&gt;Este es el contenido principal de la página.&lt;/p&gt;
+    &lt;/section&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+    &lt;p&gt;Pie de página con información de contacto.&lt;/p&gt;
+&lt;/footer&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <header>
+                                <h1>Encabezado de la Página</h1>
+                            </header>
+
+                            <nav>
+                                <ul>
+                                    <li><a href="#inicio">Inicio</a></li>
+                                    <li><a href="#servicios">Servicios</a></li>
+                                    <li><a href="#contacto">Contacto</a></li>
+                                </ul>
+                            </nav>
+
+                            <main>
+                                <section>
+                                    <h2>Contenido Principal</h2>
+                                    <p>Este es el contenido principal de la página.</p>
+                                </section>
+                            </main>
+
+                            <footer>
+                                <p>Pie de página con información de contacto.</p>
+                            </footer>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo usar elementos semánticos en HTML para estructurar mejor tu página.</h4>
+
+                        <p><strong>¿Qué son los elementos semánticos en HTML?</strong></p>
+                        <p>Los elementos semánticos proporcionan significado al contenido, describiendo claramente su propósito tanto para los desarrolladores como para los navegadores y motores de búsqueda. Mejora la accesibilidad y el SEO de tu página.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este ejemplo muestra cómo utilizar elementos semánticos como <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code> y <code>&lt;footer&gt;</code> para estructurar una página web.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;header&gt;
+    &lt;h1&gt;Encabezado de la Página&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#inicio"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#servicios"&gt;Servicios&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#contacto"&gt;Contacto&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;main&gt;
+    &lt;section&gt;
+        &lt;h2&gt;Contenido Principal&lt;/h2&gt;
+        &lt;p&gt;Este es el contenido principal de la página.&lt;/p&gt;
+    &lt;/section&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+    &lt;p&gt;Pie de página con información de contacto.&lt;/p&gt;
+&lt;/footer&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>&lt;header&gt;</code>: Define el encabezado de la página, que generalmente contiene el título y otros elementos introductorios.</li>
+                            <li><code>&lt;nav&gt;</code>: Define una sección de navegación con enlaces a otras partes de la página o a páginas externas.</li>
+                            <li><code>&lt;main&gt;</code>: Define el contenido principal de la página, único por página.</li>
+                            <li><code>&lt;section&gt;</code>: Define una sección temática dentro del contenido principal.</li>
+                            <li><code>&lt;footer&gt;</code>: Define el pie de página, que suele contener información de contacto, derechos de autor, etc.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <ul>
+                            <li><strong>Header:</strong> Muestra el título de la página.</li>
+                            <li><strong>Nav:</strong> Presenta una lista de enlaces de navegación.</li>
+                            <li><strong>Main:</strong> Contiene la sección principal con un título y un párrafo.</li>
+                            <li><strong>Footer:</strong> Muestra información de contacto y derechos de autor.</li>
+                        </ul>
+
+                        <p><strong>Consejos:</strong></p>
+                        <ul>
+                            <li><strong>Usa elementos semánticos:</strong> Facilita la comprensión de la estructura de la página tanto para humanos como para máquinas.</li>
+                            <li><strong>Organiza tu contenido:</strong> Utiliza <code>&lt;section&gt;</code> para agrupar contenido relacionado, mejorando la legibilidad y la mantenibilidad del código.</li>
+                            <li><strong>Mejora la accesibilidad:</strong> Los elementos semánticos ayudan a tecnologías asistivas a interpretar correctamente el contenido.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de navegación para HTML -->
+            <div class="navigation-buttons">
+                <button id="prev-btn-html" disabled>Anterior</button>
+                <span class="counter" id="counter-html">Ejemplo 1 de 10</span>
+                <button id="next-btn-html">Siguiente</button>
+            </div>
+        </section>
+
+        <!-- Sección de CSS Básico -->
+        <section id="css">
+            <h2>CSS Básico</h2>
+            <p>En esta sección exploraremos cómo aplicar estilos a nuestra página HTML utilizando CSS.</p>
+
+            <!-- Contenedor de ejemplos de CSS -->
+            <div id="css-examples">
+                <!-- Ejemplo 1 -->
+                <div class="example-container active" id="css-example-1">
+                    <h3>Ejemplo 1: Estilos en línea</h3>
+                    <pre><code class="language-html">&lt;p style="color: blue;"&gt;Este texto es azul.&lt;/p&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p style="color: blue;">Este texto es azul.</p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Entiendo que este código de CSS pueda parecer un poco confuso al principio. Te lo explicaré de forma sencilla.</h4>
+
+                        <p><strong>¿Qué es CSS?</strong></p>
+                        <p>CSS (Cascading Style Sheets) es un lenguaje de diseño que se utiliza para dar estilo a las páginas web. Con CSS, podemos definir cómo se verán los elementos de una página, como el color del texto, el tamaño de las fuentes, el espaciado, etc.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este código utiliza **estilos en línea** para aplicar un color específico a un párrafo.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;p style="color: blue;"&gt;Este texto es azul.&lt;/p&gt;</pre>
+
+                        <p><strong>Propiedades CSS:</strong></p>
+                        <ul>
+                            <li><code>color: blue;</code>: Cambia el color del texto del párrafo a azul.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Cuando apliques este estilo a un elemento <code>&lt;p&gt;</code> en tu HTML, verás que el texto dentro del párrafo se mostrará en color azul.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 2 -->
+                <div class="example-container" id="css-example-2">
+                    <h3>Ejemplo 2: Estilos internos</h3>
+                    <pre><code class="language-html">&lt;head&gt;
+    &lt;style&gt;
+        p {
+            font-size: 18px;
+            color: green;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;Este párrafo tiene estilos internos.&lt;/p&gt;
+&lt;/body&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p style="font-size: 18px; color: green;">Este párrafo tiene estilos internos.</p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a desglosar este ejemplo para que entiendas mejor cómo funcionan los estilos internos en CSS.</h4>
+
+                        <p><strong>¿Qué son los estilos internos?</strong></p>
+                        <p>Los estilos internos se definen dentro de la etiqueta <code>&lt;style&gt;</code> en la sección <code>&lt;head&gt;</code> de tu documento HTML. Estos estilos afectan a todo el documento a menos que se especifiquen de otra manera.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este código aplica estilos a todos los elementos <code>&lt;p&gt;</code> (párrafos) dentro del documento.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;style&gt;
+    p {
+        font-size: 18px;
+        color: green;
+    }
+&lt;/style&gt;</pre>
+
+                        <p><strong>Propiedades CSS:</strong></p>
+                        <ul>
+                            <li><code>font-size: 18px;</code>: Establece el tamaño de la fuente del texto a 18 píxeles.</li>
+                            <li><code>color: green;</code>: Cambia el color del texto a verde.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al aplicar este estilo, cualquier párrafo <code>&lt;p&gt;</code> en tu HTML mostrará su texto con un tamaño de fuente de 18 píxeles y en color verde.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 3 -->
+                <div class="example-container" id="css-example-3">
+                    <h3>Ejemplo 3: Estilos externos</h3>
+                    <p>En el archivo <code>style.css</code>:</p>
+                    <pre><code class="language-css">p {
+    color: red;
+    text-align: center;
+}
+                    </code></pre>
+
+                    <p>En el archivo HTML:</p>
+                    <pre><code class="language-html">&lt;head&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;Este párrafo utiliza estilos externos.&lt;/p&gt;
+&lt;/body&gt;
+                    </code></pre>
+
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p style="color: red; text-align: center;">Este párrafo utiliza estilos externos.</p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo funcionan los estilos externos en CSS.</h4>
+
+                        <p><strong>¿Qué son los estilos externos?</strong></p>
+                        <p>Los estilos externos se definen en un archivo separado con extensión <code>.css</code> y se vinculan a tu documento HTML mediante la etiqueta <code>&lt;link&gt;</code>. Esto permite mantener el HTML limpio y facilita la reutilización de estilos en múltiples páginas.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>En este ejemplo, estamos aplicando estilos a los párrafos <code>&lt;p&gt;</code> utilizando un archivo CSS externo.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>/* style.css */
+p {
+    color: red;
+    text-align: center;
+}</pre>
+
+                        <p><strong>Propiedades CSS:</strong></p>
+                        <ul>
+                            <li><code>color: red;</code>: Cambia el color del texto a rojo.</li>
+                            <li><code>text-align: center;</code>: Centra el texto dentro del párrafo.</li>
+                        </ul>
+
+                        <p><strong>Enlace en el HTML:</strong></p>
+                        <pre>&lt;link rel="stylesheet" href="style.css"&gt;</pre>
+                        <p>Esta línea de código en la sección <code>&lt;head&gt;</code> vincula el archivo <code>style.css</code> al documento HTML, aplicando los estilos definidos allí.</p>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al aplicar este estilo, cualquier párrafo <code>&lt;p&gt;</code> en tu HTML mostrará su texto en color rojo y centrado.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 4 -->
+                <div class="example-container" id="css-example-4">
+                    <h3>Ejemplo 4: Selectores de Clase y ID</h3>
+                    <pre><code class="language-css">/* Estilos para elementos con la clase 'destacado' */
+.destacado {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+/* Estilos para el elemento con el ID 'principal' */
+#principal {
+    border: 2px solid #4CAF50;
+    padding: 10px;
+}
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p class="destacado">Este párrafo tiene la clase 'destacado'.</p>
+                            <div id="principal">Este div tiene el ID 'principal'.</div>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Entiendo que este código de CSS pueda parecer un poco confuso al principio. Te lo explicaré de forma sencilla.</h4>
+
+                        <p><strong>¿Qué es CSS?</strong></p>
+                        <p>CSS (Cascading Style Sheets) es un lenguaje de diseño que se utiliza para dar estilo a las páginas web. Con CSS, podemos definir cómo se verán los elementos de una página, como el color del texto, el tamaño de las fuentes, el espaciado, etc.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este código CSS está definiendo estilos para dos tipos de elementos: aquellos que tienen una clase específica y aquellos que tienen un ID específico.</p>
+
+                        <p><strong>Clases y IDs</strong></p>
+                        <ul>
+                            <li><strong>Clases:</strong> Son como etiquetas que puedes asignar a múltiples elementos en tu HTML. Puedes pensar en ellas como grupos de elementos que quieres que tengan el mismo estilo. Se declaran con un punto (<code>.</code>) seguido del nombre de la clase.</li>
+                            <li><strong>IDs:</strong> Son identificadores únicos que se asignan a un solo elemento en tu HTML. Se utilizan cuando quieres aplicar un estilo muy específico a un elemento en particular. Se declaran con un signo de número (<code>#</code>) seguido del nombre del ID.</li>
+                        </ul>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>/* Estilos para elementos con la clase 'destacado' */
+.destacado {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+/* Estilos para el elemento con el ID 'principal' */
+#principal {
+    border: 2px solid #4CAF50;
+    padding: 10px;
+}</pre>
+
+                        <p><strong>Uso del código</strong></p>
+                        <ul>
+                            <li><code>.destacado</code>: Esta regla de estilo se aplica a cualquier elemento HTML que tenga la clase "destacado" asignada. A esos elementos se les dará un fondo amarillo y el texto se mostrará en negrita.</li>
+                            <li><code>#principal</code>: Esta regla de estilo se aplica únicamente al elemento HTML que tenga el ID "principal". A ese elemento se le añadirá un borde sólido verde de 2 píxeles y un relleno interno de 10 píxeles.</li>
+                        </ul>
+
+                        <p><strong>¿Qué significa "Este párrafo tiene la clase 'destacado'. Este div tiene el ID 'principal'."?</strong></p>
+                        <p>Esto significa que en el código HTML correspondiente, hay un párrafo (etiqueta <code>&lt;p&gt;</code>) al que se le ha asignado la clase "destacado" y un contenedor (etiqueta <code>&lt;div&gt;</code>) al que se le ha asignado el ID "principal".</p>
+
+                        <p><strong>En resumen:</strong></p>
+                        <ul>
+                            <li><strong>Clases:</strong> Se utilizan para aplicar estilos a múltiples elementos.</li>
+                            <li><strong>IDs:</strong> Se utilizan para aplicar estilos a un único elemento.</li>
+                        </ul>
+                        <p>El código CSS define cómo se verán los elementos que tienen una clase o un ID específico. El HTML asigna las clases y los IDs a los elementos.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 5 -->
+                <div class="example-container" id="css-example-5">
+                    <h3>Ejemplo 5: Pseudo-clases</h3>
+                    <pre><code class="language-css">/* Cambia el color del enlace al pasar el cursor */
+a:hover {
+    color: orange;
+}
+
+/* Estilos para el primer hijo de una lista */
+ul li:first-child {
+    font-weight: bold;
+}
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <a href="#">Enlace de ejemplo</a><br><br>
+                            <ul>
+                                <li>Primer elemento (estilo aplicado)</li>
+                                <li>Segundo elemento</li>
+                                <li>Tercer elemento</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Claro! Vamos a desglosar el código y explicar qué hace cada parte, además de resumir el resultado final para que sea más claro.</h4>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este código CSS utiliza **pseudo-clases** para aplicar estilos a elementos en situaciones específicas.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>/* Cambia el color del enlace al pasar el cursor */
+a:hover {
+    color: orange;
+}
+
+/* Estilos para el primer hijo de una lista */
+ul li:first-child {
+    font-weight: bold;
+}</pre>
+
+                        <p><strong>Primera parte:</strong> <code>a:hover { color: orange; }</code></p>
+                        <ul>
+                            <li><code>a</code>: Selecciona todos los elementos que sean enlaces (etiquetas <code>&lt;a&gt;</code>).</li>
+                            <li><code>:hover</code>: Esta es una pseudo-clase que se aplica cuando el cursor del ratón pasa por encima del elemento seleccionado.</li>
+                            <li><code>color: orange;</code>: Cambia el color del texto del enlace a naranja cuando se cumple la condición anterior (es decir, cuando el cursor está sobre el enlace).</li>
+                        </ul>
+                        <p><strong>En resumen:</strong> Esta parte del código hace que el color de cualquier enlace cambie a naranja cuando pasas el ratón por encima.</p>
+
+                        <p><strong>Segunda parte:</strong> <code>ul li:first-child { font-weight: bold; }</code></p>
+                        <ul>
+                            <li><code>ul li</code>: Selecciona todos los elementos <code>&lt;li&gt;</code> (elementos de una lista) que estén dentro de una lista no ordenada (<code>&lt;ul&gt;</code>).</li>
+                            <li><code>:first-child</code>: Esta pseudo-clase selecciona el primer elemento hijo de un elemento padre. En este caso, el primer elemento <code>&lt;li&gt;</code> dentro de cada <code>&lt;ul&gt;</code>.</li>
+                            <li><code>font-weight: bold;</code>: Hace que el texto del primer elemento de cada lista se muestre en negrita.</li>
+                        </ul>
+                        <p><strong>En resumen:</strong> Esta parte del código pone en negrita el primer elemento de cada lista no ordenada.</p>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <ul>
+                            <li><strong>Enlaces:</strong> Al pasar el cursor sobre cualquier enlace, su color cambiará a naranja.</li>
+                            <li><strong>Listas:</strong> El primer elemento de cada lista no ordenada se mostrará en negrita.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 6 -->
+                <div class="example-container" id="css-example-6">
+                    <h3>Ejemplo 6: Box Model</h3>
+                    <pre><code class="language-css">/* Margen, padding y borde */
+.box {
+    margin: 20px;
+    padding: 15px;
+    border: 2px solid #333;
+    background-color: #e0e0e0;
+}
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <div class="box">
+                                <p>Este div demuestra el modelo de caja con margen, padding y borde.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Claro! Vamos a analizar el código CSS y explicar qué hace cada parte:</h4>
+
+                        <p><strong>Propiedades CSS:</strong></p>
+                        <ul>
+                            <li><code>margin: 20px;</code>: Establece un margen de 20 píxeles alrededor del elemento. El margen crea un espacio vacío entre el elemento y los elementos adyacentes.</li>
+                            <li><code>padding: 15px;</code>: Establece un relleno interno de 15 píxeles dentro del elemento. El relleno crea un espacio entre el borde del elemento y su contenido.</li>
+                            <li><code>border: 2px solid #333;</code>: Aplica un borde sólido de 2 píxeles al elemento. El color del borde es #333 (un gris oscuro).</li>
+                            <li><code>background-color: #e0e0e0;</code>: Establece el color de fondo del elemento a un gris claro (#e0e0e0).</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Cuando apliques este estilo a un elemento con la clase "box" en tu HTML, verás un cuadro con las siguientes características:</p>
+                        <ul>
+                            <li><strong>Espacio alrededor:</strong> Un margen de 20 píxeles separará el cuadro de otros elementos.</li>
+                            <li><strong>Espacio interno:</strong> El contenido del cuadro estará a 15 píxeles de distancia del borde.</li>
+                            <li><strong>Borde:</strong> El cuadro tendrá un borde sólido de 2 píxeles de color gris oscuro.</li>
+                            <li><strong>Fondo:</strong> El fondo del cuadro será de color gris claro.</li>
+                        </ul>
+
+                        <p><strong>Ejemplo de HTML:</strong></p>
+                        <pre>&lt;div class="box"&gt;
+    Este div demuestra el modelo de caja con margen, padding y borde.
+&lt;/div&gt;</pre>
+                        <p>Al combinar este HTML con el CSS anterior, verás el resultado visual descrito.</p>
+
+                        <p><strong>Concepto del Modelo de Caja (Box Model)</strong></p>
+                        <p>Este ejemplo demuestra el concepto fundamental del modelo de caja en CSS. Cada elemento en una página web se puede considerar como una caja, y esta caja tiene cuatro áreas principales:</p>
+                        <ul>
+                            <li><strong>Contenido:</strong> El texto o imágenes dentro del elemento.</li>
+                            <li><strong>Padding:</strong> El espacio entre el contenido y el borde.</li>
+                            <li><strong>Borde:</strong> La línea que rodea el elemento.</li>
+                            <li><strong>Margen:</strong> El espacio entre el borde del elemento y otros elementos.</li>
+                        </ul>
+                        <p>El modelo de caja es esencial para entender cómo se posicionan y espacián los elementos en una página web.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 7 -->
+                <div class="example-container" id="css-example-7">
+                    <h3>Ejemplo 7: Flexbox Básico</h3>
+                    <pre><code class="language-css">/* Contenedor Flex */
+.flex-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+/* Elementos Flex */
+.flex-item {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    margin: 10px;
+    flex: 1;
+    text-align: center;
+}
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <div class="flex-container">
+                                <div class="flex-item">Elemento 1</div>
+                                <div class="flex-item">Elemento 2</div>
+                                <div class="flex-item">Elemento 3</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo funciona Flexbox en este ejemplo.</h4>
+
+                        <p><strong>¿Qué es Flexbox?</strong></p>
+                        <p>Flexbox (Flexible Box Layout) es un modelo de diseño en CSS que facilita la alineación y distribución de elementos dentro de un contenedor, incluso cuando su tamaño es desconocido o dinámico.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este código define un contenedor flexible y tres elementos dentro de él que se ajustan automáticamente.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>/* Contenedor Flex */
+.flex-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+/* Elementos Flex */
+.flex-item {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    margin: 10px;
+    flex: 1;
+    text-align: center;
+}</pre>
+
+                        <p><strong>Propiedades CSS del Contenedor Flex:</strong></p>
+                        <ul>
+                            <li><code>display: flex;</code>: Define al elemento como un contenedor flex, habilitando el modelo Flexbox.</li>
+                            <li><code>justify-content: space-around;</code>: Distribuye los elementos hijos con espacios iguales alrededor de ellos.</li>
+                            <li><code>align-items: center;</code>: Alinea los elementos hijos verticalmente en el centro del contenedor.</li>
+                            <li><code>background-color: #f2f2f2;</code>: Establece el color de fondo del contenedor.</li>
+                            <li><code>padding: 20px;</code>: Añade un relleno interno de 20 píxeles al contenedor.</li>
+                        </ul>
+
+                        <p><strong>Propiedades CSS de los Elementos Flex:</strong></p>
+                        <ul>
+                            <li><code>background-color: #4CAF50;</code>: Establece el color de fondo de los elementos a un verde.</li>
+                            <li><code>color: white;</code>: Cambia el color del texto a blanco.</li>
+                            <li><code>padding: 20px;</code>: Añade un relleno interno de 20 píxeles a cada elemento.</li>
+                            <li><code>margin: 10px;</code>: Añade un margen externo de 10 píxeles alrededor de cada elemento.</li>
+                            <li><code>flex: 1;</code>: Permite que los elementos crezcan y se encogen según el espacio disponible, ocupando un espacio igual entre ellos.</li>
+                            <li><code>text-align: center;</code>: Centra el texto dentro de cada elemento.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al aplicar este estilo, verás un contenedor con tres elementos flexibles distribuidos equitativamente con espacios alrededor. Cada elemento tiene un fondo verde, texto blanco, y se ajusta automáticamente al tamaño del contenedor.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 8 -->
+                <div class="example-container" id="css-example-8">
+                    <h3>Ejemplo 8: Media Queries</h3>
+                    <pre><code class="language-css">/* Estilos por defecto */
+.box-responsive {
+    background-color: lightblue;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Estilos para pantallas menores a 600px */
+@media (max-width: 600px) {
+    .box-responsive {
+        background-color: lightcoral;
+        padding: 10px;
+    }
+}
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <div class="box-responsive">
+                                <p>Esta caja cambia de color y padding en pantallas pequeñas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo funcionan las Media Queries en este ejemplo.</h4>
+
+                        <p><strong>¿Qué son las Media Queries?</strong></p>
+                        <p>Las Media Queries son una característica de CSS que permite aplicar estilos específicos según las características del dispositivo, como el ancho de la pantalla. Son fundamentales para crear diseños responsivos que se adapten a diferentes tamaños de pantalla.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este código define estilos para una caja que cambian cuando la pantalla tiene un ancho máximo de 600 píxeles.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>/* Estilos por defecto */
+.box-responsive {
+    background-color: lightblue;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Estilos para pantallas menores a 600px */
+@media (max-width: 600px) {
+    .box-responsive {
+        background-color: lightcoral;
+        padding: 10px;
+    }
+}</pre>
+
+                        <p><strong>Propiedades CSS:</strong></p>
+                        <ul>
+                            <li><code>background-color: lightblue;</code>: Establece el color de fondo de la caja a azul claro.</li>
+                            <li><code>padding: 20px;</code>: Añade un relleno interno de 20 píxeles.</li>
+                            <li><code>text-align: center;</code>: Centra el texto dentro de la caja.</li>
+                        </ul>
+
+                        <p><strong>Media Query:</strong></p>
+                        <pre>@media (max-width: 600px) {
+    .box-responsive {
+        background-color: lightcoral;
+        padding: 10px;
+    }
+}</pre>
+                        <ul>
+                            <li><code>@media (max-width: 600px)</code>: Define una Media Query que se aplica cuando el ancho de la pantalla es de 600 píxeles o menos.</li>
+                            <li><code>background-color: lightcoral;</code>: Cambia el color de fondo de la caja a coral claro.</li>
+                            <li><code>padding: 10px;</code>: Reduce el relleno interno a 10 píxeles.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <ul>
+                            <li><strong>En pantallas grandes:</strong> La caja tendrá un fondo azul claro, un padding de 20 píxeles y el texto centrado.</li>
+                            <li><strong>En pantallas pequeñas (≤600px):</strong> La caja cambiará a un fondo coral claro, el padding se reducirá a 10 píxeles, manteniendo el texto centrado.</li>
+                        </ul>
+                        <p>Esto asegura que la caja se vea bien y sea legible tanto en dispositivos de escritorio como en móviles.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 9 -->
+                <div class="example-container" id="css-example-9">
+                    <h3>Ejemplo 9: Transiciones</h3>
+                    <pre><code class="language-css">/* Botón con transición */
+.boton-transicion {
+    background-color: #008CBA;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.5s ease;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.boton-transicion:hover {
+    background-color: #005f6a;
+}
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <button class="boton-transicion">Botón con Transición</button>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Claro! Vamos a entender cómo funcionan las transiciones en este ejemplo.</h4>
+
+                        <p><strong>¿Qué son las transiciones en CSS?</strong></p>
+                        <p>Las transiciones en CSS permiten cambiar propiedades CSS de manera gradual durante un período de tiempo especificado. Esto crea efectos visuales suaves cuando un usuario interactúa con un elemento, como al pasar el cursor por encima.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este código define un botón que cambia de color de fondo cuando el usuario pasa el cursor por encima, utilizando una transición suave.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>/* Botón con transición */
+.boton-transicion {
+    background-color: #008CBA;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.5s ease;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.boton-transicion:hover {
+    background-color: #005f6a;
+}</pre>
+
+                        <p><strong>Propiedades CSS:</strong></p>
+                        <ul>
+                            <li><code>background-color: #008CBA;</code>: Establece el color de fondo inicial del botón a un azul.</li>
+                            <li><code>color: white;</code>: Cambia el color del texto a blanco.</li>
+                            <li><code>padding: 15px 32px;</code>: Añade un relleno interno de 15 píxeles arriba y abajo, y 32 píxeles a los lados.</li>
+                            <li><code>text-align: center;</code>: Centra el texto dentro del botón.</li>
+                            <li><code>text-decoration: none;</code>: Elimina cualquier subrayado del texto.</li>
+                            <li><code>display: inline-block;</code>: Permite que el botón tenga dimensiones y pueda alinearse con otros elementos.</li>
+                            <li><code>transition: background-color 0.5s ease;</code>: Aplica una transición de 0.5 segundos al cambiar el color de fondo, con una función de tiempo "ease" para suavizar el efecto.</li>
+                            <li><code>border: none;</code>: Elimina cualquier borde predeterminado.</li>
+                            <li><code>border-radius: 4px;</code>: Redondea las esquinas del botón con un radio de 4 píxeles.</li>
+                            <li><code>cursor: pointer;</code>: Cambia el cursor a una mano cuando se pasa por encima del botón, indicando que es clicable.</li>
+                        </ul>
+
+                        <p><strong>Hover State:</strong></p>
+                        <pre>.boton-transicion:hover {
+    background-color: #005f6a;
+}</pre>
+                        <ul>
+                            <li><code>background-color: #005f6a;</code>: Cambia el color de fondo del botón a un azul más oscuro cuando el cursor pasa por encima.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al pasar el cursor sobre el botón, notarás que el color de fondo cambia de #008CBA a #005f6a de manera suave y gradual gracias a la transición definida. Este efecto mejora la experiencia del usuario al proporcionar retroalimentación visual interactiva.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 10 -->
+                <div class="example-container" id="css-example-10">
+                    <h3>Ejemplo 10: Animaciones Básicas</h3>
+                    <pre><code class="language-css">/* Animación de desvanecimiento */
+@keyframes desvanecer {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.animacion-desvanecer {
+    animation: desvanecer 2s ease-in-out;
+}
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <div class="animacion-desvanecer">
+                                <p>Este texto se desvanecerá al cargarse.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Claro! Vamos a analizar cómo funcionan las animaciones en este ejemplo.</h4>
+
+                        <p><strong>¿Qué son las animaciones en CSS?</strong></p>
+                        <p>Las animaciones en CSS permiten crear movimientos y transiciones complejas aplicando cambios en las propiedades CSS de un elemento a lo largo del tiempo. Utilizan la regla <code>@keyframes</code> para definir los estados de inicio y fin de la animación, y luego aplican esa animación a un elemento específico.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este código define una animación llamada "desvanecer" que cambia la opacidad de un elemento de 0 a 1, creando un efecto de desvanecimiento al cargarse.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>/* Animación de desvanecimiento */
+@keyframes desvanecer {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.animacion-desvanecer {
+    animation: desvanecer 2s ease-in-out;
+}</pre>
+
+                        <p><strong>Definición de la animación:</strong></p>
+                        <pre>@keyframes desvanecer {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}</pre>
+                        <ul>
+                            <li><code>@keyframes desvanecer</code>: Define una animación llamada "desvanecer".</li>
+                            <li><code>from { opacity: 0; }</code>: Estado inicial de la animación, con opacidad 0 (completamente transparente).</li>
+                            <li><code>to { opacity: 1; }</code>: Estado final de la animación, con opacidad 1 (completamente opaco).</li>
+                        </ul>
+
+                        <p><strong>Aplicación de la animación:</strong></p>
+                        <pre>.animacion-desvanecer {
+    animation: desvanecer 2s ease-in-out;
+}</pre>
+                        <ul>
+                            <li><code>animation: desvanecer 2s ease-in-out;</code>: Aplica la animación "desvanecer" al elemento. La animación dura 2 segundos y utiliza una función de tiempo "ease-in-out" para suavizar el inicio y el final de la animación.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al cargar la página, el texto dentro del elemento con la clase <code>animacion-desvanecer</code> comenzará completamente transparente y se desvanecerá hasta ser completamente visible en 2 segundos. Este efecto puede mejorar la apariencia y la experiencia de usuario al introducir elementos de manera suave en la página.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de navegación para CSS -->
+            <div class="navigation-buttons-css">
+                <button id="prev-btn-css" disabled>Anterior</button>
+                <span class="counter" id="counter-css">Ejemplo 1 de 10</span>
+                <button id="next-btn-css">Siguiente</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2024 Ingeniería Web. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Script para la funcionalidad interactiva -->
+    <script>
+        // Función para manejar la navegación de los ejemplos
+        function setupNavigation(sectionId, prefix) {
+            const examples = document.querySelectorAll(`#${sectionId}-examples .example-container`);
+            const prevBtn = document.getElementById(`prev-btn-${prefix}`);
+            const nextBtn = document.getElementById(`next-btn-${prefix}`);
+            const counter = document.getElementById(`counter-${prefix}`);
+
+            let current = 0;
+
+            // Mostrar el primer ejemplo
+            if (examples.length > 0) {
+                examples[0].classList.add('active');
+                if (counter) {
+                    counter.textContent = `Ejemplo ${current + 1} de ${examples.length}`;
+                }
+            }
+
+            // Función para actualizar los botones y el contador
+            function updateButtons() {
+                prevBtn.disabled = current === 0;
+                nextBtn.disabled = current === examples.length - 1;
+                if (counter) {
+                    counter.textContent = `Ejemplo ${current + 1} de ${examples.length}`;
+                }
+            }
+
+            // Evento para el botón "Anterior"
+            prevBtn.addEventListener('click', () => {
+                if (current > 0) {
+                    examples[current].classList.remove('active');
+                    current--;
+                    examples[current].classList.add('active');
+                    updateButtons();
+                }
+            });
+
+            // Evento para el botón "Siguiente"
+            nextBtn.addEventListener('click', () => {
+                if (current < examples.length - 1) {
+                    examples[current].classList.remove('active');
+                    current++;
+                    examples[current].classList.add('active');
+                    updateButtons();
+                }
+            });
+
+            // Inicializar los botones
+            updateButtons();
+        }
+
+        // Configurar la navegación para HTML
+        setupNavigation('html', 'html');
+
+        // Configurar la navegación para CSS
+        setupNavigation('css', 'css');
+    </script>
+</body>
+</html>

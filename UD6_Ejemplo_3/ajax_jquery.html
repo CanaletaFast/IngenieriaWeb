@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX con jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Lista de Usuarios</h1>
+    <ul id="lista-usuarios"></ul>
+
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                url: 'usuarios.json',
+                method: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    data.usuarios.forEach(function(usuario) {
+                        $('#lista-usuarios').append(`<li>${usuario.nombre}, ${usuario.edad} años</li>`);
+                    });
+                },
+                error: function(error) {
+                    console.error('Error:', error);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

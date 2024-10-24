@@ -1,0 +1,2542 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Unidad Didáctica 5: PHP POO y Node.js</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Prism.js para el resaltado de sintaxis -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-php.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <!-- Estilos adicionales específicos para esta página -->
+    <style>
+        /* Estilos adicionales para la funcionalidad interactiva */
+        .example-container {
+            display: none; /* Ocultar todos los ejemplos inicialmente */
+            margin-bottom: 40px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .example-container.active {
+            display: block; /* Mostrar el ejemplo activo */
+            opacity: 1;
+            height: auto;
+        }
+
+        .navigation-buttons, .navigation-buttons-phppoo, .navigation-buttons-nodejs {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .navigation-buttons button, .navigation-buttons-phppoo button, .navigation-buttons-nodejs button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .navigation-buttons button:hover, .navigation-buttons-phppoo button:hover, .navigation-buttons-nodejs button:hover {
+            background-color: #45a049;
+        }
+
+        /* Estilo para el área de vista previa */
+        .preview {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #fff;
+            margin-top: 10px;
+        }
+
+        /* Estilos para la indicación del contador */
+        .counter {
+            display: inline-block;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        /* Responsividad */
+        @media (max-width: 768px) {
+            .navigation-buttons button, .navigation-buttons-phppoo button, .navigation-buttons-nodejs button {
+                padding: 8px 16px;
+                margin: 5px;
+                font-size: 0.9em;
+            }
+        }
+
+        /* Estilos para las explicaciones adicionales */
+        .explanation {
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-left: 4px solid #4CAF50;
+            border-radius: 3px;
+        }
+
+        .explanation h4 {
+            margin-top: 0;
+        }
+
+        .explanation p {
+            margin: 10px 0;
+        }
+
+        .explanation pre {
+            background-color: #e8e8e8;
+            padding: 10px;
+            border-radius: 3px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <div class="container">
+            <h1>Unidad Didáctica 5: PHP POO y Node.js</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="#phppoo">Programación Orientada a Objetos en PHP</a></li>
+                    <li><a href="#nodejs">Introducción a Node.js</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+        <!-- Sección de Programación Orientada a Objetos en PHP -->
+        <section id="phppoo">
+            <h2>Programación Orientada a Objetos en PHP</h2>
+            <p>En esta sección, aprenderemos los fundamentos de la Programación Orientada a Objetos (POO) en PHP, una metodología que permite estructurar el código de manera más modular y reutilizable.</p>
+
+            <!-- Contenedor de ejemplos de PHP POO -->
+            <div id="phppoo-examples">
+                <!-- Ejemplo 1 -->
+                <div class="example-container active" id="phppoo-example-1">
+                    <h3>Ejemplo 1: Creación de una Clase Básica en PHP</h3>
+                    <pre><code class="language-php">&lt;?php
+class Persona {
+    public $nombre;
+    public $edad;
+
+    public function __construct($nombre, $edad) {
+        $this->nombre = $nombre;
+        $this->edad = $edad;
+    }
+
+    public function saludar() {
+        echo "¡Hola, soy " . $this->nombre . " y tengo " . $this->edad . " años!&lt;br&gt;";
+    }
+}
+
+// Crear una instancia de la clase Persona
+$persona1 = new Persona("María", 28);
+$persona1->saludar();
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Crea un archivo llamado <code>clase_basica.php</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo en tu servidor PHP.</li>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>¡Hola, soy María y tengo 28 años!</p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo crear una clase básica en PHP.</h4>
+
+                        <p><strong>¿Qué es una clase?</strong></p>
+                        <p>Una clase es un plano o plantilla para crear objetos. Define las propiedades y métodos que los objetos creados a partir de ella tendrán.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script define una clase llamada <code>Persona</code> con propiedades <code>nombre</code> y <code>edad</code>, un constructor para inicializar estas propiedades y un método <code>saludar()</code> que imprime un mensaje.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+class Persona {
+    public $nombre;
+    public $edad;
+
+    public function __construct($nombre, $edad) {
+        $this->nombre = $nombre;
+        $this->edad = $edad;
+    }
+
+    public function saludar() {
+        echo "¡Hola, soy " . $this->nombre . " y tengo " . $this->edad . " años!&lt;br&gt;";
+    }
+}
+
+// Crear una instancia de la clase Persona
+$persona1 = new Persona("María", 28);
+$persona1->saludar();
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>class Persona { ... }</code>: Define una nueva clase llamada <code>Persona</code>.</li>
+                            <li><code>public $nombre;</code> y <code>public $edad;</code>: Declaran propiedades públicas de la clase.</li>
+                            <li><code>__construct($nombre, $edad)</code>: Constructor que inicializa las propiedades de la clase cuando se crea una nueva instancia.</li>
+                            <li><code>public function saludar() { ... }</code>: Método público que imprime un saludo.</li>
+                            <li><code>$persona1 = new Persona("María", 28);</code>: Crea una nueva instancia de la clase <code>Persona</code>.</li>
+                            <li><code>$persona1->saludar();</code>: Llama al método <code>saludar()</code> de la instancia creada.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP, verás el mensaje: "¡Hola, soy María y tengo 28 años!" en tu navegador.</p>
+                    </div>
+                    <!-- Script para el Ejemplo 1 -->
+                    <script>
+                        // Este ejemplo muestra cómo crear una clase básica en PHP
+                    </script>
+                </div>
+
+                <!-- Ejemplo 2 -->
+                <div class="example-container" id="phppoo-example-2">
+                    <h3>Ejemplo 2: Herencia en PHP</h3>
+                    <pre><code class="language-php">&lt;?php
+class Animal {
+    public $nombre;
+
+    public function __construct($nombre) {
+        $this->nombre = $nombre;
+    }
+
+    public function hablar() {
+        echo "Este animal hace un sonido.&lt;br&gt;";
+    }
+}
+
+class Perro extends Animal {
+    public function hablar() {
+        echo $this->nombre . " dice: ¡Guau!&lt;br&gt;";
+    }
+}
+
+$animal = new Animal("Genérico");
+$animal->hablar();
+
+$perro = new Perro("Rex");
+$perro->hablar();
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Crea un archivo llamado <code>herencia.php</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo en tu servidor PHP.</li>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>
+                                Este animal hace un sonido.<br>
+                                Rex dice: ¡Guau!<br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo funciona la herencia en PHP.</h4>
+
+                        <p><strong>¿Qué es la herencia?</strong></p>
+                        <p>La herencia permite crear una nueva clase basada en una clase existente. La clase derivada (subclase) hereda las propiedades y métodos de la clase base (superclase), pudiendo también añadir o sobrescribir funcionalidades.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script define una clase <code>Animal</code> y una clase <code>Perro</code> que hereda de <code>Animal</code>. La clase <code>Perro</code> sobrescribe el método <code>hablar()</code> para proporcionar un comportamiento específico.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+class Animal {
+    public $nombre;
+
+    public function __construct($nombre) {
+        $this->nombre = $nombre;
+    }
+
+    public function hablar() {
+        echo "Este animal hace un sonido.&lt;br&gt;";
+    }
+}
+
+class Perro extends Animal {
+    public function hablar() {
+        echo $this->nombre . " dice: ¡Guau!&lt;br&gt;";
+    }
+}
+
+$animal = new Animal("Genérico");
+$animal->hablar();
+
+$perro = new Perro("Rex");
+$perro->hablar();
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>class Perro extends Animal { ... }</code>: Define una clase <code>Perro</code> que hereda de la clase <code>Animal</code>.</li>
+                            <li><code>public function hablar() { ... }</code>: Sobrescribe el método <code>hablar()</code> de la clase base para proporcionar un comportamiento específico.</li>
+                            <li><code>$animal = new Animal("Genérico");</code>: Crea una instancia de la clase <code>Animal</code>.</li>
+                            <li><code>$perro = new Perro("Rex");</code>: Crea una instancia de la clase <code>Perro</code>, heredando propiedades y métodos de <code>Animal</code>.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP, verás los siguientes mensajes en tu navegador:</p>
+                        <p>
+                            Este animal hace un sonido.<br>
+                            Rex dice: ¡Guau!<br>
+                        </p>
+                    </div>
+                    <!-- Script para el Ejemplo 2 -->
+                    <script>
+                        // Este ejemplo muestra cómo implementar la herencia en PHP
+                    </script>
+                </div>
+
+                <!-- Ejemplo 3 -->
+                <div class="example-container" id="phppoo-example-3">
+                    <h3>Ejemplo 3: Encapsulamiento en PHP</h3>
+                    <pre><code class="language-php">&lt;?php
+class CuentaBancaria {
+    private $saldo;
+
+    public function __construct($saldoInicial) {
+        $this->saldo = $saldoInicial;
+    }
+
+    public function depositar($cantidad) {
+        if($cantidad > 0) {
+            $this->saldo += $cantidad;
+            echo "Depósito de $" . $cantidad . " realizado.&lt;br&gt;";
+        } else {
+            echo "Cantidad inválida para depósito.&lt;br&gt;";
+        }
+    }
+
+    public function retirar($cantidad) {
+        if($cantidad > 0 && $cantidad <= $this->saldo) {
+            $this->saldo -= $cantidad;
+            echo "Retiro de $" . $cantidad . " realizado.&lt;br&gt;";
+        } else {
+            echo "Cantidad inválida para retiro o fondos insuficientes.&lt;br&gt;";
+        }
+    }
+
+    public function obtenerSaldo() {
+        echo "Saldo actual: $" . $this->saldo . "&lt;br&gt;";
+    }
+}
+
+$cuenta = new CuentaBancaria(500);
+$cuenta->obtenerSaldo();
+$cuenta->depositar(150);
+$cuenta->obtenerSaldo();
+$cuenta->retirar(100);
+$cuenta->obtenerSaldo();
+$cuenta->retirar(600);
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Crea un archivo llamado <code>encapsulamiento.php</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo en tu servidor PHP.</li>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>
+                                Saldo actual: $500<br>
+                                Depósito de $150 realizado.<br>
+                                Saldo actual: $650<br>
+                                Retiro de $100 realizado.<br>
+                                Saldo actual: $550<br>
+                                Cantidad inválida para retiro o fondos insuficientes.<br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender el concepto de encapsulamiento en PHP.</h4>
+
+                        <p><strong>¿Qué es el encapsulamiento?</strong></p>
+                        <p>El encapsulamiento es uno de los pilares de la POO que restringe el acceso directo a algunos componentes de un objeto, lo que ayuda a proteger los datos y a mantener la integridad del objeto.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script define una clase <code>CuentaBancaria</code> con una propiedad privada <code>$saldo</code>. Solo se puede modificar el saldo a través de métodos públicos <code>depositar()</code> y <code>retirar()</code>, manteniendo así el control sobre cómo se manipula el saldo.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+class CuentaBancaria {
+    private $saldo;
+
+    public function __construct($saldoInicial) {
+        $this->saldo = $saldoInicial;
+    }
+
+    public function depositar($cantidad) {
+        if($cantidad > 0) {
+            $this->saldo += $cantidad;
+            echo "Depósito de $" . $cantidad . " realizado.&lt;br&gt;";
+        } else {
+            echo "Cantidad inválida para depósito.&lt;br&gt;";
+        }
+    }
+
+    public function retirar($cantidad) {
+        if($cantidad > 0 && $cantidad <= $this->saldo) {
+            $this->saldo -= $cantidad;
+            echo "Retiro de $" . $cantidad . " realizado.&lt;br&gt;";
+        } else {
+            echo "Cantidad inválida para retiro o fondos insuficientes.&lt;br&gt;";
+        }
+    }
+
+    public function obtenerSaldo() {
+        echo "Saldo actual: $" . $this->saldo . "&lt;br&gt;";
+    }
+}
+
+$cuenta = new CuentaBancaria(500);
+$cuenta->obtenerSaldo();
+$cuenta->depositar(150);
+$cuenta->obtenerSaldo();
+$cuenta->retirar(100);
+$cuenta->obtenerSaldo();
+$cuenta->retirar(600);
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>private $saldo;</code>: Declara una propiedad privada que no puede ser accedida directamente desde fuera de la clase.</li>
+                            <li><code>public function depositar($cantidad)</code>: Método público para depositar dinero en la cuenta.</li>
+                            <li><code>public function retirar($cantidad)</code>: Método público para retirar dinero de la cuenta.</li>
+                            <li><code>public function obtenerSaldo()</code>: Método público para obtener el saldo actual de la cuenta.</li>
+                            <li><code>$cuenta = new CuentaBancaria(500);</code>: Crea una nueva instancia de <code>CuentaBancaria</code> con un saldo inicial de $500.</li>
+                            <li><code>$cuenta->depositar(150);</code>: Llama al método <code>depositar()</code> para añadir $150 al saldo.</li>
+                            <li><code>$cuenta->retirar(600);</code>: Intenta retirar $600, pero falla debido a fondos insuficientes.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP, verás los siguientes mensajes en tu navegador:</p>
+                        <p>
+                            Saldo actual: $500<br>
+                            Depósito de $150 realizado.<br>
+                            Saldo actual: $650<br>
+                            Retiro de $100 realizado.<br>
+                            Saldo actual: $550<br>
+                            Cantidad inválida para retiro o fondos insuficientes.<br>
+                        </p>
+                    </div>
+                    <!-- Script para el Ejemplo 3 -->
+                    <script>
+                        // Este ejemplo muestra el encapsulamiento en PHP
+                    </script>
+                </div>
+
+                <!-- Ejemplo 4 -->
+                <div class="example-container" id="phppoo-example-4">
+                    <h3>Ejemplo 4: Interfaces en PHP</h3>
+                    <pre><code class="language-php">&lt;?php
+interface Vehiculo {
+    public function arrancar();
+    public function detener();
+}
+
+class Coche implements Vehiculo {
+    public function arrancar() {
+        echo "El coche ha arrancado.&lt;br&gt;";
+    }
+
+    public function detener() {
+        echo "El coche se ha detenido.&lt;br&gt;";
+    }
+}
+
+class Bicicleta implements Vehiculo {
+    public function arrancar() {
+        echo "La bicicleta está lista para pedalear.&lt;br&gt;";
+    }
+
+    public function detener() {
+        echo "La bicicleta ha sido detenida.&lt;br&gt;";
+    }
+}
+
+$coche = new Coche();
+$coche->arrancar();
+$coche->detener();
+
+$bicicleta = new Bicicleta();
+$bicicleta->arrancar();
+$bicicleta->detener();
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Crea un archivo llamado <code>interfaces.php</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo en tu servidor PHP.</li>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>
+                                El coche ha arrancado.<br>
+                                El coche se ha detenido.<br>
+                                La bicicleta está lista para pedalear.<br>
+                                La bicicleta ha sido detenida.<br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo funcionan las interfaces en PHP.</h4>
+
+                        <p><strong>¿Qué es una interfaz?</strong></p>
+                        <p>Una interfaz define un contrato que las clases deben seguir. Especifica qué métodos deben implementar las clases que la utilizan, sin definir cómo deben hacerlo.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script define una interfaz <code>Vehiculo</code> con dos métodos: <code>arrancar()</code> y <code>detener()</code>. Luego, implementa esta interfaz en dos clases: <code>Coche</code> y <code>Bicicleta</code>, proporcionando implementaciones específicas para cada método.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+interface Vehiculo {
+    public function arrancar();
+    public function detener();
+}
+
+class Coche implements Vehiculo {
+    public function arrancar() {
+        echo "El coche ha arrancado.&lt;br&gt;";
+    }
+
+    public function detener() {
+        echo "El coche se ha detenido.&lt;br&gt;";
+    }
+}
+
+class Bicicleta implements Vehiculo {
+    public function arrancar() {
+        echo "La bicicleta está lista para pedalear.&lt;br&gt;";
+    }
+
+    public function detener() {
+        echo "La bicicleta ha sido detenida.&lt;br&gt;";
+    }
+}
+
+$coche = new Coche();
+$coche->arrancar();
+$coche->detener();
+
+$bicicleta = new Bicicleta();
+$bicicleta->arrancar();
+$bicicleta->detener();
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>interface Vehiculo { ... }</code>: Define una interfaz llamada <code>Vehiculo</code> con dos métodos: <code>arrancar()</code> y <code>detener()</code>.</li>
+                            <li><code>class Coche implements Vehiculo { ... }</code>: Define una clase <code>Coche</code> que implementa la interfaz <code>Vehiculo</code> y proporciona implementaciones específicas para sus métodos.</li>
+                            <li><code>class Bicicleta implements Vehiculo { ... }</code>: Define una clase <code>Bicicleta</code> que también implementa la interfaz <code>Vehiculo</code>.</li>
+                            <li><code>$coche = new Coche();</code>: Crea una instancia de la clase <code>Coche</code>.</li>
+                            <li><code>$bicicleta = new Bicicleta();</code>: Crea una instancia de la clase <code>Bicicleta</code>.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP, verás los siguientes mensajes en tu navegador:</p>
+                        <p>
+                            El coche ha arrancado.<br>
+                            El coche se ha detenido.<br>
+                            La bicicleta está lista para pedalear.<br>
+                            La bicicleta ha sido detenida.<br>
+                        </p>
+                    </div>
+                    <!-- Script para el Ejemplo 4 -->
+                    <script>
+                        // Este ejemplo muestra cómo usar interfaces en PHP
+                    </script>
+                </div>
+
+                <!-- Ejemplo 5 -->
+                <div class="example-container" id="phppoo-example-5">
+                    <h3>Ejemplo 5: Clases Abstratas en PHP</h3>
+                    <pre><code class="language-php">&lt;?php
+abstract class Figura {
+    protected $color;
+
+    public function __construct($color) {
+        $this->color = $color;
+    }
+
+    abstract public function area();
+
+    public function getColor() {
+        return $this->color;
+    }
+}
+
+class Circulo extends Figura {
+    private $radio;
+
+    public function __construct($color, $radio) {
+        parent::__construct($color);
+        $this->radio = $radio;
+    }
+
+    public function area() {
+        return pi() * pow($this->radio, 2);
+    }
+}
+
+class Rectangulo extends Figura {
+    private $base;
+    private $altura;
+
+    public function __construct($color, $base, $altura) {
+        parent::__construct($color);
+        $this->base = $base;
+        $this->altura = $altura;
+    }
+
+    public function area() {
+        return $this->base * $this->altura;
+    }
+}
+
+$circulo = new Circulo("Rojo", 5);
+echo "Color del círculo: " . $circulo->getColor() . "&lt;br&gt;";
+echo "Área del círculo: " . $circulo->area() . "&lt;br&gt;";
+
+$rectangulo = new Rectangulo("Azul", 4, 6);
+echo "Color del rectángulo: " . $rectangulo->getColor() . "&lt;br&gt;";
+echo "Área del rectángulo: " . $rectangulo->area() . "&lt;br&gt;";
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Crea un archivo llamado <code>clases_abstratas.php</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo en tu servidor PHP.</li>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>
+                                Color del círculo: Rojo<br>
+                                Área del círculo: 78.539816339745<br>
+                                Color del rectángulo: Azul<br>
+                                Área del rectángulo: 24<br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo funcionan las clases abstractas en PHP.</h4>
+
+                        <p><strong>¿Qué es una clase abstracta?</strong></p>
+                        <p>Una clase abstracta es una clase que no puede ser instanciada directamente y que puede contener métodos abstractos que deben ser implementados por las clases que la heredan.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script define una clase abstracta <code>Figura</code> con una propiedad protegida <code>$color</code>, un constructor, un método abstracto <code>area()</code> y un método concreto <code>getColor()</code>. Luego, define dos clases concretas <code>Circulo</code> y <code>Rectangulo</code> que heredan de <code>Figura</code> y proporcionan implementaciones específicas para el método <code>area()</code>.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+abstract class Figura {
+    protected $color;
+
+    public function __construct($color) {
+        $this->color = $color;
+    }
+
+    abstract public function area();
+
+    public function getColor() {
+        return $this->color;
+    }
+}
+
+class Circulo extends Figura {
+    private $radio;
+
+    public function __construct($color, $radio) {
+        parent::__construct($color);
+        $this->radio = $radio;
+    }
+
+    public function area() {
+        return pi() * pow($this->radio, 2);
+    }
+}
+
+class Rectangulo extends Figura {
+    private $base;
+    private $altura;
+
+    public function __construct($color, $base, $altura) {
+        parent::__construct($color);
+        $this->base = $base;
+        $this->altura = $altura;
+    }
+
+    public function area() {
+        return $this->base * $this->altura;
+    }
+}
+
+$circulo = new Circulo("Rojo", 5);
+echo "Color del círculo: " . $circulo->getColor() . "&lt;br&gt;";
+echo "Área del círculo: " . $circulo->area() . "&lt;br&gt;";
+
+$rectangulo = new Rectangulo("Azul", 4, 6);
+echo "Color del rectángulo: " . $rectangulo->getColor() . "&lt;br&gt;";
+echo "Área del rectángulo: " . $rectangulo->area() . "&lt;br&gt;";
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>abstract class Figura { ... }</code>: Define una clase abstracta <code>Figura</code>.</li>
+                            <li><code>abstract public function area();</code>: Declara un método abstracto que debe ser implementado por las clases que hereden de <code>Figura</code>.</li>
+                            <li><code>class Circulo extends Figura { ... }</code>: Define una clase <code>Circulo</code> que hereda de <code>Figura</code> y implementa el método <code>area()</code>.</li>
+                            <li><code>class Rectangulo extends Figura { ... }</code>: Define una clase <code>Rectangulo</code> que hereda de <code>Figura</code> y implementa el método <code>area()</code>.</li>
+                            <li><code>$circulo = new Circulo("Rojo", 5);</code>: Crea una instancia de la clase <code>Circulo</code>.</li>
+                            <li><code>$rectangulo = new Rectangulo("Azul", 4, 6);</code>: Crea una instancia de la clase <code>Rectangulo</code>.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP, verás los siguientes mensajes en tu navegador:</p>
+                        <p>
+                            Color del círculo: Rojo<br>
+                            Área del círculo: 78.539816339745<br>
+                            Color del rectángulo: Azul<br>
+                            Área del rectángulo: 24<br>
+                        </p>
+                    </div>
+                    <!-- Script para el Ejemplo 5 -->
+                    <script>
+                        // Este ejemplo muestra cómo usar clases abstractas en PHP
+                    </script>
+                </div>
+
+                <!-- Ejemplo 6 -->
+                <div class="example-container" id="phppoo-example-6">
+                    <h3>Ejemplo 6: Traits en PHP</h3>
+                    <pre><code class="language-php">&lt;?php
+trait Loggable {
+    public function registrarLog($mensaje) {
+        echo "Log: " . $mensaje . "&lt;br&gt;";
+    }
+}
+
+class Usuario {
+    use Loggable;
+
+    private $nombre;
+
+    public function __construct($nombre) {
+        $this->nombre = $nombre;
+        $this->registrarLog("Usuario $nombre creado.");
+    }
+
+    public function cambiarNombre($nuevoNombre) {
+        $this->nombre = $nuevoNombre;
+        $this->registrarLog("Nombre cambiado a $nuevoNombre.");
+    }
+}
+
+$usuario = new Usuario("Carlos");
+$usuario->cambiarNombre("Carlos Pérez");
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Crea un archivo llamado <code>traits.php</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo en tu servidor PHP.</li>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>
+                                Log: Usuario Carlos creado.<br>
+                                Log: Nombre cambiado a Carlos Pérez.<br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo funcionan los traits en PHP.</h4>
+
+                        <p><strong>¿Qué son los traits?</strong></p>
+                        <p>Los traits son un mecanismo para reutilizar código en múltiples clases sin heredar de una clase base. Permiten incluir métodos en una clase de manera flexible.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script define un trait <code>Loggable</code> con un método <code>registrarLog()</code>. Luego, la clase <code>Usuario</code> utiliza este trait para añadir funcionalidad de registro de logs sin necesidad de heredar de otra clase.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+trait Loggable {
+    public function registrarLog($mensaje) {
+        echo "Log: " . $mensaje . "&lt;br&gt;";
+    }
+}
+
+class Usuario {
+    use Loggable;
+
+    private $nombre;
+
+    public function __construct($nombre) {
+        $this->nombre = $nombre;
+        $this->registrarLog("Usuario $nombre creado.");
+    }
+
+    public function cambiarNombre($nuevoNombre) {
+        $this->nombre = $nuevoNombre;
+        $this->registrarLog("Nombre cambiado a $nuevoNombre.");
+    }
+}
+
+$usuario = new Usuario("Carlos");
+$usuario->cambiarNombre("Carlos Pérez");
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>trait Loggable { ... }</code>: Define un trait llamado <code>Loggable</code> con un método <code>registrarLog()</code>.</li>
+                            <li><code>use Loggable;</code>: Incluye el trait <code>Loggable</code> en la clase <code>Usuario</code>.</li>
+                            <li><code>$this->registrarLog("...");</code>: Llama al método del trait para registrar mensajes de log.</li>
+                            <li><code>$usuario = new Usuario("Carlos");</code>: Crea una instancia de la clase <code>Usuario</code> y registra un log al crear el usuario.</li>
+                            <li><code>$usuario->cambiarNombre("Carlos Pérez");</code>: Cambia el nombre del usuario y registra otro log.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP, verás los siguientes mensajes en tu navegador:</p>
+                        <p>
+                            Log: Usuario Carlos creado.<br>
+                            Log: Nombre cambiado a Carlos Pérez.<br>
+                        </p>
+                    </div>
+                    <!-- Script para el Ejemplo 6 -->
+                    <script>
+                        // Este ejemplo muestra cómo usar traits en PHP
+                    </script>
+                </div>
+
+                <!-- Ejemplo 7 -->
+                <div class="example-container" id="phppoo-example-7">
+                    <h3>Ejemplo 7: Polimorfismo en PHP</h3>
+                    <pre><code class="language-php">&lt;?php
+abstract class Forma {
+    abstract public function dibujar();
+}
+
+class Circulo extends Forma {
+    public function dibujar() {
+        echo "Dibujando un círculo.&lt;br&gt;";
+    }
+}
+
+class Cuadrado extends Forma {
+    public function dibujar() {
+        echo "Dibujando un cuadrado.&lt;br&gt;";
+    }
+}
+
+function renderizarForma(Forma $forma) {
+    $forma->dibujar();
+}
+
+$circulo = new Circulo();
+$cuadrado = new Cuadrado();
+
+renderizarForma($circulo);
+renderizarForma($cuadrado);
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Crea un archivo llamado <code>polimorfismo.php</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo en tu servidor PHP.</li>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>
+                                Dibujando un círculo.<br>
+                                Dibujando un cuadrado.<br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender el polimorfismo en PHP.</h4>
+
+                        <p><strong>¿Qué es el polimorfismo?</strong></p>
+                        <p>El polimorfismo permite que diferentes clases puedan ser tratadas como instancias de una misma clase base, permitiendo llamar a métodos que han sido sobrescritos en las clases derivadas.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script define una clase abstracta <code>Forma</code> con un método abstracto <code>dibujar()</code>. Luego, define dos clases <code>Circulo</code> y <code>Cuadrado</code> que implementan este método de manera específica. La función <code>renderizarForma()</code> acepta cualquier objeto que sea una instancia de <code>Forma</code> y llama al método <code>dibujar()</code>, demostrando el polimorfismo.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+abstract class Forma {
+    abstract public function dibujar();
+}
+
+class Circulo extends Forma {
+    public function dibujar() {
+        echo "Dibujando un círculo.&lt;br&gt;";
+    }
+}
+
+class Cuadrado extends Forma {
+    public function dibujar() {
+        echo "Dibujando un cuadrado.&lt;br&gt;";
+    }
+}
+
+function renderizarForma(Forma $forma) {
+    $forma->dibujar();
+}
+
+$circulo = new Circulo();
+$cuadrado = new Cuadrado();
+
+renderizarForma($circulo);
+renderizarForma($cuadrado);
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>abstract class Forma { ... }</code>: Define una clase abstracta <code>Forma</code> con un método abstracto <code>dibujar()</code>.</li>
+                            <li><code>class Circulo extends Forma { ... }</code>: Implementa el método <code>dibujar()</code> específico para un círculo.</li>
+                            <li><code>class Cuadrado extends Forma { ... }</code>: Implementa el método <code>dibujar()</code> específico para un cuadrado.</li>
+                            <li><code>function renderizarForma(Forma $forma) { ... }</code>: Función que acepta cualquier instancia de <code>Forma</code> y llama a su método <code>dibujar()</code>.</li>
+                            <li><code>renderizarForma($circulo);</code> y <code>renderizarForma($cuadrado);</code>: Demuestran cómo diferentes objetos pueden ser tratados de la misma manera.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP, verás los siguientes mensajes en tu navegador:</p>
+                        <p>
+                            Dibujando un círculo.<br>
+                            Dibujando un cuadrado.<br>
+                        </p>
+                    </div>
+                    <!-- Script para el Ejemplo 7 -->
+                    <script>
+                        // Este ejemplo muestra cómo implementar el polimorfismo en PHP
+                    </script>
+                </div>
+
+                <!-- Ejemplo 8 -->
+                <div class="example-container" id="phppoo-example-8">
+                    <h3>Ejemplo 8: Composición en PHP</h3>
+                    <pre><code class="language-php">&lt;?php
+class Motor {
+    public function encender() {
+        echo "Motor encendido.&lt;br&gt;";
+    }
+
+    public function apagar() {
+        echo "Motor apagado.&lt;br&gt;";
+    }
+}
+
+class Coche {
+    private $motor;
+
+    public function __construct() {
+        $this->motor = new Motor();
+    }
+
+    public function arrancar() {
+        $this->motor->encender();
+        echo "Coche arrancado.&lt;br&gt;";
+    }
+
+    public function detener() {
+        $this->motor->apagar();
+        echo "Coche detenido.&lt;br&gt;";
+    }
+}
+
+$coche = new Coche();
+$coche->arrancar();
+$coche->detener();
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Crea un archivo llamado <code>composicion.php</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo en tu servidor PHP.</li>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>
+                                Motor encendido.<br>
+                                Coche arrancado.<br>
+                                Motor apagado.<br>
+                                Coche detenido.<br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender la composición en PHP.</h4>
+
+                        <p><strong>¿Qué es la composición?</strong></p>
+                        <p>La composición es una técnica de diseño en la POO donde una clase está compuesta por una o más instancias de otras clases, permitiendo construir clases más complejas a partir de componentes más simples.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script define una clase <code>Motor</code> y una clase <code>Coche</code> que contiene una instancia de <code>Motor</code>. La clase <code>Coche</code> delega la funcionalidad de encender y apagar el motor a la clase <code>Motor</code>.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+class Motor {
+    public function encender() {
+        echo "Motor encendido.&lt;br&gt;";
+    }
+
+    public function apagar() {
+        echo "Motor apagado.&lt;br&gt;";
+    }
+}
+
+class Coche {
+    private $motor;
+
+    public function __construct() {
+        $this->motor = new Motor();
+    }
+
+    public function arrancar() {
+        $this->motor->encender();
+        echo "Coche arrancado.&lt;br&gt;";
+    }
+
+    public function detener() {
+        $this->motor->apagar();
+        echo "Coche detenido.&lt;br&gt;";
+    }
+}
+
+$coche = new Coche();
+$coche->arrancar();
+$coche->detener();
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>class Motor { ... }</code>: Define una clase <code>Motor</code> con métodos para encender y apagar el motor.</li>
+                            <li><code>class Coche { ... }</code>: Define una clase <code>Coche</code> que tiene una propiedad privada <code>$motor</code>, que es una instancia de la clase <code>Motor</code>.</li>
+                            <li><code>$this->motor = new Motor();</code>: Crea una nueva instancia de <code>Motor</code> dentro del constructor de <code>Coche</code>.</li>
+                            <li><code>$this->motor->encender();</code> y <code>$this->motor->apagar();</code>: Llama a los métodos de la clase <code>Motor</code> desde la clase <code>Coche</code>.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP, verás los siguientes mensajes en tu navegador:</p>
+                        <p>
+                            Motor encendido.<br>
+                            Coche arrancado.<br>
+                            Motor apagado.<br>
+                            Coche detenido.<br>
+                        </p>
+                    </div>
+                    <!-- Script para el Ejemplo 8 -->
+                    <script>
+                        // Este ejemplo muestra la composición en PHP
+                    </script>
+                </div>
+
+                <!-- Ejemplo 9 -->
+                <div class="example-container" id="phppoo-example-9">
+                    <h3>Ejemplo 9: Autoloading en PHP</h3>
+                    <pre><code class="language-php">&lt;?php
+spl_autoload_register(function ($nombreClase) {
+    include $nombreClase . '.php';
+});
+
+class Libro {
+    private $titulo;
+
+    public function __construct($titulo) {
+        $this->titulo = $titulo;
+    }
+
+    public function mostrarTitulo() {
+        echo "Título del libro: " . $this->titulo . "&lt;br&gt;";
+    }
+}
+
+// Crear una instancia de la clase Libro sin incluir manualmente el archivo de clase
+$libro = new Libro("El Principito");
+$libro->mostrarTitulo();
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Crea dos archivos en el mismo directorio:</li>
+                                <ul>
+                                    <li><code>Libro.php</code> con el siguiente contenido:</li>
+                                </ul>
+                                <pre><code class="language-php">&lt;?php
+class Libro {
+    private $titulo;
+
+    public function __construct($titulo) {
+        $this->titulo = $titulo;
+    }
+
+    public function mostrarTitulo() {
+        echo "Título del libro: " . $this->titulo . "&lt;br&gt;";
+    }
+}
+?&gt;</code></pre>
+                                <ul>
+                                    <li><code>autoload.php</code> con el contenido principal del ejemplo.</li>
+                                </ul>
+                                <pre><code class="language-php">&lt;?php
+spl_autoload_register(function ($nombreClase) {
+    include $nombreClase . '.php';
+});
+
+class Libro {
+    private $titulo;
+
+    public function __construct($titulo) {
+        $this->titulo = $titulo;
+    }
+
+    public function mostrarTitulo() {
+        echo "Título del libro: " . $this->titulo . "&lt;br&gt;";
+    }
+}
+
+// Crear una instancia de la clase Libro sin incluir manualmente el archivo de clase
+$libro = new Libro("El Principito");
+$libro->mostrarTitulo();
+?&gt;</code></pre>
+                                <li>Ejecuta <code>autoload.php</code> en tu servidor PHP.</li>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>Título del libro: El Principito</p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo funciona el autoloading en PHP.</h4>
+
+                        <p><strong>¿Qué es el autoloading?</strong></p>
+                        <p>El autoloading es una técnica que permite cargar automáticamente las clases en PHP cuando son necesarias, evitando la necesidad de incluir manualmente los archivos de clase con <code>include</code> o <code>require</code>.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script utiliza la función <code>spl_autoload_register()</code> para registrar un autoloader que incluye automáticamente el archivo de la clase cuando se intenta crear una instancia de esa clase.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+spl_autoload_register(function ($nombreClase) {
+    include $nombreClase . '.php';
+});
+
+class Libro {
+    private $titulo;
+
+    public function __construct($titulo) {
+        $this->titulo = $titulo;
+    }
+
+    public function mostrarTitulo() {
+        echo "Título del libro: " . $this->titulo . "&lt;br&gt;";
+    }
+}
+
+// Crear una instancia de la clase Libro sin incluir manualmente el archivo de clase
+$libro = new Libro("El Principito");
+$libro->mostrarTitulo();
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>spl_autoload_register(function ($nombreClase) { ... });</code>: Registra una función autoloader que incluye el archivo de clase correspondiente cuando se crea una instancia de esa clase.</li>
+                            <li><code>include $nombreClase . '.php';</code>: Incluye el archivo de la clase basándose en el nombre de la clase.</li>
+                            <li><code>$libro = new Libro("El Principito");</code>: Crea una instancia de la clase <code>Libro</code> sin necesidad de incluir manualmente el archivo <code>Libro.php</code>.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP, verás el siguiente mensaje en tu navegador:</p>
+                        <p>Título del libro: El Principito</p>
+                    </div>
+                    <!-- Script para el Ejemplo 9 -->
+                    <script>
+                        // Este ejemplo muestra cómo usar el autoloading en PHP
+                    </script>
+                </div>
+
+                <!-- Ejemplo 10 -->
+                <div class="example-container" id="phppoo-example-10">
+                    <h3>Ejemplo 10: Gestión de Excepciones en PHP</h3>
+                    <pre><code class="language-php">&lt;?php
+class DivisionPorCeroException extends Exception {}
+
+function dividir($numerador, $denominador) {
+    if($denominador == 0) {
+        throw new DivisionPorCeroException("No se puede dividir por cero.");
+    }
+    return $numerador / $denominador;
+}
+
+try {
+    echo dividir(10, 2) . "&lt;br&gt;"; // Resultado: 5
+    echo dividir(10, 0) . "&lt;br&gt;"; // Esto lanzará una excepción
+} catch (DivisionPorCeroException $e) {
+    echo "Error: " . $e->getMessage() . "&lt;br&gt;";
+} finally {
+    echo "Operación de división completada.&lt;br&gt;";
+}
+?&gt;
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Crea un archivo llamado <code>excepciones.php</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo en tu servidor PHP.</li>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>
+                                5<br>
+                                Error: No se puede dividir por cero.<br>
+                                Operación de división completada.<br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo gestionar excepciones en PHP.</h4>
+
+                        <p><strong>¿Qué son las excepciones?</strong></p>
+                        <p>Las excepciones son una forma de manejar errores o situaciones inesperadas en el flujo de ejecución del programa. Permiten separar el código normal del código de manejo de errores.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script define una excepción personalizada <code>DivisionPorCeroException</code> y una función <code>dividir()</code> que lanza esta excepción si se intenta dividir por cero. Luego, utiliza bloques <code>try-catch-finally</code> para manejar la excepción.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?php
+class DivisionPorCeroException extends Exception {}
+
+function dividir($numerador, $denominador) {
+    if($denominador == 0) {
+        throw new DivisionPorCeroException("No se puede dividir por cero.");
+    }
+    return $numerador / $denominador;
+}
+
+try {
+    echo dividir(10, 2) . "&lt;br&gt;"; // Resultado: 5
+    echo dividir(10, 0) . "&lt;br&gt;"; // Esto lanzará una excepción
+} catch (DivisionPorCeroException $e) {
+    echo "Error: " . $e->getMessage() . "&lt;br&gt;";
+} finally {
+    echo "Operación de división completada.&lt;br&gt;";
+}
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>class DivisionPorCeroException extends Exception {}</code>: Define una excepción personalizada.</li>
+                            <li><code>throw new DivisionPorCeroException("...");</code>: Lanza la excepción cuando se cumple una condición específica.</li>
+                            <li><code>try { ... }</code>: Bloque donde se ejecuta el código que puede lanzar una excepción.</li>
+                            <li><code>catch (DivisionPorCeroException $e) { ... }</code>: Bloque que captura y maneja la excepción lanzada.</li>
+                            <li><code>finally { ... }</code>: Bloque que se ejecuta siempre, independientemente de si se lanzó una excepción o no.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script en un servidor PHP, verás los siguientes mensajes en tu navegador:</p>
+                        <p>
+                            5<br>
+                            Error: No se puede dividir por cero.<br>
+                            Operación de división completada.<br>
+                        </p>
+                    </div>
+                    <!-- Script para el Ejemplo 10 -->
+                    <script>
+                        // Este ejemplo muestra cómo manejar excepciones en PHP
+                    </script>
+                </div>
+            </div>
+
+            <!-- Botones de navegación para PHP POO -->
+            <div class="navigation-buttons-phppoo">
+                <button id="prev-btn-phppoo" disabled>Anterior</button>
+                <span class="counter" id="counter-phppoo">Ejemplo 1 de 10</span>
+                <button id="next-btn-phppoo">Siguiente</button>
+            </div>
+        </section>
+
+        <!-- Sección de Introducción a Node.js -->
+        <section id="nodejs">
+            <h2>Introducción a Node.js</h2>
+            <p>En esta sección, exploraremos qué es Node.js, sus características principales y cómo se aplica en proyectos modernos para desarrollar aplicaciones del lado del servidor.</p>
+
+            <!-- Contenedor de ejemplos de Node.js -->
+            <div id="nodejs-examples">
+                <!-- Ejemplo 1 -->
+                <div class="example-container active" id="nodejs-example-1">
+                    <h3>Ejemplo 1: Configuración Básica de un Proyecto Node.js</h3>
+                    <pre><code class="language-javascript">// Inicializar un nuevo proyecto Node.js
+// En la terminal, ejecuta:
+// npm init -y
+
+// Crear un archivo index.js
+console.log("¡Hola desde Node.js!");
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Asegúrate de tener Node.js instalado en tu sistema.</li>
+                                <li>Abre la terminal y navega hasta el directorio deseado.</li>
+                                <li>Inicializa un nuevo proyecto ejecutando <code>npm init -y</code>.</li>
+                                <li>Crea un archivo llamado <code>index.js</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo con <code>node index.js</code>.</li>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>¡Hola desde Node.js!</p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a configurar un proyecto básico en Node.js.</h4>
+
+                        <p><strong>¿Qué es Node.js?</strong></p>
+                        <p>Node.js es un entorno de ejecución para JavaScript que permite ejecutar código JavaScript en el lado del servidor. Es ideal para construir aplicaciones escalables y eficientes.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este ejemplo muestra cómo iniciar un nuevo proyecto Node.js y crear un archivo básico que imprime un mensaje en la consola.</p>
+
+                        <p><strong>Pasos detallados:</strong></p>
+                        <ol>
+                            <li><code>npm init -y</code>: Inicializa un nuevo proyecto Node.js generando un archivo <code>package.json</code> con valores predeterminados.</li>
+                            <li>Crea un archivo <code>index.js</code> y añade <code>console.log("¡Hola desde Node.js!");</code> para imprimir un mensaje.</li>
+                            <li>Ejecuta el archivo con <code>node index.js</code> y observa el mensaje en la consola.</li>
+                        </ol>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar <code>node index.js</code>, verás el siguiente mensaje en la consola:</p>
+                        <p>¡Hola desde Node.js!</p>
+                    </div>
+                    <!-- Script para el Ejemplo 1 -->
+                    <script>
+                        // Este ejemplo muestra cómo configurar un proyecto básico en Node.js
+                    </script>
+                </div>
+
+                <!-- Ejemplo 2 -->
+                <div class="example-container" id="nodejs-example-2">
+                    <h3>Ejemplo 2: Creación de un Servidor HTTP Básico con Node.js</h3>
+                    <pre><code class="language-javascript">const http = require('http');
+
+const hostname = '127.0.0.1';
+const port = 3000;
+
+const server = http.createServer((req, res) =&gt; {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('¡Hola desde el servidor Node.js!\n');
+});
+
+server.listen(port, hostname, () =&gt; {
+    console.log(`Servidor corriendo en http://${hostname}:${port}/`);
+});
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Crea un archivo llamado <code>servidor.js</code> con el contenido del código anterior.</li>
+                                <li>En la terminal, ejecuta <code>node servidor.js</code>.</li>
+                                <li>Abre tu navegador y navega a <code>http://127.0.0.1:3000/</code>.</li>
+                            </ol>
+                            <p><strong>Salida Esperada en la Consola:</strong></p>
+                            <p>Servidor corriendo en http://127.0.0.1:3000/</p>
+                            <p><strong>Salida en el Navegador:</strong></p>
+                            <p>¡Hola desde el servidor Node.js!</p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a crear un servidor HTTP básico con Node.js.</h4>
+
+                        <p><strong>¿Qué hace este script?</strong></p>
+                        <p>Este script crea un servidor HTTP que escucha en el puerto 3000. Cuando se realiza una solicitud al servidor, responde con un mensaje de texto plano.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?javascript
+const http = require('http');
+
+const hostname = '127.0.0.1';
+const port = 3000;
+
+const server = http.createServer((req, res) =&gt; {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('¡Hola desde el servidor Node.js!\n');
+});
+
+server.listen(port, hostname, () =&gt; {
+    console.log(`Servidor corriendo en http://${hostname}:${port}/`);
+});
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>const http = require('http');</code>: Importa el módulo HTTP de Node.js.</li>
+                            <li><code>http.createServer((req, res) =&gt; { ... });</code>: Crea un nuevo servidor HTTP.</li>
+                            <li><code>res.statusCode = 200;</code>: Establece el código de estado de la respuesta.</li>
+                            <li><code>res.setHeader('Content-Type', 'text/plain');</code>: Establece el tipo de contenido de la respuesta.</li>
+                            <li><code>res.end('¡Hola desde el servidor Node.js!\n');</code>: Envía la respuesta al cliente y cierra la conexión.</li>
+                            <li><code>server.listen(port, hostname, () =&gt; { ... });</code>: Inicia el servidor y lo hace escuchar en el puerto y hostname especificados.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script, verás el mensaje "Servidor corriendo en http://127.0.0.1:3000/" en la consola. Al navegar a <code>http://127.0.0.1:3000/</code> en tu navegador, verás "¡Hola desde el servidor Node.js!".</p>
+                    </div>
+                    <!-- Script para el Ejemplo 2 -->
+                    <script>
+                        // Este ejemplo crea un servidor HTTP básico en Node.js
+                    </script>
+                </div>
+
+                <!-- Ejemplo 3 -->
+                <div class="example-container" id="nodejs-example-3">
+                    <h3>Ejemplo 3: Uso de Express para Crear Rutas en Node.js</h3>
+                    <pre><code class="language-javascript">const express = require('express');
+const app = express();
+const port = 3000;
+
+// Ruta raíz
+app.get('/', (req, res) =&gt; {
+    res.send('¡Hola desde Express!');
+});
+
+// Ruta /usuario
+app.get('/usuario/:nombre', (req, res) =&gt; {
+    const nombre = req.params.nombre;
+    res.send(`¡Hola, ${nombre}! Bienvenido a Express.`);
+});
+
+// Iniciar el servidor
+app.listen(port, () =&gt; {
+    console.log(`Servidor Express corriendo en http://localhost:${port}/`);
+});
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Asegúrate de tener Express instalado ejecutando <code>npm install express</code> en la terminal.</li>
+                                <li>Crea un archivo llamado <code>app.js</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo con <code>node app.js</code>.</li>
+                                <li>Abre tu navegador y navega a:</li>
+                                <ul>
+                                    <li><code>http://localhost:3000/</code></li>
+                                    <li><code>http://localhost:3000/usuario/TuNombre</code> (reemplaza <code>TuNombre</code> con cualquier nombre).</li>
+                                </ul>
+                            </ol>
+                            <p><strong>Salida Esperada en la Consola:</strong></p>
+                            <p>Servidor Express corriendo en http://localhost:3000/</p>
+                            <p><strong>Salida en el Navegador:</strong></p>
+                            <p>
+                                Para <code>/</code>: ¡Hola desde Express!<br>
+                                Para <code>/usuario/TuNombre</code>: ¡Hola, TuNombre! Bienvenido a Express.<br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a crear rutas utilizando Express en Node.js.</h4>
+
+                        <p><strong>¿Qué es Express?</strong></p>
+                        <p>Express es un framework minimalista para Node.js que facilita la creación de aplicaciones web y APIs, proporcionando una serie de características y herramientas útiles.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script utiliza Express para crear un servidor que responde a diferentes rutas:</p>
+
+                        <ol>
+                            <li><code>app.get('/', ...)</code>: Define una ruta para la raíz que responde con "¡Hola desde Express!".</li>
+                            <li><code>app.get('/usuario/:nombre', ...)</code>: Define una ruta dinámica que captura el parámetro <code>nombre</code> y responde con un mensaje personalizado.</li>
+                            <li><code>app.listen(port, ...)</code>: Inicia el servidor y lo hace escuchar en el puerto especificado.</li>
+                        </ol>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?javascript
+const express = require('express');
+const app = express();
+const port = 3000;
+
+// Ruta raíz
+app.get('/', (req, res) =&gt; {
+    res.send('¡Hola desde Express!');
+});
+
+// Ruta /usuario
+app.get('/usuario/:nombre', (req, res) =&gt; {
+    const nombre = req.params.nombre;
+    res.send(`¡Hola, ${nombre}! Bienvenido a Express.`);
+});
+
+// Iniciar el servidor
+app.listen(port, () =&gt; {
+    console.log(`Servidor Express corriendo en http://localhost:${port}/`);
+});
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>const express = require('express');</code>: Importa el módulo Express.</li>
+                            <li><code>const app = express();</code>: Crea una instancia de Express.</li>
+                            <li><code>app.get('/', (req, res) =&gt; { ... });</code>: Define una ruta GET para la raíz.</li>
+                            <li><code>app.get('/usuario/:nombre', (req, res) =&gt; { ... });</code>: Define una ruta GET dinámica que captura un parámetro <code>nombre</code>.</li>
+                            <li><code>res.send('...');</code>: Envía una respuesta al cliente.</li>
+                            <li><code>app.listen(port, () =&gt; { ... });</code>: Inicia el servidor y lo hace escuchar en el puerto especificado.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script y navegar a las rutas definidas, verás los siguientes mensajes:</p>
+                        <p>
+                            Para <code>/</code>: ¡Hola desde Express!<br>
+                            Para <code>/usuario/TuNombre</code>: ¡Hola, TuNombre! Bienvenido a Express.<br>
+                        </p>
+                    </div>
+                    <!-- Script para el Ejemplo 3 -->
+                    <script>
+                        // Este ejemplo muestra cómo crear rutas con Express en Node.js
+                    </script>
+                </div>
+
+                <!-- Ejemplo 4 -->
+                <div class="example-container" id="nodejs-example-4">
+                    <h3>Ejemplo 4: Middleware en Express</h3>
+                    <pre><code class="language-javascript">const express = require('express');
+const app = express();
+const port = 3000;
+
+// Middleware para registrar cada solicitud
+app.use((req, res, next) =&gt; {
+    console.log(`${req.method} ${req.url}`);
+    next();
+});
+
+// Ruta raíz
+app.get('/', (req, res) =&gt; {
+    res.send('¡Hola desde Express con Middleware!');
+});
+
+// Iniciar el servidor
+app.listen(port, () =&gt; {
+    console.log(`Servidor Express corriendo en http://localhost:${port}/`);
+});
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Asegúrate de tener Express instalado.</li>
+                                <li>Crea un archivo llamado <code>middleware.js</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo con <code>node middleware.js</code>.</li>
+                                <li>Abre tu navegador y navega a <code>http://localhost:3000/</code>.</li>
+                                <li>Observa los logs en la terminal que registran cada solicitud.</li>
+                            </ol>
+                            <p><strong>Salida Esperada en la Consola:</strong></p>
+                            <p>
+                                Servidor Express corriendo en http://localhost:3000/<br>
+                                GET /<br>
+                            </p>
+                            <p><strong>Salida en el Navegador:</strong></p>
+                            <p>¡Hola desde Express con Middleware!</p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo funcionan los middleware en Express.</h4>
+
+                        <p><strong>¿Qué es un middleware?</strong></p>
+                        <p>Un middleware es una función que tiene acceso al objeto de solicitud (req), al objeto de respuesta (res) y a la siguiente función de middleware en el ciclo de solicitud-respuesta. Se utilizan para ejecutar código, modificar solicitudes/respuestas, manejar errores, etc.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script define un middleware que registra cada solicitud HTTP en la consola. Luego, define una ruta raíz que responde con un mensaje.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?javascript
+const express = require('express');
+const app = express();
+const port = 3000;
+
+// Middleware para registrar cada solicitud
+app.use((req, res, next) =&gt; {
+    console.log(`${req.method} ${req.url}`);
+    next();
+});
+
+// Ruta raíz
+app.get('/', (req, res) =&gt; {
+    res.send('¡Hola desde Express con Middleware!');
+});
+
+// Iniciar el servidor
+app.listen(port, () =&gt; {
+    console.log(`Servidor Express corriendo en http://localhost:${port}/`);
+});
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>app.use((req, res, next) =&gt; { ... });</code>: Define un middleware que se ejecuta para cada solicitud.</li>
+                            <li><code>console.log(`${req.method} ${req.url}`);</code>: Registra el método HTTP y la URL de cada solicitud.</li>
+                            <li><code>next();</code>: Pasa el control al siguiente middleware o ruta.</li>
+                            <li><code>app.get('/', (req, res) =&gt; { ... });</code>: Define una ruta GET para la raíz.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script y navegar a <code>http://localhost:3000/</code>, verás el siguiente mensaje en la consola:</p>
+                        <p>GET /</p>
+                        <p>Y en el navegador, verás:</p>
+                        <p>¡Hola desde Express con Middleware!</p>
+                    </div>
+                    <!-- Script para el Ejemplo 4 -->
+                    <script>
+                        // Este ejemplo muestra cómo usar middleware en Express
+                    </script>
+                </div>
+
+                <!-- Ejemplo 5 -->
+                <div class="example-container" id="nodejs-example-5">
+                    <h3>Ejemplo 5: Manejo de Formularios con Express y Body-Parser</h3>
+                    <pre><code class="language-javascript">const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+const port = 3000;
+
+// Configurar Body-Parser
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Ruta para mostrar el formulario
+app.get('/formulario', (req, res) =&gt; {
+    res.send(`
+        &lt;form action="/procesar" method="post"&gt;
+            <label for="nombre">Nombre:</label>
+            &lt;input type="text" id="nombre" name="nombre" required&gt;&lt;br&gt;&lt;br&gt;
+            &lt;input type="submit" value="Enviar"&gt;
+        &lt;/form&gt;
+    `);
+});
+
+// Ruta para procesar el formulario
+app.post('/procesar', (req, res) =&gt; {
+    const nombre = req.body.nombre;
+    res.send(`¡Hola, ${nombre}! Tu formulario ha sido procesado.`);
+});
+
+// Iniciar el servidor
+app.listen(port, () =&gt; {
+    console.log(`Servidor Express corriendo en http://localhost:${port}/`);
+});
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Asegúrate de tener Express y Body-Parser instalados ejecutando <code>npm install express body-parser</code> en la terminal.</li>
+                                <li>Crea un archivo llamado <code>formularios.js</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo con <code>node formularios.js</code>.</li>
+                                <li>Abre tu navegador y navega a <code>http://localhost:3000/formulario</code>.</li>
+                                <li>Completa el formulario y envíalo para ver la respuesta.</li>
+                            </ol>
+                            <p><strong>Salida Esperada en la Consola:</strong></p>
+                            <p>Servidor Express corriendo en http://localhost:3000/</p>
+                            <p><strong>Salida en el Navegador:</strong></p>
+                            <p>
+                                Después de enviar el formulario: ¡Hola, [Nombre]! Tu formulario ha sido procesado.<br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo manejar formularios en Express utilizando Body-Parser.</h4>
+
+                        <p><strong>¿Qué es Body-Parser?</strong></p>
+                        <p>Body-Parser es un middleware para Express que analiza el cuerpo de las solicitudes entrantes y lo hace accesible a través de <code>req.body</code>.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script crea un servidor Express que muestra un formulario HTML. Cuando se envía el formulario, el servidor procesa los datos y responde con un mensaje personalizado.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?javascript
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+const port = 3000;
+
+// Configurar Body-Parser
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Ruta para mostrar el formulario
+app.get('/formulario', (req, res) =&gt; {
+    res.send(`
+        &lt;form action="/procesar" method="post"&gt;
+            <label for="nombre">Nombre:</label>
+            &lt;input type="text" id="nombre" name="nombre" required&gt;&lt;br&gt;&lt;br&gt;
+            &lt;input type="submit" value="Enviar"&gt;
+        &lt;/form&gt;
+    `);
+});
+
+// Ruta para procesar el formulario
+app.post('/procesar', (req, res) =&gt; {
+    const nombre = req.body.nombre;
+    res.send(`¡Hola, ${nombre}! Tu formulario ha sido procesado.`);
+});
+
+// Iniciar el servidor
+app.listen(port, () =&gt; {
+    console.log(`Servidor Express corriendo en http://localhost:${port}/`);
+});
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>app.use(bodyParser.urlencoded({ extended: true }));</code>: Configura Body-Parser para analizar solicitudes con datos URL-encoded.</li>
+                            <li><code>app.get('/formulario', ...)</code>: Define una ruta GET para mostrar el formulario HTML.</li>
+                            <li><code>app.post('/procesar', ...)</code>: Define una ruta POST para procesar los datos del formulario.</li>
+                            <li><code>req.body.nombre</code>: Accede al valor del campo <code>nombre</code> enviado desde el formulario.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al navegar a <code>http://localhost:3000/formulario</code>, verás un formulario con un campo para el nombre. Al enviar el formulario, verás un mensaje como "¡Hola, Carlos! Tu formulario ha sido procesado."</p>
+                    </div>
+                    <!-- Script para el Ejemplo 5 -->
+                    <script>
+                        // Este ejemplo muestra cómo manejar formularios con Express y Body-Parser
+                    </script>
+                </div>
+
+                <!-- Ejemplo 6 -->
+                <div class="example-container" id="nodejs-example-6">
+                    <h3>Ejemplo 6: Uso de Mongoose para Conectar Node.js con MongoDB</h3>
+                    <pre><code class="language-javascript">const express = require('express');
+const mongoose = require('mongoose');
+const app = express();
+const port = 3000;
+
+// Conectar a MongoDB
+mongoose.connect('mongodb://localhost:27017/mi_basedatos', { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() =&gt; console.log('Conectado a MongoDB'))
+    .catch(err =&gt; console.error('Error al conectar a MongoDB:', err));
+
+// Definir un esquema y modelo
+const usuarioSchema = new mongoose.Schema({
+    nombre: String,
+    edad: Number
+});
+
+const Usuario = mongoose.model('Usuario', usuarioSchema);
+
+// Ruta para crear un nuevo usuario
+app.get('/crear-usuario', async (req, res) =&gt; {
+    const usuario = new Usuario({ nombre: 'Ana', edad: 25 });
+    await usuario.save();
+    res.send('Usuario creado exitosamente.');
+});
+
+// Ruta para listar todos los usuarios
+app.get('/usuarios', async (req, res) =&gt; {
+    const usuarios = await Usuario.find();
+    res.json(usuarios);
+});
+
+// Iniciar el servidor
+app.listen(port, () =&gt; {
+    console.log(`Servidor Express corriendo en http://localhost:${port}/`);
+});
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Asegúrate de tener MongoDB instalado y corriendo en tu sistema.</li>
+                                <li>Instala las dependencias ejecutando <code>npm install express mongoose</code> en la terminal.</li>
+                                <li>Crea un archivo llamado <code>mongoose.js</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo con <code>node mongoose.js</code>.</li>
+                                <li>En tu navegador, navega a <code>http://localhost:3000/crear-usuario</code> para crear un nuevo usuario.</li>
+                                <li>Luego, navega a <code>http://localhost:3000/usuarios</code> para ver la lista de usuarios en formato JSON.</li>
+                            </ol>
+                            <p><strong>Salida Esperada en la Consola:</strong></p>
+                            <p>
+                                Conectado a MongoDB<br>
+                                Servidor Express corriendo en http://localhost:3000/<br>
+                            </p>
+                            <p><strong>Salida en el Navegador:</strong></p>
+                            <p>
+                                Para <code>/crear-usuario</code>: Usuario creado exitosamente.<br>
+                                Para <code>/usuarios</code>: JSON con los usuarios creados, por ejemplo:<br>
+                                [{ "_id": "60d5ec49f8d3b72f3c8b4567", "nombre": "Ana", "edad": 25, "__v": 0 }]
+                            </p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo conectar Node.js con MongoDB utilizando Mongoose.</h4>
+
+                        <p><strong>¿Qué es Mongoose?</strong></p>
+                        <p>Mongoose es una biblioteca de Node.js que proporciona una solución basada en esquemas para modelar datos de aplicaciones con MongoDB.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script establece una conexión con una base de datos MongoDB, define un esquema y modelo para los usuarios, y crea rutas para insertar y listar usuarios.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?javascript
+const express = require('express');
+const mongoose = require('mongoose');
+const app = express();
+const port = 3000;
+
+// Conectar a MongoDB
+mongoose.connect('mongodb://localhost:27017/mi_basedatos', { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() =&gt; console.log('Conectado a MongoDB'))
+    .catch(err =&gt; console.error('Error al conectar a MongoDB:', err));
+
+// Definir un esquema y modelo
+const usuarioSchema = new mongoose.Schema({
+    nombre: String,
+    edad: Number
+});
+
+const Usuario = mongoose.model('Usuario', usuarioSchema);
+
+// Ruta para crear un nuevo usuario
+app.get('/crear-usuario', async (req, res) =&gt; {
+    const usuario = new Usuario({ nombre: 'Ana', edad: 25 });
+    await usuario.save();
+    res.send('Usuario creado exitosamente.');
+});
+
+// Ruta para listar todos los usuarios
+app.get('/usuarios', async (req, res) =&gt; {
+    const usuarios = await Usuario.find();
+    res.json(usuarios);
+});
+
+// Iniciar el servidor
+app.listen(port, () =&gt; {
+    console.log(`Servidor Express corriendo en http://localhost:${port}/`);
+});
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>mongoose.connect('mongodb://localhost:27017/mi_basedatos', ...)</code>: Establece una conexión con la base de datos MongoDB.</li>
+                            <li><code>const usuarioSchema = new mongoose.Schema({ ... });</code>: Define un esquema para los documentos de usuarios.</li>
+                            <li><code>const Usuario = mongoose.model('Usuario', usuarioSchema);</code>: Crea un modelo basado en el esquema definido.</li>
+                            <li><code>app.get('/crear-usuario', async (req, res) =&gt; { ... });</code>: Define una ruta para crear un nuevo usuario.</li>
+                            <li><code>app.get('/usuarios', async (req, res) =&gt; { ... });</code>: Define una ruta para listar todos los usuarios.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script y navegar a las rutas definidas, podrás crear y listar usuarios en tu base de datos MongoDB.</p>
+                    </div>
+                    <!-- Script para el Ejemplo 6 -->
+                    <script>
+                        // Este ejemplo muestra cómo usar Mongoose para conectar Node.js con MongoDB
+                    </script>
+                </div>
+
+                <!-- Ejemplo 7 -->
+                <div class="example-container" id="nodejs-example-7">
+                    <h3>Ejemplo 7: Creación de una API RESTful con Express</h3>
+                    <pre><code class="language-javascript">const express = require('express');
+const app = express();
+const port = 3000;
+
+app.use(express.json());
+
+// Datos simulados
+let tareas = [
+    { id: 1, titulo: 'Comprar leche', completado: false },
+    { id: 2, titulo: 'Llamar a Juan', completado: true }
+];
+
+// Obtener todas las tareas
+app.get('/api/tareas', (req, res) =&gt; {
+    res.json(tareas);
+});
+
+// Obtener una tarea por ID
+app.get('/api/tareas/:id', (req, res) =&gt; {
+    const id = parseInt(req.params.id);
+    const tarea = tareas.find(t =&gt; t.id === id);
+    if(tarea) {
+        res.json(tarea);
+    } else {
+        res.status(404).send('Tarea no encontrada.');
+    }
+});
+
+// Crear una nueva tarea
+app.post('/api/tareas', (req, res) =&gt; {
+    const nuevaTarea = {
+        id: tareas.length + 1,
+        titulo: req.body.titulo,
+        completado: false
+    };
+    tareas.push(nuevaTarea);
+    res.status(201).json(nuevaTarea);
+});
+
+// Actualizar una tarea existente
+app.put('/api/tareas/:id', (req, res) =&gt; {
+    const id = parseInt(req.params.id);
+    const tarea = tareas.find(t =&gt; t.id === id);
+    if(tarea) {
+        tarea.titulo = req.body.titulo !== undefined ? req.body.titulo : tarea.titulo;
+        tarea.completado = req.body.completado !== undefined ? req.body.completado : tarea.completado;
+        res.json(tarea);
+    } else {
+        res.status(404).send('Tarea no encontrada.');
+    }
+});
+
+// Eliminar una tarea
+app.delete('/api/tareas/:id', (req, res) =&gt; {
+    const id = parseInt(req.params.id);
+    const index = tareas.findIndex(t =&gt; t.id === id);
+    if(index !== -1) {
+        tareas.splice(index, 1);
+        res.sendStatus(204);
+    } else {
+        res.status(404).send('Tarea no encontrada.');
+    }
+});
+
+// Iniciar el servidor
+app.listen(port, () =&gt; {
+    console.log(`Servidor Express corriendo en http://localhost:${port}/`);
+});
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para probar esta API RESTful:</p>
+                            <ol>
+                                <li>Asegúrate de tener Express instalado.</li>
+                                <li>Crea un archivo llamado <code>api.js</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo con <code>node api.js</code>.</li>
+                                <li>Usa herramientas como Postman o cURL para interactuar con la API:</li>
+                                <ul>
+                                    <li><code>GET http://localhost:3000/api/tareas</code>: Obtener todas las tareas.</li>
+                                    <li><code>GET http://localhost:3000/api/tareas/1</code>: Obtener la tarea con ID 1.</li>
+                                    <li><code>POST http://localhost:3000/api/tareas</code> con cuerpo JSON: { "titulo": "Nueva tarea" } para crear una tarea.</li>
+                                    <li><code>PUT http://localhost:3000/api/tareas/1</code> con cuerpo JSON: { "completado": true } para actualizar una tarea.</li>
+                                    <li><code>DELETE http://localhost:3000/api/tareas/1</code> para eliminar una tarea.</li>
+                                </ul>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <p>
+                                Dependiendo de la solicitud, verás la respuesta correspondiente de la API.<br>
+                                Por ejemplo, una solicitud GET a <code>/api/tareas</code> devolverá un JSON con las tareas.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a crear una API RESTful utilizando Express en Node.js.</h4>
+
+                        <p><strong>¿Qué es una API RESTful?</strong></p>
+                        <p>Una API RESTful es una interfaz que permite interactuar con recursos a través de métodos HTTP estándar como GET, POST, PUT y DELETE.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script define una serie de rutas para manejar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre un recurso llamado "tareas". Utiliza Express para definir las rutas y gestionar las solicitudes.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?javascript
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.use(express.json());
+
+// Datos simulados
+let tareas = [
+    { id: 1, titulo: 'Comprar leche', completado: false },
+    { id: 2, titulo: 'Llamar a Juan', completado: true }
+];
+
+// Obtener todas las tareas
+app.get('/api/tareas', (req, res) =&gt; {
+    res.json(tareas);
+});
+
+// Obtener una tarea por ID
+app.get('/api/tareas/:id', (req, res) =&gt; {
+    const id = parseInt(req.params.id);
+    const tarea = tareas.find(t =&gt; t.id === id);
+    if(tarea) {
+        res.json(tarea);
+    } else {
+        res.status(404).send('Tarea no encontrada.');
+    }
+});
+
+// Crear una nueva tarea
+app.post('/api/tareas', (req, res) =&gt; {
+    const nuevaTarea = {
+        id: tareas.length + 1,
+        titulo: req.body.titulo,
+        completado: false
+    };
+    tareas.push(nuevaTarea);
+    res.status(201).json(nuevaTarea);
+});
+
+// Actualizar una tarea existente
+app.put('/api/tareas/:id', (req, res) =&gt; {
+    const id = parseInt(req.params.id);
+    const tarea = tareas.find(t =&gt; t.id === id);
+    if(tarea) {
+        tarea.titulo = req.body.titulo !== undefined ? req.body.titulo : tarea.titulo;
+        tarea.completado = req.body.completado !== undefined ? req.body.completado : tarea.completado;
+        res.json(tarea);
+    } else {
+        res.status(404).send('Tarea no encontrada.');
+    }
+});
+
+// Eliminar una tarea
+app.delete('/api/tareas/:id', (req, res) =&gt; {
+    const id = parseInt(req.params.id);
+    const index = tareas.findIndex(t =&gt; t.id === id);
+    if(index !== -1) {
+        tareas.splice(index, 1);
+        res.sendStatus(204);
+    } else {
+        res.status(404).send('Tarea no encontrada.');
+    }
+});
+
+// Iniciar el servidor
+app.listen(port, () =&gt; {
+    console.log(`Servidor Express corriendo en http://localhost:${port}/`);
+});
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>app.use(express.json());</code>: Middleware para analizar cuerpos de solicitudes JSON.</li>
+                            <li><code>app.get('/api/tareas', ...)</code>: Ruta para obtener todas las tareas.</li>
+                            <li><code>app.get('/api/tareas/:id', ...)</code>: Ruta para obtener una tarea específica por ID.</li>
+                            <li><code>app.post('/api/tareas', ...)</code>: Ruta para crear una nueva tarea.</li>
+                            <li><code>app.put('/api/tareas/:id', ...)</code>: Ruta para actualizar una tarea existente.</li>
+                            <li><code>app.delete('/api/tareas/:id', ...)</code>: Ruta para eliminar una tarea.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al interactuar con esta API a través de herramientas como Postman o cURL, podrás realizar operaciones CRUD sobre las tareas definidas.</p>
+                    </div>
+                    <!-- Script para el Ejemplo 5 -->
+                    <script>
+                        // Este ejemplo muestra cómo crear una API RESTful con Express en Node.js
+                    </script>
+                </div>
+
+                <!-- Ejemplo 7 -->
+                <div class="example-container" id="nodejs-example-7">
+                    <h3>Ejemplo 7: Uso de EJS como Motor de Plantillas en Express</h3>
+                    <pre><code class="language-javascript">const express = require('express');
+const app = express();
+const port = 3000;
+
+// Configurar EJS
+app.set('view engine', 'ejs');
+
+// Ruta que renderiza una plantilla EJS
+app.get('/', (req, res) =&gt; {
+    const datos = { titulo: 'Página de Inicio', mensaje: 'Bienvenido a la página de inicio.' };
+    res.render('index', datos);
+});
+
+// Iniciar el servidor
+app.listen(port, () =&gt; {
+    console.log(`Servidor Express corriendo en http://localhost:${port}/`);
+});
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Asegúrate de tener Express y EJS instalados ejecutando <code>npm install express ejs</code> en la terminal.</li>
+                                <li>Crea una carpeta llamada <code>views</code> en el mismo directorio.</li>
+                                <li>Crea un archivo llamado <code>index.ejs</code> dentro de la carpeta <code>views</code> con el siguiente contenido:</li>
+                                <pre><code class="language-ejs">&lt;!DOCTYPE html&gt;
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title><%= titulo %></title>
+</head>
+<body>
+    <h1><%= mensaje %></h1>
+</body>
+</html>
+</code></pre>
+                                <li>Crea un archivo llamado <code>app_ejs.js</code> con el contenido del ejemplo.</li>
+                                <li>Ejecuta el archivo con <code>node app_ejs.js</code>.</li>
+                                <li>Abre tu navegador y navega a <code>http://localhost:3000/</code>.</li>
+                            </ol>
+                            <p><strong>Salida Esperada en el Navegador:</strong></p>
+                            <p>
+                                Página de Inicio<br>
+                                Bienvenido a la página de inicio.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo usar EJS como motor de plantillas en Express.</h4>
+
+                        <p><strong>¿Qué es EJS?</strong></p>
+                        <p>EJS (Embedded JavaScript) es un motor de plantillas que permite incrustar código JavaScript en archivos HTML, facilitando la generación dinámica de contenido.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script configura Express para usar EJS como motor de plantillas y define una ruta que renderiza una plantilla EJS con datos dinámicos.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?javascript
+const express = require('express');
+const app = express();
+const port = 3000;
+
+// Configurar EJS
+app.set('view engine', 'ejs');
+
+// Ruta que renderiza una plantilla EJS
+app.get('/', (req, res) =&gt; {
+    const datos = { titulo: 'Página de Inicio', mensaje: 'Bienvenido a la página de inicio.' };
+    res.render('index', datos);
+});
+
+// Iniciar el servidor
+app.listen(port, () =&gt; {
+    console.log(`Servidor Express corriendo en http://localhost:${port}/`);
+});
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>app.set('view engine', 'ejs');</code>: Configura Express para usar EJS como motor de plantillas.</li>
+                            <li><code>res.render('index', datos);</code>: Renderiza la plantilla <code>index.ejs</code> pasando los datos necesarios.</li>
+                            <li><code><%= variable %></code>: Sintaxis de EJS para imprimir el valor de una variable.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al navegar a <code>http://localhost:3000/</code>, verás una página HTML generada dinámicamente con el título "Página de Inicio" y el mensaje "Bienvenido a la página de inicio."</p>
+                    </div>
+                    <!-- Script para el Ejemplo 7 -->
+                    <script>
+                        // Este ejemplo muestra cómo usar EJS como motor de plantillas en Express
+                    </script>
+                </div>
+
+                <!-- Ejemplo 8 -->
+                <div class="example-container" id="nodejs-example-8">
+                    <h3>Ejemplo 8: Uso de Promesas en Node.js</h3>
+                    <pre><code class="language-javascript">// Función que devuelve una promesa
+function esperar(ms) {
+    return new Promise(resolve =&gt; setTimeout(resolve, ms));
+}
+
+console.log("Inicio");
+
+esperar(2000)
+    .then(() =&gt; {
+        console.log("Han pasado 2 segundos");
+        return esperar(1000);
+    })
+    .then(() =&gt; {
+        console.log("Han pasado 3 segundos en total");
+    })
+    .catch(err =&gt; {
+        console.error("Error:", err);
+    });
+
+console.log("Fin");
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Crea un archivo llamado <code>promesas.js</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo con <code>node promesas.js</code>.</li>
+                            </ol>
+                            <p><strong>Salida Esperada en la Consola:</strong></p>
+                            <p>
+                                Inicio<br>
+                                Fin<br>
+                                (Después de 2 segundos)<br>
+                                Han pasado 2 segundos<br>
+                                (Después de 1 segundo más)<br>
+                                Han pasado 3 segundos en total<br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo funcionan las promesas en Node.js.</h4>
+
+                        <p><strong>¿Qué son las promesas?</strong></p>
+                        <p>Las promesas son una forma de manejar operaciones asincrónicas en JavaScript, permitiendo encadenar acciones que dependen de resultados futuros.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script define una función <code>esperar()</code> que devuelve una promesa que se resuelve después de un tiempo especificado. Luego, usa esta función para imprimir mensajes en la consola con retrasos controlados.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?javascript
+// Función que devuelve una promesa
+function esperar(ms) {
+    return new Promise(resolve =&gt; setTimeout(resolve, ms));
+}
+
+console.log("Inicio");
+
+esperar(2000)
+    .then(() =&gt; {
+        console.log("Han pasado 2 segundos");
+        return esperar(1000);
+    })
+    .then(() =&gt; {
+        console.log("Han pasado 3 segundos en total");
+    })
+    .catch(err =&gt; {
+        console.error("Error:", err);
+    });
+
+console.log("Fin");
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>new Promise(resolve =&gt; setTimeout(resolve, ms));</code>: Crea una nueva promesa que se resuelve después de <code>ms</code> milisegundos.</li>
+                            <li><code>.then(() =&gt; { ... })</code>: Define acciones a realizar cuando la promesa se resuelve.</li>
+                            <li><code>.catch(err =&gt; { ... })</code>: Maneja cualquier error que ocurra durante la ejecución de la promesa.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script, verás en la consola:</p>
+                        <p>
+                            Inicio<br>
+                            Fin<br>
+                            (Después de 2 segundos)<br>
+                            Han pasado 2 segundos<br>
+                            (Después de 1 segundo más)<br>
+                            Han pasado 3 segundos en total<br>
+                        </p>
+                        <p>Esto demuestra cómo las promesas permiten manejar operaciones asincrónicas de manera ordenada.</p>
+                    </div>
+                    <!-- Script para el Ejemplo 8 -->
+                    <script>
+                        // Este ejemplo muestra cómo usar promesas en Node.js
+                    </script>
+                </div>
+
+                <!-- Ejemplo 9 -->
+                <div class="example-container" id="nodejs-example-9">
+                    <h3>Ejemplo 9: Uso de Async/Await en Node.js</h3>
+                    <pre><code class="language-javascript">// Función que devuelve una promesa
+function esperar(ms) {
+    return new Promise(resolve =&gt; setTimeout(resolve, ms));
+}
+
+async function ejecutar() {
+    console.log("Inicio");
+    await esperar(2000);
+    console.log("Han pasado 2 segundos");
+    await esperar(1000);
+    console.log("Han pasado 3 segundos en total");
+    console.log("Fin");
+}
+
+ejecutar().catch(err =&gt; {
+    console.error("Error:", err);
+});
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Crea un archivo llamado <code>async_await.js</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo con <code>node async_await.js</code>.</li>
+                            </ol>
+                            <p><strong>Salida Esperada en la Consola:</strong></p>
+                            <p>
+                                Inicio<br>
+                                (Después de 2 segundos)<br>
+                                Han pasado 2 segundos<br>
+                                (Después de 1 segundo más)<br>
+                                Han pasado 3 segundos en total<br>
+                                Fin<br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo usar Async/Await en Node.js.</h4>
+
+                        <p><strong>¿Qué son Async/Await?</strong></p>
+                        <p>Async/Await es una sintaxis que simplifica el trabajo con promesas, haciendo que el código asincrónico se parezca más al código sincrónico.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script utiliza una función asincrónica <code>ejecutar()</code> que espera (await) a que las promesas se resuelvan antes de continuar con la ejecución.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?javascript
+// Función que devuelve una promesa
+function esperar(ms) {
+    return new Promise(resolve =&gt; setTimeout(resolve, ms));
+}
+
+async function ejecutar() {
+    console.log("Inicio");
+    await esperar(2000);
+    console.log("Han pasado 2 segundos");
+    await esperar(1000);
+    console.log("Han pasado 3 segundos en total");
+    console.log("Fin");
+}
+
+ejecutar().catch(err =&gt; {
+    console.error("Error:", err);
+});
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>async function ejecutar() { ... }</code>: Declara una función asincrónica.</li>
+                            <li><code>await esperar(2000);</code>: Espera a que la promesa se resuelva antes de continuar.</li>
+                            <li><code>ejecutar().catch(err =&gt; { ... });</code>: Ejecuta la función asincrónica y maneja cualquier error que ocurra.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script, verás en la consola:</p>
+                        <p>
+                            Inicio<br>
+                            (Después de 2 segundos)<br>
+                            Han pasado 2 segundos<br>
+                            (Después de 1 segundo más)<br>
+                            Han pasado 3 segundos en total<br>
+                            Fin<br>
+                        </p>
+                        <p>Esto demuestra cómo Async/Await facilita la lectura y escritura de código asincrónico.</p>
+                    </div>
+                    <!-- Script para el Ejemplo 9 -->
+                    <script>
+                        // Este ejemplo muestra cómo usar Async/Await en Node.js
+                    </script>
+                </div>
+
+                <!-- Ejemplo 10 -->
+                <div class="example-container" id="nodejs-example-10">
+                    <h3>Ejemplo 10: Manejo de Errores en Node.js con Middleware</h3>
+                    <pre><code class="language-javascript">const express = require('express');
+const app = express();
+const port = 3000;
+
+// Ruta que genera un error
+app.get('/error', (req, res, next) =&gt; {
+    const err = new Error("Algo salió mal!");
+    err.status = 500;
+    next(err);
+});
+
+// Middleware de manejo de errores
+app.use((err, req, res, next) =&gt; {
+    res.status(err.status || 500);
+    res.send(`Error ${err.status || 500}: ${err.message}`);
+});
+
+// Ruta raíz
+app.get('/', (req, res) =&gt; {
+    res.send('Bienvenido a la página principal.');
+});
+
+// Iniciar el servidor
+app.listen(port, () =&gt; {
+    console.log(`Servidor Express corriendo en http://localhost:${port}/`);
+});
+                    </code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Crea un archivo llamado <code>manejo_errores.js</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo con <code>node manejo_errores.js</code>.</li>
+                                <li>Abre tu navegador y navega a <code>http://localhost:3000/</code> para ver la página principal.</li>
+                                <li>Navega a <code>http://localhost:3000/error</code> para generar y ver el error manejado.</li>
+                            </ol>
+                            <p><strong>Salida Esperada en la Consola:</strong></p>
+                            <p>
+                                Servidor Express corriendo en http://localhost:3000/<br>
+                            </p>
+                            <p><strong>Salida en el Navegador:</strong></p>
+                            <p>
+                                Para <code>/</code>: Bienvenido a la página principal.<br>
+                                Para <code>/error</code>: Error 500: Algo salió mal!<br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo manejar errores en Express utilizando middleware.</h4>
+
+                        <p><strong>¿Qué es el manejo de errores?</strong></p>
+                        <p>El manejo de errores es una parte esencial de cualquier aplicación, permitiendo gestionar situaciones inesperadas de manera controlada y proporcionar respuestas adecuadas a los clientes.</p>
+
+                        <p><strong>Entendiendo el código</strong></p>
+                        <p>Este script define una ruta que genera un error y un middleware de manejo de errores que captura y responde a ese error.</p>
+
+                        <p><strong>Desglose del código</strong></p>
+                        <pre>&lt;?javascript
+const express = require('express');
+const app = express();
+const port = 3000;
+
+// Ruta que genera un error
+app.get('/error', (req, res, next) =&gt; {
+    const err = new Error("Algo salió mal!");
+    err.status = 500;
+    next(err);
+});
+
+// Middleware de manejo de errores
+app.use((err, req, res, next) =&gt; {
+    res.status(err.status || 500);
+    res.send(`Error ${err.status || 500}: ${err.message}`);
+});
+
+// Ruta raíz
+app.get('/', (req, res) =&gt; {
+    res.send('Bienvenido a la página principal.');
+});
+
+// Iniciar el servidor
+app.listen(port, () =&gt; {
+    console.log(`Servidor Express corriendo en http://localhost:${port}/`);
+});
+?&gt;</pre>
+
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>app.get('/error', (req, res, next) =&gt; { ... });</code>: Define una ruta que crea un nuevo objeto <code>Error</code> y lo pasa al siguiente middleware con <code>next(err)</code>.</li>
+                            <li><code>app.use((err, req, res, next) =&gt; { ... });</code>: Define un middleware de manejo de errores que captura cualquier error pasado a <code>next(err)</code>.</li>
+                            <li><code>res.status(err.status || 500);</code>: Establece el código de estado HTTP basado en el error o predetermina a 500.</li>
+                            <li><code>res.send(`Error ${err.status || 500}: ${err.message}`);</code>: Envía un mensaje de error al cliente.</li>
+                        </ul>
+
+                        <p><strong>Resultado visual</strong></p>
+                        <p>Al ejecutar este script y navegar a <code>http://localhost:3000/error</code>, verás el mensaje de error personalizado:</p>
+                        <p>Error 500: Algo salió mal!</p>
+                        <p>Al navegar a la ruta raíz, verás:</p>
+                        <p>Bienvenido a la página principal.</p>
+                    </div>
+                    <!-- Script para el Ejemplo 10 -->
+                    <script>
+                        // Este ejemplo muestra cómo manejar errores en Express con middleware
+                    </script>
+                </div>
+            </div>
+
+            <!-- Botones de navegación para Node.js -->
+            <div class="navigation-buttons-nodejs">
+                <button id="prev-btn-nodejs" disabled>Anterior</button>
+                <span class="counter" id="counter-nodejs">Ejemplo 1 de 10</span>
+                <button id="next-btn-nodejs">Siguiente</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2024 Ingeniería Web. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Script para la funcionalidad interactiva -->
+    <script>
+        // Función para manejar la navegación de los ejemplos
+        function setupNavigation(sectionId, prefix) {
+            const examples = document.querySelectorAll(`#${sectionId}-examples .example-container`);
+            const prevBtn = document.getElementById(`prev-btn-${prefix}`);
+            const nextBtn = document.getElementById(`next-btn-${prefix}`);
+            const counter = document.getElementById(`counter-${prefix}`);
+
+            let current = 0;
+
+            // Mostrar el primer ejemplo
+            if (examples.length > 0) {
+                examples[0].classList.add('active');
+                if (counter) {
+                    counter.textContent = `Ejemplo ${current + 1} de ${examples.length}`;
+                }
+            }
+
+            // Función para actualizar los botones y el contador
+            function updateButtons() {
+                prevBtn.disabled = current === 0;
+                nextBtn.disabled = current === examples.length - 1;
+                if (counter) {
+                    counter.textContent = `Ejemplo ${current + 1} de ${examples.length}`;
+                }
+            }
+
+            // Evento para el botón "Anterior"
+            prevBtn.addEventListener('click', () => {
+                if (current > 0) {
+                    examples[current].classList.remove('active');
+                    current--;
+                    examples[current].classList.add('active');
+                    updateButtons();
+                }
+            });
+
+            // Evento para el botón "Siguiente"
+            nextBtn.addEventListener('click', () => {
+                if (current < examples.length - 1) {
+                    examples[current].classList.remove('active');
+                    current++;
+                    examples[current].classList.add('active');
+                    updateButtons();
+                }
+            });
+
+            // Inicializar los botones
+            updateButtons();
+        }
+
+        // Configurar la navegación para PHP POO
+        setupNavigation('phppoo', 'phppoo');
+
+        // Configurar la navegación para Node.js
+        setupNavigation('nodejs', 'nodejs');
+    </script>
+</body>
+</html>

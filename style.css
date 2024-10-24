@@ -1,0 +1,263 @@
+/* Reset de Estilos */
+/* Elimina márgenes y rellenos predeterminados para todos los elementos, y establece el modelo de caja */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Tipografía y Colores Globales */
+/* Define la fuente, color de fondo y color de texto para todo el cuerpo de la página */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5; /* Color de fondo suave */
+    color: #333; /* Color de texto oscuro para buen contraste */
+    line-height: 1.6; /* Altura de línea para mejorar la legibilidad */
+}
+
+/* Contenedor General */
+/* Centra el contenido y limita su ancho máximo para mantener una buena legibilidad */
+.container {
+    max-width: 1200px;
+    margin: 0 auto; /* Centra horizontalmente */
+    padding: 0 20px; /* Espaciado horizontal interno */
+}
+
+/* Header */
+/* Estiliza el encabezado con un color de fondo, color de texto blanco y padding */
+header {
+    background-color: #4CAF50; /* Verde principal */
+    color: #fff; /* Texto blanco para contraste */
+    padding: 40px 0; /* Espaciado vertical */
+}
+
+/* Título principal dentro del header */
+header h1 {
+    font-size: 2.5em; /* Tamaño grande para destacar */
+    margin-bottom: 10px; /* Espacio debajo del título */
+    text-align: center; /* Centra el texto */
+}
+
+/* Descripción dentro del header */
+header p {
+    font-size: 1.2em; /* Tamaño ligeramente mayor que el texto normal */
+    text-align: center; /* Centra el texto */
+    margin-bottom: 20px; /* Espacio debajo del párrafo */
+}
+
+/* Navegación */
+/* Centra la barra de navegación */
+nav {
+    text-align: center;
+}
+
+/* Lista de enlaces de navegación */
+.nav-links {
+    list-style: none; /* Elimina los puntos de la lista */
+    display: inline-flex; /* Muestra los elementos en línea horizontalmente */
+}
+
+/* Elementos individuales de la lista de navegación */
+.nav-links li {
+    margin: 0 15px; /* Espaciado horizontal entre los enlaces */
+}
+
+/* Enlaces de navegación */
+.nav-links a {
+    color: #fff; /* Color blanco para los enlaces */
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    font-weight: bold; /* Hace los enlaces más destacados */
+    transition: color 0.3s; /* Transición suave al cambiar de color */
+}
+
+/* Efecto al pasar el cursor sobre los enlaces de navegación */
+.nav-links a:hover {
+    color: #d4d4d4; /* Cambio de color al pasar el cursor */
+}
+
+/* Main */
+/* Define el padding y centra el contenido principal */
+main {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Secciones dentro del main */
+section {
+    margin-bottom: 40px; /* Espacio debajo de cada sección */
+}
+
+/* Títulos de segundo nivel */
+h2 {
+    color: #4CAF50; /* Mismo color verde que el header */
+    margin-bottom: 20px; /* Espacio debajo del título */
+    border-bottom: 2px solid #4CAF50; /* Línea debajo del título */
+    display: inline-block; /* Ajusta el ancho del elemento al contenido */
+    padding-bottom: 5px; /* Espaciado debajo del texto */
+}
+
+/* Títulos de tercer nivel */
+h3 {
+    color: #333; /* Color del texto */
+    margin-bottom: 10px; /* Espacio debajo del título */
+}
+
+/* Títulos de cuarto nivel */
+h4 {
+    color: #555; /* Color ligeramente más claro */
+    margin-bottom: 10px; /* Espacio debajo del título */
+}
+
+/* Listas ordenadas y no ordenadas */
+ol, ul {
+    margin-left: 20px; /* Indentación a la izquierda */
+    margin-bottom: 20px; /* Espacio debajo de la lista */
+}
+
+/* Elementos de lista */
+li {
+    margin: 10px 0; /* Espaciado vertical entre elementos */
+}
+
+/* Estilos para bloques de código */
+/* Aplica un fondo gris claro y fuente monoespaciada a los bloques de código */
+pre {
+    background-color: #f5f5f5; /* Fondo gris claro */
+    padding: 15px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    overflow-x: auto; /* Permite scroll horizontal si el código es muy largo */
+    margin-bottom: 20px; /* Espacio debajo del bloque */
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace; /* Fuente monoespaciada */
+    color: #0802a5; /* Color del texto del código */
+}
+
+/* Formulario */
+/* Estiliza el formulario con fondo blanco, padding, bordes redondeados y sombra */
+form {
+    background-color: #fff; /* Fondo blanco para contraste */
+    padding: 30px; /* Espaciado interno */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+}
+
+/* Grupos de formulario */
+.form-group {
+    margin-bottom: 20px; /* Espacio debajo de cada grupo */
+}
+
+/* Etiquetas de formulario */
+label {
+    display: block; /* Hace que las etiquetas ocupen toda la línea */
+    margin-bottom: 8px; /* Espacio debajo de la etiqueta */
+    font-weight: bold; /* Texto en negrita */
+}
+
+/* Campos de entrada de texto y email */
+input[type="text"],
+input[type="email"] {
+    width: 100%; /* Ancho completo del contenedor */
+    padding: 12px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 4px; /* Bordes ligeramente redondeados */
+    transition: border-color 0.3s; /* Transición suave al cambiar el color del borde */
+}
+
+/* Efecto al enfocar los campos de entrada */
+input[type="text"]:focus,
+input[type="email"]:focus {
+    border-color: #4CAF50; /* Cambia el color del borde al verde principal */
+}
+
+/* Botón de envío del formulario */
+input[type="submit"] {
+    background-color: #4CAF50; /* Fondo verde */
+    color: #fff; /* Texto blanco */
+    padding: 12px 25px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes ligeramente redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    font-size: 1em; /* Tamaño de fuente estándar */
+    transition: background-color 0.3s; /* Transición suave al cambiar de color */
+}
+
+/* Efecto al pasar el cursor sobre el botón de envío */
+input[type="submit"]:hover {
+    background-color: #45a049; /* Color verde más oscuro al pasar el cursor */
+}
+
+/* Mensaje de éxito o error */
+#formMessage {
+    margin-top: 20px; /* Espacio superior */
+    font-weight: bold; /* Texto en negrita */
+}
+
+/* Footer */
+/* Estiliza el pie de página con fondo oscuro, texto blanco y centrado */
+footer {
+    background-color: #333; /* Fondo gris oscuro */
+    color: #fff; /* Texto blanco */
+    text-align: center; /* Centra el texto */
+    padding: 15px 20px; /* Espaciado interno */
+    position: relative; /* Posición relativa para evitar superposición */
+    width: 100%; /* Ancho completo */
+    /* Removed 'fixed' positioning to prevent overlapping content */
+}
+
+/* Responsividad */
+/* Ajustes para pantallas con un ancho máximo de 768px */
+@media (max-width: 768px) {
+    /* Ajusta el tamaño del título principal en pantallas pequeñas */
+    header h1 {
+        font-size: 2em;
+    }
+
+    /* Cambia la disposición de la navegación a vertical en pantallas pequeñas */
+    .nav-links {
+        flex-direction: column; /* Apila los enlaces verticalmente */
+    }
+
+    /* Espaciado vertical entre enlaces de navegación */
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    /* Ajusta el padding del formulario en pantallas pequeñas */
+    form {
+        padding: 20px;
+    }
+}
+
+/* ####################### UNIDAD DIDÁCTICA 2 ####################### */
+
+/* Estilos para los resultados de los ejemplos */
+.resultado {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-left: 4px solid #4CAF50;
+}
+
+/* Estilos para los enlaces con la clase 'mas' */
+.mas {
+    margin-left: 10px;
+    font-size: 1em;
+    text-decoration: none;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.mas:hover {
+    color: #45a049;
+}
+
+/* Estilos para el contenido de 'unidad2.html' */
+section h3 {
+    margin-top: 30px;
+}
+
+
+/* ####################### UNIDAD DIDÁCTICA 2 ####################### */

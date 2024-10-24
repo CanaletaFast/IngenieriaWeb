@@ -1,0 +1,1761 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Unidad Didáctica 6: Diseño Responsivo, Intercambio de Datos y JavaScript con Ajax</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Prism.js para el resaltado de sintaxis -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-xml.min.js"></script>
+    <!-- Estilos adicionales específicos para esta página -->
+    <style>
+        /* Estilos adicionales para la funcionalidad interactiva */
+        .example-container {
+            display: none;
+            margin-bottom: 40px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out, height 0.5s ease-in-out;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .example-container.active {
+            display: block;
+            opacity: 1;
+            height: auto;
+        }
+
+        .navigation-buttons, .navigation-buttons-css, .navigation-buttons-datos, .navigation-buttons-ajax {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .navigation-buttons button, .navigation-buttons-css button, .navigation-buttons-datos button, .navigation-buttons-ajax button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .navigation-buttons button:hover, .navigation-buttons-css button:hover, .navigation-buttons-datos button:hover, .navigation-buttons-ajax button:hover {
+            background-color: #45a049;
+        }
+
+        /* Estilo para el área de vista previa */
+        .preview {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #fff;
+            margin-top: 10px;
+        }
+
+        /* Estilos para la indicación del contador */
+        .counter {
+            display: inline-block;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        /* Responsividad */
+        @media (max-width: 768px) {
+            .navigation-buttons button, .navigation-buttons-css button, .navigation-buttons-datos button, .navigation-buttons-ajax button {
+                padding: 8px 16px;
+                margin: 5px;
+                font-size: 0.9em;
+            }
+        }
+
+        /* Estilos para las explicaciones adicionales */
+        .explanation {
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-left: 4px solid #4CAF50;
+            border-radius: 3px;
+        }
+
+        .explanation h4 {
+            margin-top: 0;
+        }
+
+        .explanation p {
+            margin: 10px 0;
+        }
+
+        .explanation pre {
+            background-color: #e8e8e8;
+            padding: 10px;
+            border-radius: 3px;
+            overflow-x: auto;
+        }
+
+        /* Correcciones Ejemplo 1: Media Queries Básicas */
+        body {
+            background-color: white;
+            color: black;
+            transition: background-color 0.5s ease;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                background-color: lightblue;
+            }
+        }
+
+        /* Correcciones Ejemplo 4: Imágenes Responsivas */
+        img.responsive {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Correcciones Ejemplo 6: Navegación Responsiva con Menú Hamburguesa */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 4px 0;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #333;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        /* Correcciones Ejemplo 8: Transiciones y Animaciones Responsivas */
+        .boton {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 32px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .boton:hover {
+            background-color: #45a049;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 600px) {
+            .boton {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .boton:hover {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Correcciones Ejemplo 9: Layout Responsivo con Grid y Media Queries */
+        .responsive-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .responsive-grid div {
+            background-color: #bbb;
+            padding: 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 992px) {
+            .responsive-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .responsive-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Correcciones Ejemplo 10: Transiciones y Animaciones Responsivas */
+        .boton-animado {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 32px;
+            transition: background-color 0.3s, transform 0.3s;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .boton-animado:hover {
+            background-color: #45a049;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 600px) {
+            .boton-animado {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .boton-animado:hover {
+                transform: scale(1.05);
+            }
+        }
+    </style>
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <div class="container">
+            <h1>Unidad Didáctica 6: Diseño Responsivo, Intercambio de Datos y JavaScript con Ajax</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#diseño-responsivo">Diseño Responsivo (CSS)</a></li>
+                    <li><a href="#intercambio-datos">Intercambio de Datos (XML, JSON, YAML)</a></li>
+                    <li><a href="#javascript-ajax">JavaScript con Ajax (jQuery y Fetch)</a></li>
+                </ul>
+                <div class="hamburger" onclick="toggleMenu()">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+        <!-- Sección de Diseño Responsivo (CSS) -->
+        <section id="diseño-responsivo">
+            <h2>Diseño Responsivo (CSS)</h2>
+            <p>En esta sección, aprenderemos los fundamentos del diseño responsivo utilizando CSS, permitiendo que nuestras páginas web se adapten a diferentes tamaños de pantalla y dispositivos.</p>
+
+            <!-- Contenedor de ejemplos de Diseño Responsivo -->
+            <div id="diseño-responsivo-examples">
+                <!-- Ejemplo 1 -->
+                <div class="example-container active" id="css-example-1">
+                    <h3>Ejemplo 1: Media Queries Básicas</h3>
+                    <pre><code class="language-css">@media (max-width: 600px) {
+    body {
+        background-color: lightblue;
+    }
+}
+</code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Este ejemplo cambia el color de fondo a azul claro cuando el ancho de la pantalla es de 600px o menos.</p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a entender cómo usar media queries básicas en CSS.</h4>
+                        <p><strong>¿Qué es una media query?</strong></p>
+                        <p>Las media queries permiten aplicar estilos CSS específicos según las características del dispositivo, como el ancho de la pantalla.</p>
+                        <p><strong>Entendiendo el código:</strong></p>
+                        <pre>@media (max-width: 600px) {
+    body {
+        background-color: lightblue;
+    }
+}
+</pre>
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>@media (max-width: 600px) { ... }</code>: Aplica los estilos dentro del bloque solo si el ancho de la pantalla es de 600px o menos.</li>
+                            <li><code>background-color: lightblue;</code>: Cambia el color de fondo del cuerpo a azul claro.</li>
+                        </ul>
+                        <p><strong>Resultado visual:</strong></p>
+                        <p>Al reducir el tamaño de la ventana del navegador a 600px o menos, el fondo de la página cambia a azul claro.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 2 -->
+                <div class="example-container" id="css-example-2">
+                    <h3>Ejemplo 2: Flexbox para Layouts Responsivos</h3>
+                    <pre><code class="language-css">.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item {
+    flex: 1 1 200px;
+    margin: 10px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    box-sizing: border-box;
+}
+</code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado" style="display: flex; flex-wrap: wrap;">
+                            <div style="flex: 1 1 200px; margin: 10px; background-color: #f2f2f2; padding: 20px; box-sizing: border-box;">Elemento 1</div>
+                            <div style="flex: 1 1 200px; margin: 10px; background-color: #f2f2f2; padding: 20px; box-sizing: border-box;">Elemento 2</div>
+                            <div style="flex: 1 1 200px; margin: 10px; background-color: #f2f2f2; padding: 20px; box-sizing: border-box;">Elemento 3</div>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a crear layouts responsivos usando Flexbox en CSS.</h4>
+                        <p><strong>¿Qué es Flexbox?</strong></p>
+                        <p>Flexbox es un modelo de diseño de CSS que facilita la creación de layouts flexibles y responsivos, alineando elementos de manera eficiente.</p>
+                        <p><strong>Entendiendo el código:</strong></p>
+                        <pre>.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item {
+    flex: 1 1 200px;
+    margin: 10px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    box-sizing: border-box;
+}
+</pre>
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>display: flex;</code>: Activa el modo Flexbox en el contenedor.</li>
+                            <li><code>flex-wrap: wrap;</code>: Permite que los elementos flexibles se envuelvan a la siguiente línea si no caben en una sola fila.</li>
+                            <li><code>flex: 1 1 200px;</code>: Define que los elementos pueden crecer y encogerse, con un tamaño base de 200px.</li>
+                            <li><code>box-sizing: border-box;</code>: Incluye el padding y el border en el tamaño total del elemento.</li>
+                        </ul>
+                        <p><strong>Resultado visual:</strong></p>
+                        <p>Los elementos dentro del contenedor se alinean en filas flexibles, adaptándose al tamaño de la pantalla. Al reducir el ancho, los elementos se envuelven a nuevas filas.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 3 -->
+                <div class="example-container" id="css-example-3">
+                    <h3>Ejemplo 3: Grid Layout para Diseños Complejos</h3>
+                    <pre><code class="language-css">.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.grid-item {
+    background-color: #e0e0e0;
+    padding: 20px;
+    text-align: center;
+}
+</code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px;">
+                            <div style="background-color: #e0e0e0; padding: 20px; text-align: center;">Item 1</div>
+                            <div style="background-color: #e0e0e0; padding: 20px; text-align: center;">Item 2</div>
+                            <div style="background-color: #e0e0e0; padding: 20px; text-align: center;">Item 3</div>
+                            <div style="background-color: #e0e0e0; padding: 20px; text-align: center;">Item 4</div>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a crear layouts complejos usando CSS Grid.</h4>
+                        <p><strong>¿Qué es CSS Grid?</strong></p>
+                        <p>CSS Grid es un sistema de diseño bidimensional que permite crear layouts complejos de manera sencilla y flexible.</p>
+                        <p><strong>Entendiendo el código:</strong></p>
+                        <pre>.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.grid-item {
+    background-color: #e0e0e0;
+    padding: 20px;
+    text-align: center;
+}
+</pre>
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>display: grid;</code>: Activa el modo Grid en el contenedor.</li>
+                            <li><code>grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));</code>: Crea columnas automáticas que se adaptan al tamaño de la pantalla, con un ancho mínimo de 150px y máximo de 1 fracción del espacio disponible.</li>
+                            <li><code>gap: 10px;</code>: Define el espacio entre las filas y columnas.</li>
+                            <li><code>text-align: center;</code>: Centra el contenido dentro de cada elemento grid.</li>
+                        </ul>
+                        <p><strong>Resultado visual:</strong></p>
+                        <p>Al ejecutar este script y navegar a las rutas definidas, podrás crear y listar usuarios en tu base de datos MongoDB.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 4 -->
+                <div class="example-container" id="css-example-4">
+                    <h3>Ejemplo 4: Imágenes Responsivas</h3>
+                    <pre><code class="language-css">img.responsive {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+</code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <img src="https://via.placeholder.com/600x400" alt="Ejemplo de Imagen" class="responsive">
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a hacer que las imágenes sean responsivas en CSS.</h4>
+                        <p><strong>¿Qué significa una imagen responsiva?</strong></p>
+                        <p>Una imagen responsiva se adapta automáticamente al tamaño de su contenedor, evitando desbordamientos y manteniendo la proporción.</p>
+                        <p><strong>Entendiendo el código:</strong></p>
+                        <pre>img.responsive {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+</pre>
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>max-width: 100%;</code>: Limita el ancho máximo de la imagen al 100% de su contenedor.</li>
+                            <li><code>height: auto;</code>: Ajusta la altura automáticamente para mantener la proporción.</li>
+                            <li><code>display: block;</code>: Elimina espacios en línea alrededor de la imagen.</li>
+                        </ul>
+                        <p><strong>Resultado visual:</strong></p>
+                        <p>La imagen se ajusta automáticamente al ancho del contenedor sin perder su proporción, adaptándose a diferentes tamaños de pantalla.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 5 -->
+                <div class="example-container" id="css-example-5">
+                    <h3>Ejemplo 5: Tipografía Responsiva</h3>
+                    <pre><code class="language-css">html {
+    font-size: 16px;
+}
+
+@media (max-width: 1200px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 992px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 576px) {
+    html {
+        font-size: 12px;
+    }
+}
+</code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado" style="font-size: 16px;">
+                            <p>Este texto ajustará su tamaño de fuente según el ancho de la pantalla.</p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a hacer que la tipografía sea responsiva en CSS.</h4>
+                        <p><strong>¿Por qué es importante la tipografía responsiva?</strong></p>
+                        <p>Ajustar el tamaño de la fuente según el dispositivo mejora la legibilidad y la experiencia del usuario.</p>
+                        <p><strong>Entendiendo el código:</strong></p>
+                        <pre>html {
+    font-size: 16px;
+}
+
+@media (max-width: 1200px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 992px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 576px) {
+    html {
+        font-size: 12px;
+    }
+}
+</pre>
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>font-size: 16px;</code>: Tamaño de fuente base para pantallas grandes.</li>
+                            <li><code>@media (max-width: 1200px) { ... }</code>: Ajusta el tamaño de fuente cuando el ancho es 1200px o menos.</li>
+                            <li>Repetir media queries para diferentes tamaños de pantalla.</li>
+                        </ul>
+                        <p><strong>Resultado visual:</strong></p>
+                        <p>El tamaño del texto se reduce progresivamente a medida que el ancho de la pantalla disminuye, manteniendo una buena legibilidad en todos los dispositivos.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 6 -->
+                <div class="example-container" id="css-example-6">
+                    <h3>Ejemplo 6: Navegación Responsiva con Menú Hamburguesa</h3>
+                    <pre><code class="language-css">/* Estilos básicos */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Ocultar menú en pantallas pequeñas */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #333;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+}
+</code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado" style="background-color: #333; padding: 10px; color: white;">
+                            <div class="navbar">
+                                <div class="logo">Mi Sitio</div>
+                                <ul class="nav-links">
+                                    <li><a href="#">Inicio</a></li>
+                                    <li><a href="#">Servicios</a></li>
+                                    <li><a href="#">Contacto</a></li>
+                                </ul>
+                                <div class="hamburger" onclick="toggleMenu()">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a crear una navegación responsiva con un menú hamburguesa en CSS.</h4>
+                        <p><strong>¿Qué es un menú hamburguesa?</strong></p>
+                        <p>Es un ícono que se utiliza para ocultar y mostrar el menú de navegación en dispositivos con pantallas pequeñas.</p>
+                        <p><strong>Entendiendo el código:</strong></p>
+                        <pre>/* Estilos básicos */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Ocultar menú en pantallas pequeñas */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #333;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+}
+</pre>
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>display: flex;</code>: Activa Flexbox en el contenedor.</li>
+                            <li><code>flex-direction: column;</code>: Orienta los elementos en columna.</li>
+                            <li><code>.nav-links.active { display: flex; }</code>: Muestra el menú cuando se activa.</li>
+                            <li><code>.hamburger { display: flex; }</code>: Muestra el ícono de menú hamburguesa en pantallas pequeñas.</li>
+                            <li><code>onclick="toggleMenu()"</code>: Llama a la función JavaScript para alternar la visibilidad del menú.</li>
+                        </ul>
+                        <p><strong>Resultado visual:</strong></p>
+                        <p>En pantallas grandes, el menú se muestra horizontalmente. En pantallas pequeñas, el menú se oculta y se muestra un ícono de hamburguesa. Al hacer clic en el ícono, el menú se despliega verticalmente.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 7 -->
+                <div class="example-container" id="css-example-7">
+                    <h3>Ejemplo 7: Layout Responsivo con Flexbox</h3>
+                    <pre><code class="language-css">.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex-item {
+    flex: 1 1 300px;
+    margin: 10px;
+    background-color: #dcdcdc;
+    padding: 20px;
+    box-sizing: border-box;
+}
+</code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado" style="display: flex; flex-wrap: wrap;">
+                            <div style="flex: 1 1 300px; margin: 10px; background-color: #dcdcdc; padding: 20px; box-sizing: border-box;">Contenido 1</div>
+                            <div style="flex: 1 1 300px; margin: 10px; background-color: #dcdcdc; padding: 20px; box-sizing: border-box;">Contenido 2</div>
+                            <div style="flex: 1 1 300px; margin: 10px; background-color: #dcdcdc; padding: 20px; box-sizing: border-box;">Contenido 3</div>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a crear un layout responsivo usando Flexbox en CSS.</h4>
+                        <p><strong>¿Qué es Flexbox?</strong></p>
+                        <p>Flexbox es un sistema de diseño flexible que facilita la creación de layouts que se adaptan a diferentes tamaños de pantalla.</p>
+                        <p><strong>Entendiendo el código:</strong></p>
+                        <pre>.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex-item {
+    flex: 1 1 300px;
+    margin: 10px;
+    background-color: #dcdcdc;
+    padding: 20px;
+    box-sizing: border-box;
+}
+</pre>
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>display: flex;</code>: Activa Flexbox en el contenedor.</li>
+                            <li><code>flex-wrap: wrap;</code>: Permite que los elementos se envuelvan a la siguiente línea si no caben en una sola fila.</li>
+                            <li><code>flex: 1 1 300px;</code>: Define que los elementos pueden crecer y encogerse, con un tamaño base de 300px.</li>
+                            <li><code>box-sizing: border-box;</code>: Incluye el padding y el border en el tamaño total del elemento.</li>
+                        </ul>
+                        <p><strong>Resultado visual:</strong></p>
+                        <p>Los elementos dentro del contenedor Flex se alinean en filas flexibles, adaptándose al tamaño de la pantalla. Al reducir el ancho, los elementos se envuelven a nuevas filas.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 8 -->
+                <div class="example-container" id="css-example-8">
+                    <h3>Ejemplo 8: Uso de Variables CSS</h3>
+                    <pre><code class="language-css">:root {
+    --primario: #3498db;
+    --secundario: #2ecc71;
+    --fondo: #ecf0f1;
+}
+
+body {
+    background-color: var(--fondo);
+    color: var(--primario);
+}
+
+button {
+    background-color: var(--secundario);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--primario);
+}
+</code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado" style="background-color: #ecf0f1; color: #3498db; padding: 20px;">
+                            <p>Este es un ejemplo de uso de variables CSS.</p>
+                            <button style="background-color: #2ecc71; color: white; border: none; padding: 10px 20px; cursor: pointer;">Botón</button>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a usar variables CSS para mejorar la mantenibilidad de nuestros estilos.</h4>
+                        <p><strong>¿Qué son las variables CSS?</strong></p>
+                        <p>Las variables CSS permiten almacenar valores que pueden ser reutilizados a lo largo de la hoja de estilos, facilitando cambios consistentes y reduciendo la repetición de código.</p>
+                        <p><strong>Entendiendo el código:</strong></p>
+                        <pre>:root {
+    --primario: #3498db;
+    --secundario: #2ecc71;
+    --fondo: #ecf0f1;
+}
+
+body {
+    background-color: var(--fondo);
+    color: var(--primario);
+}
+
+button {
+    background-color: var(--secundario);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--primario);
+}
+</pre>
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>:root { --primario: #3498db; }</code>: Define variables CSS en el selector raíz.</li>
+                            <li><code>background-color: var(--fondo);</code>: Usa la variable <code>--fondo</code> para el color de fondo.</li>
+                            <li><code>background-color: var(--primario);</code>: Usa la variable <code>--primario</code> para el color en el hover del botón.</li>
+                        </ul>
+                        <p><strong>Resultado visual:</strong></p>
+                        <p>El fondo de la página es gris claro, el texto es azul, y los botones son verdes que cambian a azul al pasar el cursor.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 9 -->
+                <div class="example-container" id="css-example-9">
+                    <h3>Ejemplo 9: Layout Responsivo con Grid y Media Queries</h3>
+                    <pre><code class="language-css">.responsive-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.responsive-grid div {
+    background-color: #bbb;
+    padding: 20px;
+    text-align: center;
+}
+
+@media (max-width: 992px) {
+    .responsive-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .responsive-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                            <div style="background-color: #bbb; padding: 20px; text-align: center;">1</div>
+                            <div style="background-color: #bbb; padding: 20px; text-align: center;">2</div>
+                            <div style="background-color: #bbb; padding: 20px; text-align: center;">3</div>
+                            <div style="background-color: #bbb; padding: 20px; text-align: center;">4</div>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a combinar Grid Layout con media queries para crear un diseño responsivo.</h4>
+                        <p><strong>¿Por qué combinar Grid y media queries?</strong></p>
+                        <p>Combinar Grid con media queries permite crear layouts que se adaptan dinámicamente a diferentes tamaños de pantalla.</p>
+                        <p><strong>Entendiendo el código:</strong></p>
+                        <pre>.responsive-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.responsive-grid div {
+    background-color: #bbb;
+    padding: 20px;
+    text-align: center;
+}
+
+@media (max-width: 992px) {
+    .responsive-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .responsive-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</pre>
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>display: grid;</code>: Activa Grid Layout en el contenedor.</li>
+                            <li><code>grid-template-columns: repeat(3, 1fr);</code>: Define tres columnas de igual ancho.</li>
+                            <li><code>@media (max-width: 992px) { grid-template-columns: repeat(2, 1fr); }</code>: Cambia a dos columnas en pantallas medianas.</li>
+                            <li><code>@media (max-width: 600px) { grid-template-columns: 1fr; }</code>: Cambia a una sola columna en pantallas pequeñas.</li>
+                        </ul>
+                        <p><strong>Resultado visual:</strong></p>
+                        <p>En pantallas grandes, se muestran tres columnas. En pantallas medianas, se reducen a dos columnas, y en pantallas pequeñas, se muestran en una sola columna.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 10 -->
+                <div class="example-container" id="css-example-10">
+                    <h3>Ejemplo 10: Transiciones y Animaciones Responsivas</h3>
+                    <pre><code class="language-css">.boton-animado {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 32px;
+    transition: background-color 0.3s, transform 0.3s;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.boton-animado:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+}
+
+@media (max-width: 600px) {
+    .boton-animado {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .boton-animado:hover {
+        transform: scale(1.05);
+    }
+}
+</code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <button class="boton-animado">Botón</button>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a agregar transiciones y animaciones responsivas a botones en CSS.</h4>
+                        <p><strong>¿Por qué usar transiciones y animaciones?</strong></p>
+                        <p>Mejoran la experiencia del usuario al proporcionar retroalimentación visual interactiva.</p>
+                        <p><strong>Entendiendo el código:</strong></p>
+                        <pre>.boton-animado {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 32px;
+    transition: background-color 0.3s, transform 0.3s;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.boton-animado:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+}
+
+@media (max-width: 600px) {
+    .boton-animado {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .boton-animado:hover {
+        transform: scale(1.05);
+    }
+}
+</pre>
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>transition: background-color 0.3s, transform 0.3s;</code>: Define transiciones suaves para el color de fondo y la transformación.</li>
+                            <li><code>.boton-animado:hover { ... }</code>: Cambia el color de fondo y escala el botón al pasar el cursor.</li>
+                            <li><code>@media (max-width: 600px) { ... }</code>: Ajusta el padding y tamaño de fuente en pantallas pequeñas.</li>
+                        </ul>
+                        <p><strong>Resultado visual:</strong></p>
+                        <p>Al pasar el cursor sobre el botón, este cambia de color y aumenta de tamaño suavemente. En pantallas pequeñas, el botón es más pequeño y la escala al hover es menor.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de navegación para Diseño Responsivo -->
+            <div class="navigation-buttons-css">
+                <button id="prev-btn-css" disabled>Anterior</button>
+                <span class="counter" id="counter-css">Ejemplo 1 de 10</span>
+                <button id="next-btn-css">Siguiente</button>
+            </div>
+        </section>
+
+        <!-- Sección de Intercambio de Datos (XML, JSON, YAML) -->
+        <section id="intercambio-datos">
+            <h2>Intercambio de Datos (XML, JSON y YAML)</h2>
+            <p>En esta sección, exploraremos cómo intercambiar datos utilizando formatos como XML, JSON y YAML, esenciales para la comunicación entre diferentes sistemas y aplicaciones.</p>
+
+            <!-- Contenedor de ejemplos de Intercambio de Datos -->
+            <div id="intercambio-datos-examples">
+                <!-- Ejemplo 1 -->
+                <div class="example-container active" id="datos-example-1">
+                    <h3>Ejemplo 1: Conversión de JSON a XML usando JavaScript</h3>
+                    <pre><code class="language-javascript">const json2xml = require('json2xml');
+
+const data = {
+    libro: {
+        titulo: "El Principito",
+        autor: "Antoine de Saint-Exupéry",
+        publicado: 1943
+    }
+};
+
+const xml = json2xml(data);
+console.log(xml);
+</code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Para ver el resultado de este código:</p>
+                            <ol>
+                                <li>Asegúrate de tener Node.js instalado.</li>
+                                <li>Instala la dependencia ejecutando <code>npm install json2xml</code>.</li>
+                                <li>Crea un archivo llamado <code>json_a_xml.js</code> con el contenido del código anterior.</li>
+                                <li>Ejecuta el archivo con <code>node json_a_xml.js</code>.</li>
+                            </ol>
+                            <p><strong>Salida Esperada:</strong></p>
+                            <pre>&lt;libro&gt;
+    &lt;titulo&gt;El Principito&lt;/titulo&gt;
+    &lt;autor&gt;Antoine de Saint-Exupéry&lt;/autor&gt;
+    &lt;publicado&gt;1943&lt;/publicado&gt;
+&lt;/libro&gt;
+</pre>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a convertir JSON a XML usando JavaScript.</h4>
+                        <p><strong>¿Por qué convertir JSON a XML?</strong></p>
+                        <p>A veces es necesario intercambiar datos entre sistemas que utilizan diferentes formatos. XML y JSON son dos de los formatos más comunes para este propósito.</p>
+                        <p><strong>Entendiendo el código:</strong></p>
+                        <pre>const json2xml = require('json2xml');
+
+const data = {
+    libro: {
+        titulo: "El Principito",
+        autor: "Antoine de Saint-Exupéry",
+        publicado: 1943
+    }
+};
+
+const xml = json2xml(data);
+console.log(xml);
+</pre>
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>json2xml</code>: Librería que convierte objetos JSON a XML.</li>
+                            <li><code>data</code>: Objeto JSON que contiene información sobre un libro.</li>
+                            <li><code>json2xml(data)</code>: Convierte el objeto JSON a una cadena XML.</li>
+                        </ul>
+                        <p><strong>Resultado visual:</strong></p>
+                        <p>El objeto JSON se convierte en una estructura XML bien formada, facilitando su intercambio con sistemas que utilizan XML.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de navegación para Intercambio de Datos -->
+            <div class="navigation-buttons-datos">
+                <button id="prev-btn-datos" disabled>Anterior</button>
+                <span class="counter" id="counter-datos">Ejemplo 1 de 1</span>
+                <button id="next-btn-datos" disabled>Siguiente</button>
+            </div>
+        </section>
+
+        <!-- Sección de JavaScript con Ajax (jQuery y Fetch) -->
+        <section id="javascript-ajax">
+            <h2>JavaScript con Ajax (jQuery y Fetch)</h2>
+            <p>En esta sección, aprenderemos cómo realizar operaciones asincrónicas en JavaScript utilizando Ajax con jQuery y la API Fetch, permitiendo la comunicación con servidores sin recargar la página.</p>
+
+            <!-- Contenedor de ejemplos de JavaScript con Ajax -->
+            <div id="javascript-ajax-examples">
+                <!-- Ejemplo 1 -->
+                <div class="example-container active" id="ajax-example-1">
+                    <h3>Ejemplo 1: Realizar una Solicitud GET con jQuery</h3>
+                    <pre><code class="language-javascript">$(document).ready(function(){
+    $.ajax({
+        url: 'https://jsonplaceholder.typicode.com/posts/1',
+        method: 'GET',
+        success: function(data){
+            $('#resultado').html(JSON.stringify(data));
+        },
+        error: function(error){
+            $('#resultado').html('Error al obtener los datos.');
+        }
+    });
+});
+</code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p id="resultado">Cargando...</p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a realizar una solicitud GET usando jQuery.</h4>
+                        <p><strong>¿Qué es Ajax?</strong></p>
+                        <p>Ajax permite realizar solicitudes asincrónicas al servidor sin recargar la página, mejorando la experiencia del usuario.</p>
+                        <p><strong>Entendiendo el código:</strong></p>
+                        <pre>$(document).ready(function(){
+    $.ajax({
+        url: 'https://jsonplaceholder.typicode.com/posts/1',
+        method: 'GET',
+        success: function(data){
+            $('#resultado').html(JSON.stringify(data));
+        },
+        error: function(error){
+            $('#resultado').html('Error al obtener los datos.');
+        }
+    });
+});
+</pre>
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>$.ajax({ ... });</code>: Método de jQuery para realizar solicitudes Ajax.</li>
+                            <li><code>url</code>: URL del recurso al que se realiza la solicitud.</li>
+                            <li><code>method: 'GET'</code>: Método HTTP de la solicitud.</li>
+                            <li><code>success: function(data){ ... }</code>: Función que se ejecuta si la solicitud es exitosa.</li>
+                            <li><code>error: function(error){ ... }</code>: Función que se ejecuta si ocurre un error.</li>
+                            <li><code>$('#resultado').html(...);</code>: Muestra el resultado en el elemento con id "resultado".</li>
+                        </ul>
+                        <p><strong>Resultado visual:</strong></p>
+                        <p>Al cargar la página, se realiza una solicitud GET a la API de JSONPlaceholder. El resultado se muestra en el elemento "resultado".</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 2 -->
+                <div class="example-container" id="ajax-example-2">
+                    <h3>Ejemplo 2: Enviar Datos con una Solicitud POST usando jQuery</h3>
+                    <pre><code class="language-javascript">$(document).ready(function(){
+    $('#enviar').click(function(){
+        const datos = {
+            titulo: 'Nuevo Post',
+            cuerpo: 'Contenido del post',
+            usuarioId: 1
+        };
+        
+        $.ajax({
+            url: 'https://jsonplaceholder.typicode.com/posts',
+            method: 'POST',
+            data: datos,
+            success: function(data){
+                $('#resultado').html('Post creado: ' + JSON.stringify(data));
+            },
+            error: function(error){
+                $('#resultado').html('Error al crear el post.');
+            }
+        });
+    });
+});
+</code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <button id="enviar">Crear Post</button>
+                            <p id="resultado"></p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a enviar datos usando una solicitud POST con jQuery.</h4>
+                        <p><strong>¿Qué hace este código?</strong></p>
+                        <p>Al hacer clic en el botón "Crear Post", se envían datos a la API de JSONPlaceholder utilizando una solicitud POST. El resultado se muestra en el elemento "resultado".</p>
+                        <p><strong>Entendiendo el código:</strong></p>
+                        <pre>$(document).ready(function(){
+    $('#enviar').click(function(){
+        const datos = {
+            titulo: 'Nuevo Post',
+            cuerpo: 'Contenido del post',
+            usuarioId: 1
+        };
+        
+        $.ajax({
+            url: 'https://jsonplaceholder.typicode.com/posts',
+            method: 'POST',
+            data: datos,
+            success: function(data){
+                $('#resultado').html('Post creado: ' + JSON.stringify(data));
+            },
+            error: function(error){
+                $('#resultado').html('Error al crear el post.');
+            }
+        });
+    });
+});
+</pre>
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>$('#enviar').click(function(){ ... });</code>: Asigna una función al evento click del botón con id "enviar".</li>
+                            <li><code>const datos = { ... };</code>: Define los datos que se enviarán en la solicitud POST.</li>
+                            <li><code>method: 'POST'</code>: Método HTTP de la solicitud.</li>
+                            <li><code>data: datos</code>: Datos que se envían al servidor.</li>
+                        </ul>
+                        <p><strong>Resultado visual:</strong></p>
+                        <p>Al hacer clic en el botón "Crear Post", se crea un nuevo post y su información se muestra en la página.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 3 -->
+                <div class="example-container" id="ajax-example-3">
+                    <h3>Ejemplo 3: Manejar Errores con Fetch</h3>
+                    <pre><code class="language-javascript">fetch('https://jsonplaceholder.typicode.com/invalid-endpoint')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+        console.error('Hubo un problema con la solicitud Fetch:', error);
+    });
+</code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <p>Abre la consola del navegador para ver los mensajes de error.</p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a manejar errores al usar Fetch en JavaScript.</h4>
+                        <p><strong>¿Qué es Fetch?</strong></p>
+                        <p>Fetch es una API de JavaScript para realizar solicitudes HTTP de manera asincrónica.</p>
+                        <p><strong>Entendiendo el código:</strong></p>
+                        <pre>fetch('https://jsonplaceholder.typicode.com/invalid-endpoint')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+        console.error('Hubo un problema con la solicitud Fetch:', error);
+    });
+</pre>
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>fetch('URL')</code>: Realiza una solicitud a la URL especificada.</li>
+                            <li><code>response.ok</code>: Verifica si la respuesta fue exitosa.</li>
+                            <li><code>throw new Error('...');</code>: Lanza un error si la respuesta no es exitosa.</li>
+                            <li><code>.catch(error => { ... });</code>: Maneja cualquier error que ocurra durante la solicitud.</li>
+                        </ul>
+                        <p><strong>Resultado visual:</strong></p>
+                        <p>Al ejecutar este código, se generará un error debido a una URL inválida. El error se manejará en el bloque <code>catch</code> y se mostrará en la consola del navegador.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 4 -->
+                <div class="example-container" id="ajax-example-4">
+                    <h3>Ejemplo 4: Actualizar Contenido con Fetch</h3>
+                    <pre><code class="language-javascript">document.getElementById('actualizar').addEventListener('click', function(){
+    fetch('https://jsonplaceholder.typicode.com/posts/1')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('contenido').innerHTML = JSON.stringify(data);
+        })
+        .catch(error => {
+            document.getElementById('contenido').innerHTML = 'Error al obtener los datos.';
+        });
+});
+</code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <button id="actualizar">Actualizar Contenido</button>
+                            <p id="contenido">Contenido será actualizado aquí.</p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a actualizar contenido dinámicamente usando Fetch en JavaScript.</h4>
+                        <p><strong>¿Qué hace este código?</strong></p>
+                        <p>Al hacer clic en el botón "Actualizar Contenido", se realiza una solicitud Fetch para obtener datos de un post y se actualiza el contenido del párrafo con la información recibida.</p>
+                        <p><strong>Entendiendo el código:</strong></p>
+                        <pre>document.getElementById('actualizar').addEventListener('click', function(){
+    fetch('https://jsonplaceholder.typicode.com/posts/1')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('contenido').innerHTML = JSON.stringify(data);
+        })
+        .catch(error => {
+            document.getElementById('contenido').innerHTML = 'Error al obtener los datos.';
+        });
+});
+</pre>
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>document.getElementById('actualizar').addEventListener('click', function(){ ... });</code>: Asigna una función al evento click del botón con id "actualizar".</li>
+                            <li><code>fetch('URL')</code>: Realiza una solicitud a la URL especificada.</li>
+                            <li><code>response.json()</code>: Convierte la respuesta a formato JSON.</li>
+                            <li><code>document.getElementById('contenido').innerHTML = ...;</code>: Actualiza el contenido del elemento con id "contenido".</li>
+                        </ul>
+                        <p><strong>Resultado visual:</strong></p>
+                        <p>Al hacer clic en el botón "Actualizar Contenido", el contenido del párrafo se actualiza con los datos del post obtenido.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 5 -->
+                <div class="example-container" id="ajax-example-5">
+                    <h3>Ejemplo 5: Enviar Formulario con Fetch</h3>
+                    <pre><code class="language-javascript">document.getElementById('formulario').addEventListener('submit', function(e){
+    e.preventDefault();
+    const nombre = document.getElementById('nombre').value;
+    const email = document.getElementById('email').value;
+
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        body: JSON.stringify({
+            nombre: nombre,
+            email: email
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('resultado').innerHTML = 'Formulario enviado: ' + JSON.stringify(data);
+    })
+    .catch(error => {
+        document.getElementById('resultado').innerHTML = 'Error al enviar el formulario.';
+    });
+});
+</code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <form id="formulario">
+                                <label for="nombre">Nombre:</label>
+                                <input type="text" id="nombre" name="nombre" required><br><br>
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" required><br><br>
+                                <button type="submit">Enviar</button>
+                            </form>
+                            <p id="resultado"></p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a enviar un formulario usando Fetch en JavaScript.</h4>
+                        <p><strong>¿Qué hace este código?</strong></p>
+                        <p>Al enviar el formulario, se captura el evento de submit, se previene la acción por defecto y se envían los datos utilizando Fetch en una solicitud POST. El resultado se muestra en el elemento "resultado".</p>
+                        <p><strong>Entendiendo el código:</strong></p>
+                        <pre>document.getElementById('formulario').addEventListener('submit', function(e){
+    e.preventDefault();
+    const nombre = document.getElementById('nombre').value;
+    const email = document.getElementById('email').value;
+
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        body: JSON.stringify({
+            nombre: nombre,
+            email: email
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('resultado').innerHTML = 'Formulario enviado: ' + JSON.stringify(data);
+    })
+    .catch(error => {
+        document.getElementById('resultado').innerHTML = 'Error al enviar el formulario.';
+    });
+});
+</pre>
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>e.preventDefault();</code>: Previene la acción por defecto del formulario (recargar la página).</li>
+                            <li><code>fetch('URL', { method: 'POST', body: JSON.stringify({ ... }), headers: { ... } });</code>: Realiza una solicitud POST enviando los datos del formulario en formato JSON.</li>
+                            <li><code>document.getElementById('resultado').innerHTML = ...;</code>: Muestra el resultado de la solicitud en el elemento "resultado".</li>
+                        </ul>
+                        <p><strong>Resultado visual:</strong></p>
+                        <p>Al completar y enviar el formulario, se muestra un mensaje con los datos enviados y la respuesta de la API.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 6 -->
+                <div class="example-container" id="ajax-example-6">
+                    <h3>Ejemplo 6: Cargar Datos Dinámicamente con Fetch</h3>
+                    <pre><code class="language-javascript">document.getElementById('cargar').addEventListener('click', function(){
+    fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json())
+        .then(data => {
+            let html = '<ul>';
+            data.forEach(user => {
+                html += `<li>${user.name} - ${user.email}</li>`;
+            });
+            html += '</ul>';
+            document.getElementById('usuarios').innerHTML = html;
+        })
+        .catch(error => {
+            document.getElementById('usuarios').innerHTML = 'Error al cargar los usuarios.';
+        });
+});
+</code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <button id="cargar">Cargar Usuarios</button>
+                            <div id="usuarios"></div>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a cargar datos dinámicamente usando Fetch en JavaScript.</h4>
+                        <p><strong>¿Qué hace este código?</strong></p>
+                        <p>Al hacer clic en el botón "Cargar Usuarios", se realiza una solicitud Fetch para obtener una lista de usuarios y se muestra en el elemento "usuarios".</p>
+                        <p><strong>Entendiendo el código:</strong></p>
+                        <pre>document.getElementById('cargar').addEventListener('click', function(){
+    fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json())
+        .then(data => {
+            let html = '<ul>';
+            data.forEach(user => {
+                html += `<li>${user.name} - ${user.email}</li>`;
+            });
+            html += '</ul>';
+            document.getElementById('usuarios').innerHTML = html;
+        })
+        .catch(error => {
+            document.getElementById('usuarios').innerHTML = 'Error al cargar los usuarios.';
+        });
+});
+</pre>
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>fetch('URL')</code>: Realiza una solicitud a la URL especificada.</li>
+                            <li><code>response.json()</code>: Convierte la respuesta a formato JSON.</li>
+                            <li><code>data.forEach(user => { ... });</code>: Itera sobre los usuarios y crea una lista HTML.</li>
+                            <li><code>document.getElementById('usuarios').innerHTML = html;</code>: Inserta la lista en el DOM.</li>
+                        </ul>
+                        <p><strong>Resultado visual:</strong></p>
+                        <p>Al hacer clic en el botón "Cargar Usuarios", se muestra una lista de nombres y correos electrónicos de usuarios obtenidos de la API.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 7 -->
+                <div class="example-container" id="ajax-example-7">
+                    <h3>Ejemplo 7: Actualizar una Tarea con Fetch</h3>
+                    <pre><code class="language-javascript">document.getElementById('actualizar').addEventListener('click', function(){
+    const datos = {
+        titulo: 'Tarea Actualizada',
+        completado: true
+    };
+
+    fetch('https://jsonplaceholder.typicode.com/posts/1', {
+        method: 'PUT',
+        body: JSON.stringify(datos),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('resultado').innerHTML = 'Tarea actualizada: ' + JSON.stringify(data);
+    })
+    .catch(error => {
+        document.getElementById('resultado').innerHTML = 'Error al actualizar la tarea.';
+    });
+});
+</code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <button id="actualizar">Actualizar Tarea</button>
+                            <p id="resultado"></p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a actualizar una tarea usando Fetch en JavaScript.</h4>
+                        <p><strong>¿Qué hace este código?</strong></p>
+                        <p>Al hacer clic en el botón "Actualizar Tarea", se envían datos actualizados a la API utilizando una solicitud PUT. La respuesta se muestra en el elemento "resultado".</p>
+                        <p><strong>Entendiendo el código:</strong></p>
+                        <pre>document.getElementById('actualizar').addEventListener('click', function(){
+    const datos = {
+        titulo: 'Tarea Actualizada',
+        completado: true
+    };
+
+    fetch('https://jsonplaceholder.typicode.com/posts/1', {
+        method: 'PUT',
+        body: JSON.stringify(datos),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('resultado').innerHTML = 'Tarea actualizada: ' + JSON.stringify(data);
+    })
+    .catch(error => {
+        document.getElementById('resultado').innerHTML = 'Error al actualizar la tarea.';
+    });
+});
+</pre>
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>method: 'PUT'</code>: Método HTTP para actualizar recursos.</li>
+                            <li><code>body: JSON.stringify(datos)</code>: Envía los datos actualizados en formato JSON.</li>
+                            <li><code>headers</code>: Define el tipo de contenido de la solicitud.</li>
+                            <li><code>document.getElementById('resultado').innerHTML = ...;</code>: Muestra la respuesta en el elemento "resultado".</li>
+                        </ul>
+                        <p><strong>Resultado visual:</strong></p>
+                        <p>Al hacer clic en el botón "Actualizar Tarea", se envían los datos actualizados y se muestra la respuesta en la página.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 8 -->
+                <div class="example-container" id="ajax-example-8">
+                    <h3>Ejemplo 8: Eliminar una Tarea con Fetch</h3>
+                    <pre><code class="language-javascript">document.getElementById('eliminar').addEventListener('click', function(){
+    fetch('https://jsonplaceholder.typicode.com/posts/1', {
+        method: 'DELETE',
+    })
+    .then(response => {
+        if(response.ok) {
+            document.getElementById('resultado').innerHTML = 'Tarea eliminada exitosamente.';
+        } else {
+            throw new Error('Error al eliminar la tarea.');
+        }
+    })
+    .catch(error => {
+        document.getElementById('resultado').innerHTML = error.message;
+    });
+});
+</code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <button id="eliminar">Eliminar Tarea</button>
+                            <p id="resultado"></p>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a eliminar una tarea usando Fetch en JavaScript.</h4>
+                        <p><strong>¿Qué hace este código?</strong></p>
+                        <p>Al hacer clic en el botón "Eliminar Tarea", se realiza una solicitud DELETE a la API para eliminar una tarea específica. El resultado se muestra en el elemento "resultado".</p>
+                        <p><strong>Entendiendo el código:</strong></p>
+                        <pre>document.getElementById('eliminar').addEventListener('click', function(){
+    fetch('https://jsonplaceholder.typicode.com/posts/1', {
+        method: 'DELETE',
+    })
+    .then(response => {
+        if(response.ok) {
+            document.getElementById('resultado').innerHTML = 'Tarea eliminada exitosamente.';
+        } else {
+            throw new Error('Error al eliminar la tarea.');
+        }
+    })
+    .catch(error => {
+        document.getElementById('resultado').innerHTML = error.message;
+    });
+});
+</pre>
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>method: 'DELETE'</code>: Método HTTP para eliminar recursos.</li>
+                            <li><code>if(response.ok)</code>: Verifica si la respuesta fue exitosa.</li>
+                            <li><code>throw new Error('...');</code>: Lanza un error si la respuesta no es exitosa.</li>
+                            <li><code>.catch(error => { ... });</code>: Maneja cualquier error que ocurra durante la solicitud.</li>
+                        </ul>
+                        <p><strong>Resultado visual:</strong></p>
+                        <p>Al hacer clic en el botón "Eliminar Tarea", se realiza la solicitud y se muestra un mensaje indicando si la tarea fue eliminada exitosamente o si ocurrió un error.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 9 -->
+                <div class="example-container" id="ajax-example-9">
+                    <h3>Ejemplo 9: Autocompletar con jQuery UI y Ajax</h3>
+                    <pre><code class="language-javascript">$(function() {
+    $("#buscar").autocomplete({
+        source: function(request, response) {
+            $.ajax({
+                url: "https://jsonplaceholder.typicode.com/users",
+                method: "GET",
+                dataType: "json",
+                success: function(data) {
+                    const resultados = data.filter(user => user.name.toLowerCase().includes(request.term.toLowerCase()));
+                    response(resultados.map(user => user.name));
+                },
+                error: function() {
+                    response([]);
+                }
+            });
+        },
+        minLength: 2,
+    });
+});
+</code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <input type="text" id="buscar" placeholder="Buscar usuario...">
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a crear una funcionalidad de autocompletar usando jQuery UI y Ajax.</h4>
+                        <p><strong>¿Qué hace este código?</strong></p>
+                        <p>Este código utiliza jQuery UI para añadir una funcionalidad de autocompletar al campo de búsqueda. A medida que el usuario escribe, se realizan solicitudes Ajax para obtener coincidencias de nombres de usuarios.</p>
+                        <p><strong>Entendiendo el código:</strong></p>
+                        <pre>$(function() {
+    $("#buscar").autocomplete({
+        source: function(request, response) {
+            $.ajax({
+                url: "https://jsonplaceholder.typicode.com/users",
+                method: "GET",
+                dataType: "json",
+                success: function(data) {
+                    const resultados = data.filter(user => user.name.toLowerCase().includes(request.term.toLowerCase()));
+                    response(resultados.map(user => user.name));
+                },
+                error: function() {
+                    response([]);
+                }
+            });
+        },
+        minLength: 2,
+    });
+});
+</pre>
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>$("#buscar").autocomplete({ ... });</code>: Aplica la funcionalidad de autocompletar al elemento con id "buscar".</li>
+                            <li><code>source: function(request, response) { ... }</code>: Define la fuente de datos para el autocompletar, realizando una solicitud Ajax.</li>
+                            <li><code>minLength: 2</code>: Inicia la búsqueda después de que el usuario haya escrito al menos 2 caracteres.</li>
+                        </ul>
+                        <p><strong>Resultado visual:</strong></p>
+                        <p>Al escribir en el campo de búsqueda, aparecen sugerencias de nombres de usuarios que coinciden con el término ingresado.</p>
+                    </div>
+                </div>
+
+                <!-- Ejemplo 10 -->
+                <div class="example-container" id="ajax-example-10">
+                    <h3>Ejemplo 10: Cargar Contenido con Fetch y Plantillas</h3>
+                    <pre><code class="language-javascript">document.getElementById('cargarContenido').addEventListener('click', function(){
+    fetch('https://jsonplaceholder.typicode.com/posts/1')
+        .then(response => response.json())
+        .then(data => {
+            const plantilla = `
+                <h3>${data.title}</h3>
+                <p>${data.body}</p>
+            `;
+            document.getElementById('contenido').innerHTML = plantilla;
+        })
+        .catch(error => {
+            document.getElementById('contenido').innerHTML = 'Error al cargar el contenido.';
+        });
+});
+</code></pre>
+                    <div class="preview">
+                        <p><strong>Resultado:</strong></p>
+                        <div class="resultado">
+                            <button id="cargarContenido">Cargar Contenido</button>
+                            <div id="contenido"></div>
+                        </div>
+                    </div>
+                    <div class="explanation">
+                        <h4>¡Hola! Vamos a cargar contenido dinámicamente usando Fetch y plantillas en JavaScript.</h4>
+                        <p><strong>¿Qué hace este código?</strong></p>
+                        <p>Al hacer clic en el botón "Cargar Contenido", se realiza una solicitud Fetch para obtener un post y se muestra en el elemento "contenido" usando una plantilla HTML.</p>
+                        <p><strong>Entendiendo el código:</strong></p>
+                        <pre>document.getElementById('cargarContenido').addEventListener('click', function(){
+    fetch('https://jsonplaceholder.typicode.com/posts/1')
+        .then(response => response.json())
+        .then(data => {
+            const plantilla = `
+                <h3>${data.title}</h3>
+                <p>${data.body}</p>
+            `;
+            document.getElementById('contenido').innerHTML = plantilla;
+        })
+        .catch(error => {
+            document.getElementById('contenido').innerHTML = 'Error al cargar el contenido.';
+        });
+});
+</pre>
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li><code>fetch('URL')</code>: Realiza una solicitud a la URL especificada.</li>
+                            <li><code>response.json()</code>: Convierte la respuesta a formato JSON.</li>
+                            <li><code>const plantilla = `...`;</code>: Define una plantilla HTML usando template literals.</li>
+                            <li><code>document.getElementById('contenido').innerHTML = plantilla;</code>: Inserta la plantilla en el DOM.</li>
+                        </ul>
+                        <p><strong>Resultado visual:</strong></p>
+                        <p>Al hacer clic en el botón "Cargar Contenido", se muestra el título y cuerpo del post en el elemento "contenido".</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de navegación para JavaScript con Ajax -->
+            <div class="navigation-buttons-ajax">
+                <button id="prev-btn-ajax" disabled>Anterior</button>
+                <span class="counter" id="counter-ajax">Ejemplo 1 de 10</span>
+                <button id="next-btn-ajax">Siguiente</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2024 Ingeniería Web. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Script para la funcionalidad interactiva -->
+    <script>
+        function setupNavigation(sectionId, prefix) {
+            const examples = document.querySelectorAll(`#${sectionId}-examples .example-container`);
+            const prevBtn = document.getElementById(`prev-btn-${prefix}`);
+            const nextBtn = document.getElementById(`next-btn-${prefix}`);
+            const counter = document.getElementById(`counter-${prefix}`);
+
+            let current = 0;
+
+            if (examples.length > 0) {
+                examples[0].classList.add('active');
+                if (counter) {
+                    counter.textContent = `Ejemplo ${current + 1} de ${examples.length}`;
+                }
+            }
+
+            function updateButtons() {
+                prevBtn.disabled = current === 0;
+                nextBtn.disabled = current === examples.length - 1;
+                if (counter) {
+                    counter.textContent = `Ejemplo ${current + 1} de ${examples.length}`;
+                }
+            }
+
+            prevBtn.addEventListener('click', () => {
+                if (current > 0) {
+                    examples[current].classList.remove('active');
+                    current--;
+                    examples[current].classList.add('active');
+                    updateButtons();
+                }
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (current < examples.length - 1) {
+                    examples[current].classList.remove('active');
+                    current++;
+                    examples[current].classList.add('active');
+                    updateButtons();
+                }
+            });
+
+            updateButtons();
+        }
+
+        // Configurar la navegación para Diseño Responsivo
+        setupNavigation('diseño-responsivo', 'css');
+
+        // Configurar la navegación para Intercambio de Datos
+        setupNavigation('intercambio-datos', 'datos');
+
+        // Configurar la navegación para JavaScript con Ajax
+        setupNavigation('javascript-ajax', 'ajax');
+    </script>
+</body>
+</html>
