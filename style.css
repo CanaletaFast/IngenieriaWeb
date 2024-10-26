@@ -231,7 +231,7 @@ footer {
     }
 }
 
-/* ####################### UNIDAD DIDÁCTICA 2 ####################### */
+
 
 /* Estilos para los resultados de los ejemplos */
 .resultado {
@@ -259,10 +259,11 @@ section h3 {
     margin-top: 30px;
 }
 
-
-/* ####################### UNIDAD DIDÁCTICA 2 ####################### */
-
-.img-small {
-    width: 300px;
-    height: auto;
+/* Imágenes responsivas */
+.responsive-image { /* Clase para hacer imágenes responsivas */
+    max-width: 100%; /* Imagen no puede ser más ancha que su contenedor */
+    height: auto; /* Altura se ajusta automáticamente */
+    display: block; /* Elimina espacio adicional debajo de la imagen */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
 }
+/* ####################### UNIDADES DIDÁCTICAS 2 ####################### */
